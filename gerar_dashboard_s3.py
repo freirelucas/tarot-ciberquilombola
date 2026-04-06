@@ -279,7 +279,41 @@ def _card_meta_insights(d: dict) -> str:
 
 
 def _card_meta_params(d: dict) -> str:
+    from datetime import datetime, timezone
     p = d['params']
+    pa = p.get('parada_automatica', {})
+
+    # Calcular tempo restante até deadline
+    deadline_str = pa.get('deadline_iso', '')
+    tempo_restante = ''
+    if deadline_str:
+        try:
+            deadline_dt = datetime.fromisoformat(deadline_str.replace('Z', '+00:00'))
+            now = datetime.now(timezone.utc)
+            delta = deadline_dt - now
+            if delta.total_seconds() > 0:
+                h = int(delta.total_seconds() // 3600)
+                m = int((delta.total_seconds() % 3600) // 60)
+                tempo_restante = f'{h}h{m:02d}min restantes'
+            else:
+                tempo_restante = '⚠ PRAZO VENCIDO'
+        except Exception:
+            tempo_restante = deadline_str
+
+    parada_html = ''
+    if pa.get('ativo'):
+        cor = '#1e3a1e' if 'VENCIDO' not in tempo_restante else '#3a1e1e'
+        border = '#16a34a' if 'VENCIDO' not in tempo_restante else '#dc2626'
+        parada_html = f"""
+<div style="background:{cor};border:1px solid {border};border-radius:8px;padding:12px;margin-bottom:12px">
+  <div style="color:#4ade80;font-weight:700;font-size:0.85rem">🕐 PARADA AUTOMÁTICA ATIVA</div>
+  <div class="param-row"><span class="param-key">Deadline</span><span class="param-val">{deadline_str}</span></div>
+  <div class="param-row"><span class="param-key">Tempo restante</span><span class="param-val">{tempo_restante}</span></div>
+  <div class="param-row"><span class="param-key">Slope mínimo</span><span class="param-val">{pa.get('min_slope_para_continuar','?')} pp/iter</span></div>
+  <div class="param-row"><span class="param-key">Janela slope</span><span class="param-val">últimas {pa.get('slope_window','20')} iterações</span></div>
+  <div class="param-row"><span class="param-key">Meta sucesso</span><span class="param-val">pct_ok ≥ {pa.get('pct_ok_sucesso','90')}%</span></div>
+</div>"""
+
     rows = ''
     flat = {
         'vocab.auto_add_threshold': p.get('vocab_expansion', {}).get('auto_add_threshold', '?'),
@@ -298,6 +332,7 @@ def _card_meta_params(d: dict) -> str:
     return f"""
 <div class="card">
   <h2>Metaparâmetros S2 (config/s3_meta_parameters.json)</h2>
+  {parada_html}
   {rows}
   <p style="margin-top:12px;font-size:0.75rem;color:#475569">Edite config/s3_meta_parameters.json para ajustar. Lido automaticamente pelo watcher e meta_learning.py.</p>
 </div>"""

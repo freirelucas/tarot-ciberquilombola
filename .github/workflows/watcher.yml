@@ -31,6 +31,13 @@ jobs:
           cp ptd_learning_signals.json /tmp/ptd_learning_signals.json 2>/dev/null || echo '{"schema_version":1,"run_history":[],"meta_insights":[],"current_strategy":{"focus":"vocabulario","auto_add_threshold":8,"review_threshold":3,"priority_siglas":[]}}' > /tmp/ptd_learning_signals.json
           echo "[Step A] learning signals: $(jq '.run_history | length' /tmp/ptd_learning_signals.json) entradas"
 
+          # Buscar critérios de parada da branch de trabalho (s3_meta_parameters.json)
+          git fetch origin claude/setup-docling-pipeline-g11gg --depth=1 2>/dev/null || true
+          git show origin/claude/setup-docling-pipeline-g11gg:config/s3_meta_parameters.json \
+            > /tmp/s3_meta_parameters.json 2>/dev/null \
+            || echo '{"parada_automatica":{"ativo":false}}' > /tmp/s3_meta_parameters.json
+          echo "[Step A] parada_automatica.ativo: $(jq -r '.parada_automatica.ativo // false' /tmp/s3_meta_parameters.json)"
+
       - name: Verificar se há run novo com falhas
         id: check
         run: |
@@ -78,13 +85,145 @@ jobs:
             echo "✅ Pipeline convergiu — todos os estágios completos!"
           elif [ "$STAGE" != "0" ] && [ "$N_ZERO" = "0" ] && \
                python3 -c "import sys; sys.exit(0 if float('$PCT_OK') >= 80 else 1)" 2>/dev/null; then
-            # Estágio 2+ com pct_ok≥80%: precisa de revisão humana antes de avançar
             echo "status=needs_human_review" >> $GITHUB_OUTPUT
             echo "⚠ Estágio $STAGE ($STAGE_LABEL) requer revisão humana antes de continuar."
           else
-            echo "status=needs_fix" >> $GITHUB_OUTPUT
-            echo "⚠ Estágio $STAGE ($STAGE_LABEL) — $N_ZERO zerados, pct_ok=$PCT_OK%, problema=$PROBLEM_TYPE — aplicando fix..."
+            # ── Verificar critérios de parada automática (S5) ────────────────
+            PARADA_ATIVO=$(jq -r '.parada_automatica.ativo // false' /tmp/s3_meta_parameters.json 2>/dev/null || echo 'false')
+            PARADA_MOTIVO=""
+
+            if [ "$PARADA_ATIVO" = "true" ]; then
+              DEADLINE=$(jq -r '.parada_automatica.deadline_iso // ""' /tmp/s3_meta_parameters.json 2>/dev/null || echo "")
+              MIN_SLOPE=$(jq -r '.parada_automatica.min_slope_para_continuar // 0.05' /tmp/s3_meta_parameters.json 2>/dev/null || echo "0.05")
+              SLOPE_WIN=$(jq -r '.parada_automatica.slope_window // 20' /tmp/s3_meta_parameters.json 2>/dev/null || echo "20")
+
+              # Critério 1: prazo de 48h
+              if [ -n "$DEADLINE" ]; then
+                NOW_EPOCH=$(date -u +%s)
+                DEAD_EPOCH=$(date -u -d "$DEADLINE" +%s 2>/dev/null || python3 -c "from datetime import datetime,timezone; print(int(datetime.fromisoformat('$DEADLINE'.replace('Z','+00:00')).timestamp()))" 2>/dev/null || echo "9999999999")
+                if [ "$NOW_EPOCH" -ge "$DEAD_EPOCH" ]; then
+                  PARADA_MOTIVO="PRAZO: deadline $DEADLINE atingido após 48h"
+                fi
+              fi
+
+              # Critério 2: slope < min_slope (aprendizado estagnado)
+              if [ -z "$PARADA_MOTIVO" ]; then
+                SLOPE=$(python3 - <<PYEOF
+import json, sys
+from pathlib import Path
+signals = json.loads(Path('/tmp/ptd_learning_signals.json').read_text()) if Path('/tmp/ptd_learning_signals.json').exists() else {}
+history = signals.get('run_history', [])
+window = int('$SLOPE_WIN')
+recent = [e['pct_ok'] for e in history[-window:] if e.get('pct_ok') is not None]
+if len(recent) < 5:
+    print('0.99')  # dados insuficientes — não pausar
+    sys.exit(0)
+n = len(recent); xs = list(range(n)); xm = sum(xs)/n; ym = sum(recent)/n
+num = sum((x-xm)*(y-ym) for x,y in zip(xs,recent))
+den = sum((x-xm)**2 for x in xs)
+print(round(num/den, 4) if den else 0.0)
+PYEOF
+                )
+                if python3 -c "import sys; sys.exit(0 if float('$SLOPE') < float('$MIN_SLOPE') else 1)" 2>/dev/null; then
+                  PARADA_MOTIVO="ESTAGNAÇÃO: slope=$SLOPE pp/iter < $MIN_SLOPE (aprendizado não vale a pena)"
+                fi
+              fi
+
+              # Critério 3: meta S5 atingida
+              if [ -z "$PARADA_MOTIVO" ]; then
+                PCT_META=$(jq -r '.parada_automatica.pct_ok_sucesso // 90' /tmp/s3_meta_parameters.json 2>/dev/null || echo "90")
+                if python3 -c "import sys; sys.exit(0 if float('$PCT_OK') >= float('$PCT_META') else 1)" 2>/dev/null; then
+                  PARADA_MOTIVO="SUCESSO: pct_ok=$PCT_OK% ≥ meta=$PCT_META%"
+                fi
+              fi
+            fi
+
+            if [ -n "$PARADA_MOTIVO" ]; then
+              echo "status=paused_auto"  >> $GITHUB_OUTPUT
+              echo "parada_motivo=$PARADA_MOTIVO" >> $GITHUB_OUTPUT
+              echo "🛑 PARADA AUTOMÁTICA S5: $PARADA_MOTIVO"
+            else
+              echo "status=needs_fix" >> $GITHUB_OUTPUT
+              echo "⚠ Estágio $STAGE ($STAGE_LABEL) — $N_ZERO zerados, pct_ok=$PCT_OK%, problema=$PROBLEM_TYPE — aplicando fix..."
+            fi
           fi
+
+      - name: "[Step S5] Parada automática — registrar e notificar"
+        if: steps.check.outputs.status == 'paused_auto'
+        env:
+          WORKFLOW_PAT: ${{ secrets.WORKFLOW_PAT }}
+          MOTIVO:       ${{ steps.check.outputs.parada_motivo }}
+          PCT_OK:       ${{ steps.check.outputs.pct_ok }}
+          ITERATION:    ${{ steps.check.outputs.run_id }}
+        run: |
+          git config user.name  "ptd-watcher[bot]"
+          git config user.email "ptd-watcher[bot]@users.noreply.github.com"
+          git fetch origin claude/setup-docling-pipeline-g11gg --depth=1
+          git checkout origin/claude/setup-docling-pipeline-g11gg -b work-paused
+
+          TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          ITER=$(grep 'iteration:' .trigger_debug 2>/dev/null | awk '{print $2}' || echo '?')
+
+          python3 - <<PYEOF
+import json
+from datetime import datetime
+from pathlib import Path
+
+# Gerar PAUSA_AUTO.md
+motivo = "$MOTIVO"
+pct_ok = "$PCT_OK"
+iteration = "$ITER"
+ts = "$TS"
+
+doc = f"""# 🛑 Pausa Automática — PTD-BR Pipeline
+
+**Timestamp**: {ts}
+**Iteração**: {iteration}
+**pct_ok no momento da parada**: {pct_ok}%
+
+## Motivo da parada
+
+{motivo}
+
+## O que fazer agora
+
+1. Avaliar se a meta S5 (pct_ok ≥ 90%) está próxima — se sim, ajustar parâmetros e reativar
+2. Para **reativar**: editar `config/s3_meta_parameters.json`, campo `parada_automatica`:
+   - Mudar `"ativo": true` para `"ativo": false`, ou
+   - Atualizar `"deadline_iso"` para nova data, ou
+   - Ajustar `"min_slope_para_continuar"` para valor menor
+3. Para **encerrar definitivamente**: verificar se corpus é suficiente para os objetivos de análise
+
+## Métricas no momento da parada
+
+Ver `ptd_run_summary.json` no branch `pipeline-outputs`.
+
+---
+*Gerado automaticamente pelo watcher (Step S5) — VSM S5 Política*
+"""
+Path('PAUSA_AUTO.md').write_text(doc, encoding='utf-8')
+print(doc[:400])
+
+# Atualizar stage_status.json
+status = {
+    "stage": "paused_auto",
+    "motivo": motivo,
+    "pct_ok": pct_ok,
+    "iteration": iteration,
+    "timestamp": ts
+}
+Path('stage_status.json').write_text(json.dumps(status, indent=2, ensure_ascii=False))
+print("stage_status.json atualizado")
+PYEOF
+
+          git add PAUSA_AUTO.md stage_status.json
+          git commit -m "watcher: PAUSA AUTOMÁTICA S5 — iter $ITER pct_ok=${PCT_OK}%
+
+$MOTIVO
+
+https://claude.ai/code/session_01VMgXMT3uZP2cLZPxUjvR8C"
+          git remote set-url origin "https://x-access-token:${WORKFLOW_PAT}@github.com/freirelucas/teste.git"
+          git push origin work-paused:claude/setup-docling-pipeline-g11gg
 
       - name: Checkout branch de trabalho
         if: steps.check.outputs.status == 'needs_fix' || steps.check.outputs.status == 'needs_human_review'
@@ -666,7 +805,13 @@ print('algedonico_signal.json gerado')
         if: always()
         run: |
           echo "## PTD Watcher — $(date -u +%Y-%m-%dT%H:%M)" >> $GITHUB_STEP_SUMMARY
-          echo "| Status | ${{ steps.check.outputs.status || 'waiting' }} |" >> $GITHUB_STEP_SUMMARY
+          STATUS="${{ steps.check.outputs.status || 'waiting' }}"
+          if [ "$STATUS" = "paused_auto" ]; then
+            echo "| 🛑 Status | **PARADA AUTOMÁTICA** |" >> $GITHUB_STEP_SUMMARY
+            echo "| Motivo | ${{ steps.check.outputs.parada_motivo }} |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Status | $STATUS |" >> $GITHUB_STEP_SUMMARY
+          fi
           echo "| Problema | ${{ steps.check.outputs.problem_type || '—' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Órgãos zerados | ${{ steps.check.outputs.n_zero || '—' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| pct_ok | ${{ steps.check.outputs.pct_ok || '—' }}% |" >> $GITHUB_STEP_SUMMARY
