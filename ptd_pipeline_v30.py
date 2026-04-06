@@ -344,15 +344,34 @@ _COL_KEYS: dict[str, tuple] = {
     'data':    ('data', 'prazo', 'previsão', 'previsao', 'dt_'),
 }
 
-def _col_map(df: pd.DataFrame) -> dict[str, Optional[int]]:
+def _load_col_keys_extra() -> dict:
+    """Carrega keywords adicionais de colunas por sigla (config/col_keys_extra.json)."""
+    p = Path('config/col_keys_extra.json')
+    if not p.exists():
+        return {}
+    try:
+        raw = json.loads(p.read_text(encoding='utf-8'))
+        # Remover chaves de metadados
+        return {k: v for k, v in raw.items() if not k.startswith('_')}
+    except Exception:
+        return {}
+
+_COL_KEYS_EXTRA: dict = _load_col_keys_extra()
+
+
+def _col_map(df: pd.DataFrame, sigla: str = '') -> dict[str, Optional[int]]:
     """Mapeia nomes de colunas do DataFrame a campos semânticos.
 
     Retorna dict {field: col_index | None}.
     Se nenhum header reconhecível, retorna dict vazio (fallback posicional).
+    Combina _COL_KEYS global com extras por sigla de config/col_keys_extra.json.
     """
     col_names = [str(c).lower().strip() for c in df.columns]
     result: dict[str, Optional[int]] = {}
-    for field, keywords in _COL_KEYS.items():
+    sig_extra = _COL_KEYS_EXTRA.get(sigla.upper(), {})
+    for field, base_kws in _COL_KEYS.items():
+        extra_kws = tuple(sig_extra.get(field, []))
+        keywords  = base_kws + extra_kws
         for idx, name in enumerate(col_names):
             if any(k in name for k in keywords):
                 result[field] = idx
@@ -494,7 +513,7 @@ def _extrair_docling(path: Path, sigla: str, is_img: bool, pdf_sha256: str,
             continue
 
         # Detectar mapeamento por header (FIX: column-aware extraction)
-        cmap = _col_map(df)
+        cmap = _col_map(df, sigla=sigla)
         has_headers = bool(cmap)
         # Capturar headers reais para diagnóstico quando col_map falha
         _raw_headers = '|'.join(str(c).strip()[:40] for c in df.columns) if not has_headers else ''
