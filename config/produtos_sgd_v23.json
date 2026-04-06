@@ -6,6 +6,7 @@
     "nota": "Ordem: mais específico/longo primeiro para evitar match parcial. Atualizar a cada novo ciclo PTD."
   },
   "produtos": [
+    "Léia Maria da Silva",
     "Integração à ferramenta de avaliação da satisfação dos usuários",
     "Auto-avaliação, análise de lacunas e planejamento do PPSI",
     "Implementação das recomendações do autodiagnóstico de qualidade",
