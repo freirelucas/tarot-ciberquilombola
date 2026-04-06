@@ -24,19 +24,19 @@
     "force_ocr": true
   },
   "21": {
-    "table_min_rows": 1,
-    "force_ocr": false
+    "table_min_rows": 2,
+    "force_ocr": true
   },
   "INPI": {
-    "table_min_rows": 1,
-    "force_ocr": false
+    "table_min_rows": 2,
+    "force_ocr": true
   },
   "MIDR": {
-    "table_min_rows": 1,
-    "force_ocr": false
+    "table_min_rows": 2,
+    "force_ocr": true
   },
   "MMULHERES": {
-    "table_min_rows": 1,
-    "force_ocr": false
+    "table_min_rows": 2,
+    "force_ocr": true
   }
 }
