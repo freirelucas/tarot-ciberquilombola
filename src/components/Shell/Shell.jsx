@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import { useReadingStore } from '../../store/useReadingStore'
 import spreads from '../../data/spreads.json'
+import Petition from '../Petition/Petition.jsx'
 import './Shell.css'
 
 export default function Shell({ children }) {
   const { mode, setMode, reset, phase } = useReadingStore()
+  const [view, setView] = useState('tarot') // 'tarot' | 'manifesto'
 
   return (
     <div className="shell">
@@ -18,8 +21,11 @@ export default function Shell({ children }) {
         {spreads.map((spread) => (
           <button
             key={spread.id}
-            className={`shell__nav-btn ${mode === spread.id ? 'shell__nav-btn--active' : ''}`}
+            className={`shell__nav-btn ${view === 'tarot' && mode === spread.id ? 'shell__nav-btn--active' : ''}`}
             onClick={() => {
+              if (view === 'manifesto') {
+                setView('tarot')
+              }
               if (phase !== 'idle' && mode !== spread.id) {
                 if (!window.confirm('Abandonar leitura atual?')) return
                 reset()
@@ -31,9 +37,18 @@ export default function Shell({ children }) {
             <span className="shell__nav-label">{spread.name_pt}</span>
           </button>
         ))}
+        <button
+          className={`shell__nav-btn shell__nav-btn--manifesto ${view === 'manifesto' ? 'shell__nav-btn--active' : ''}`}
+          onClick={() => setView(view === 'manifesto' ? 'tarot' : 'manifesto')}
+        >
+          <span className="shell__nav-count">&#x270D;</span>
+          <span className="shell__nav-label">Manifesto</span>
+        </button>
       </nav>
 
-      <main className="shell__main">{children}</main>
+      <main className="shell__main">
+        {view === 'manifesto' ? <Petition /> : children}
+      </main>
 
       <footer className="shell__footer">
         <div className="shell__quote">

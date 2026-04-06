@@ -78,6 +78,14 @@
   text-align: center;
 }
 
+.shell__nav-btn--manifesto {
+  border-style: dashed;
+}
+
+.shell__nav-btn--manifesto .shell__nav-count {
+  font-weight: 400;
+}
+
 /* Main */
 .shell__main {
   flex: 1;
