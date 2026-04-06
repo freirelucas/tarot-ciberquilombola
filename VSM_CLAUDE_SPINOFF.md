@@ -275,8 +275,197 @@ Qual a próxima ação de MAIOR ALAVANCAGEM no nível correto do VSM?
 
 ---
 
+## Parte 8 — Implementação Concreta: Hooks do Claude Code
+
+A chave para tornar o VSM operacional no Claude Code é o sistema de **hooks**.
+Cada canal VSM mapeia para um tipo de hook:
+
+| Canal VSM | Hook Claude Code | Função |
+|-----------|-----------------|--------|
+| S5 — Política | `PreToolUse` (operações destrutivas) | Bloqueia ações inconstitucionais |
+| S4 — Inteligência | `SessionStart` | Injeta contexto ambiental atual |
+| S3 — Gestão | `UserPromptSubmit` | Verifica prioridades e recursos |
+| S3* — Auditoria | `PostToolUse` | Log independente de toda ação |
+| S2 — Coordenação | `PreToolUse` (recursos compartilhados) | Previne conflitos concorrentes |
+| Algedônico (dor) | `Stop` com `decision: "block"` | Bloqueia parada prematura |
+| Algedônico (prazer) | `PostToolUse` → wins.log | Registra conclusões bem-sucedidas |
+
+### `.claude/settings.json` — Configuração VSM completa
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [{
+          "type": "command",
+          "command": ".claude/hooks/s4_inject_environment.sh",
+          "timeout": 10,
+          "statusMessage": "S4: Carregando contexto ambiental..."
+        }]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [{
+          "type": "command",
+          "command": ".claude/hooks/s3_priority_check.sh",
+          "timeout": 5,
+          "statusMessage": "S3: Verificando prioridades e restrições..."
+        }]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Write|Edit",
+        "hooks": [{
+          "type": "command",
+          "command": ".claude/hooks/s2_coordination_check.sh",
+          "timeout": 10,
+          "statusMessage": "S2: Verificando coordenação..."
+        }]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [{
+          "type": "command",
+          "command": ".claude/hooks/s5_policy_guard.sh",
+          "timeout": 5,
+          "statusMessage": "S5: Verificando política constitucional..."
+        }]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Write|Edit",
+        "hooks": [{
+          "type": "command",
+          "command": ".claude/hooks/s3star_audit_log.sh",
+          "timeout": 5,
+          "statusMessage": "S3*: Registrando para auditoria..."
+        }]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [{
+          "type": "command",
+          "command": ".claude/hooks/algedonic_completion_check.sh",
+          "timeout": 30,
+          "statusMessage": "Verificando conclusão antes de parar..."
+        }]
+      }
+    ]
+  }
+}
+```
+
+### Scripts de hook essenciais
+
+**S4 — Injeção de ambiente** (`.claude/hooks/s4_inject_environment.sh`):
+```bash
+#!/bin/bash
+# S4: Outside and Then — injeta estado ambiental ao iniciar sessão
+BRANCH=$(git branch --show-current 2>/dev/null || echo "unknown")
+LAST_COMMIT=$(git log -1 --format="%h %s" 2>/dev/null || echo "sem git")
+SUMMARY=""
+if [ -f "ptd_run_summary.json" ]; then
+  PCT_OK=$(jq -r '.pct_ok // "?"' ptd_run_summary.json 2>/dev/null)
+  SUMMARY="pct_ok: $PCT_OK%"
+fi
+
+jq -n \
+  --arg branch "$BRANCH" \
+  --arg commit "$LAST_COMMIT" \
+  --arg summary "$SUMMARY" \
+  '{hookSpecificOutput: {hookEventName: "SessionStart",
+    additionalContext: "S4 ESTADO AMBIENTAL:\nBranch: \($branch)\nÚltimo commit: \($commit)\n\($summary)\n\nRequisite variety: ajuste a complexidade da resposta à do problema."}}'
+```
+
+**S5 — Guarda de política** (`.claude/hooks/s5_policy_guard.sh`):
+```bash
+#!/bin/bash
+# S5: Bloqueia operações inconstitucionais
+INPUT=$(cat /dev/stdin)
+COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // empty')
+
+# Force push para main é sempre bloqueado
+if echo "$COMMAND" | grep -qE "push.*--force.*(main|master)"; then
+  jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse",
+    permissionDecision: "deny",
+    permissionDecisionReason: "S5 POLÍTICA: Force push para main é constitucionalmente proibido."}}'
+  exit 2
+fi
+exit 0
+```
+
+**Algedônico — Verificação de conclusão** (`.claude/hooks/algedonic_completion_check.sh`):
+```bash
+#!/bin/bash
+# Canal algedônico: verifica se tarefa realmente concluiu antes de parar
+# Se output contém ALGEDONIC: ou TODO: incompleto, bloqueia parada
+TRANSCRIPT_PATH=$(cat /dev/stdin | jq -r '.transcript_path // empty')
+if [ -n "$TRANSCRIPT_PATH" ] && grep -qE "ALGEDONIC:|TODO \(pendente\)" "$TRANSCRIPT_PATH" 2>/dev/null; then
+  echo '{"decision": "block", "reason": "Sinal algedônico detectado ou trabalho incompleto. Resolva antes de parar."}'
+  exit 2
+fi
+# Registra conclusão como sinal de prazer
+echo "$(date -Iseconds) TASK_COMPLETE" >> .claude/wins.log 2>/dev/null
+exit 0
+```
+
+### Protocolo Vollzug (ViableOS)
+
+Para projetos multi-agente com risco de amnésia de contexto:
+
+1. **Quittung** (30 min): Agente confirma recebimento da diretiva
+2. **Vollzug** (prazo definido): Agente executa e confirma
+3. **Report** (com evidência): Agente entrega prova de conclusão
+
+Timeouts escalam automaticamente para o operador humano (algedônico).
+
+---
+
+## Glossário VSM ↔ IA
+
+| Termo | Definição Beer | Tradução para agentes IA |
+|-------|---------------|------------------------|
+| **Viable system** | Sistema autônomo que sobrevive em ambiente mutável | Agente que adapta a tarefas novas sem reprogramação |
+| **Requisite Variety** | Controlador precisa ter variedade ≥ do ambiente (Ashby) | Se tarefa excede capacidade: decompor ou escalar |
+| **Algedônico** | Canal rápido dor/prazer que bypassa hierarquia | `Stop` hook com exit 2 (dor); wins.log (prazer) |
+| **POSIWID** | "O propósito do sistema é o que ele faz" | Julgar agente por logs, não por intenções declaradas |
+| **Homeostato S3↔S4** | Tensão entre explorar agora (S3) e adaptar ao futuro (S4) | Equilíbrio entre execução e aprendizado |
+| **Recursão** | Sistemas viáveis contêm sistemas viáveis internamente | Sub-agentes têm seu próprio CLAUDE.md/S1-S5 |
+| **INFOSET** | Conjunto de agentes com preocupação e conhecimento compartilhados | Pool de agentes para domínio-problema com protocolo de cross-pollination |
+| **Syntegrity** | Protocolo icosaédrico para inteligência coletiva sem hierarquia | Decomposição multi-agente com papéis Member/Critic/Observer |
+| **S3*** | Auditoria esporádica independente que bypassa auto-reporte | Agente verificador usando modelo LLM diferente |
+
+---
+
+## Referências
+
+### Obras de Stafford Beer
+- Beer, S. (1972). *Brain of the Firm*. Allen Lane.
+- Beer, S. (1979). *The Heart of Enterprise*. Wiley.
+- Beer, S. (1985). *Diagnosing the System for Organizations*. Wiley.
+- Beer, S. (1994). *Beyond Dispute: The Invention of Team Syntegrity*. Wiley. ISBN 0-471-94451-3.
+
+### VSM aplicado a agentes IA (2025–2026)
+- Gorelkin, M. "Stafford Beer's Viable Model for Building Enterprise Agentic Systems". *Medium*, 2025.
+- Fearne, A. "Applying VSM to Create Autonomous AI Organisations". *Medium*, 2025.
+- Kellogg, T. "Viable Systems: How to Build a Fully Autonomous Agent". *Strix Research*, Jan 2026.
+- Kellogg, T. "The Levels of Agentic Coding". *Strix Research*, Jan 2026.
+- Enderle, P. "Your Multi-Agent Framework Handles Operations. What About the Other Five?" *DEV.to*, 2025.
+- Nhilbert. *Viable System Generator* (ViableOS). agent.nhilbert.de, 2026.
+
+### Syntegrity
+- Truss, J. & Leonard, A. "Team Syntegrity: A New Methodology for Group Work". *Academia.edu*.
+- Espejo, R. & Reyes, A. (2011). *Organizational Systems*. Springer.
+
+---
+
 *Este documento é o spin-off conceitual do PTD-BR Pipeline.
-Pode ser reutilizado como template CLAUDE.md + settings.json para qualquer
-projeto de automação autônoma com loops de aprendizado.*
+Template reutilizável: copie `.claude/settings.json` + hooks + seção CLAUDE.md
+para qualquer projeto de automação autônoma com loops de aprendizado.*
 
 **PTD-BR Pipeline — IPEA/COGIT/DIEST — 2026**
