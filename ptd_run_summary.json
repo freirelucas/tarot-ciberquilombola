@@ -1,31 +1,39 @@
 {
-  "run_id": "24035829881",
-  "timestamp": "2026-04-06T14:56:56",
+  "run_id": "24037362807",
+  "timestamp": "2026-04-06T15:38:07",
   "branch": "claude/setup-docling-pipeline-g11gg",
   "stage": 1,
   "stage_label": "parse_quality",
   "n_orgaos": 7,
-  "n_registros_raw": 255,
-  "n_registros_v21": 255,
-  "pct_ok": 68.2,
-  "sem_produto_pct": 29.4,
-  "col_map_ok_rate": 75.1,
+  "n_registros_raw": 273,
+  "n_registros_v21": 273,
+  "pct_ok": 63.7,
+  "sem_produto_pct": 34.1,
+  "col_map_ok_rate": 72.4,
   "extratores": {
-    "docling": 255
+    "docling": 273
   },
   "orgaos_zero_entregas": [],
   "orgaos_zero_ou_noise": [],
   "orgs_below_50pct": [
     {
       "sigla": "ITI",
-      "pct_ok": 45.9,
-      "n": 37
+      "pct_ok": 42.5,
+      "n": 40
     }
   ],
   "top_unmatched_phrases": [
     {
       "phrase": "Segurança e Privacidade",
       "count": 10
+    },
+    {
+      "phrase": "Léia Maria da Silva",
+      "count": 6
+    },
+    {
+      "phrase": "Gerente de Relacionamento",
+      "count": 5
     }
   ],
   "top_unmatched_por_sigla": {
@@ -33,6 +41,20 @@
       {
         "phrase": "Segurança e Privacidade",
         "count": 3
+      }
+    ],
+    "FIOCRUZ": [
+      {
+        "phrase": "Léia Maria da Silva",
+        "count": 3
+      },
+      {
+        "phrase": "Atraso das demais áreas de",
+        "count": 2
+      },
+      {
+        "phrase": "Daniela de Cunto Bueno Ouvidora",
+        "count": 2
       }
     ],
     "FUNAI": [
@@ -59,8 +81,16 @@
         "count": 7
       },
       {
+        "phrase": "Léia Maria da Silva",
+        "count": 3
+      },
+      {
         "phrase": "Pouco provável",
         "count": 3
+      },
+      {
+        "phrase": "Ana Lúcia Aparecida da Silva",
+        "count": 2
       }
     ],
     "ITI": [
@@ -79,6 +109,10 @@
       {
         "phrase": "Projetos Especiais",
         "count": 3
+      },
+      {
+        "phrase": "Cleiton Lima de Moura",
+        "count": 3
       }
     ],
     "SGPR": [
@@ -88,6 +122,10 @@
       },
       {
         "phrase": "Serviços Digitais e Melhoria da",
+        "count": 2
+      },
+      {
+        "phrase": "Marcelo Moreira de Oliveira",
         "count": 2
       }
     ]
@@ -109,14 +147,17 @@
     },
     {
       "sigla": "FIOCRUZ",
-      "n_entregas": 61,
+      "n_entregas": 67,
       "extrator": "docling",
       "status": "ok",
-      "pct_ok": 95.1,
-      "sem_produto_n": 3,
-      "sem_produto_pct": 4.9,
-      "col_map_ok_rate": 100.0,
-      "unrecognized_headers": []
+      "pct_ok": 86.6,
+      "sem_produto_n": 9,
+      "sem_produto_pct": 13.4,
+      "col_map_ok_rate": 97.0,
+      "unrecognized_headers": [
+        "0|1|2|3|4",
+        "Risco|Probabilidad e de Ocorrer|Impacto|Opção de tratamento|Descrever ações de tratamento do risco"
+      ]
     },
     {
       "sigla": "FUNAI",
@@ -134,13 +175,13 @@
     },
     {
       "sigla": "INCRA",
-      "n_entregas": 19,
+      "n_entregas": 21,
       "extrator": "docling",
       "status": "ok",
-      "pct_ok": 5.3,
-      "sem_produto_n": 12,
-      "sem_produto_pct": 63.2,
-      "col_map_ok_rate": 0.0,
+      "pct_ok": 4.8,
+      "sem_produto_n": 14,
+      "sem_produto_pct": 66.7,
+      "col_map_ok_rate": 9.5,
       "unrecognized_headers": [
         "DtPactuada|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|30/06/2025|01/07/2025",
         "0|1|2|3|4|5|6",
@@ -150,38 +191,42 @@
     },
     {
       "sigla": "ITI",
-      "n_entregas": 37,
+      "n_entregas": 40,
       "extrator": "docling",
       "status": "ok",
-      "pct_ok": 45.9,
-      "sem_produto_n": 20,
-      "sem_produto_pct": 54.1,
-      "col_map_ok_rate": 83.8,
+      "pct_ok": 42.5,
+      "sem_produto_n": 23,
+      "sem_produto_pct": 57.5,
+      "col_map_ok_rate": 85.0,
       "unrecognized_headers": [
         "Requisitos/demandas de desenvolvimento e|Pouco Provável|| Muito Alto|Mitigar|1214 o"
       ]
     },
     {
       "sigla": "MCOM",
-      "n_entregas": 55,
+      "n_entregas": 58,
       "extrator": "docling",
       "status": "ok",
-      "pct_ok": 96.4,
-      "sem_produto_n": 2,
-      "sem_produto_pct": 3.6,
-      "col_map_ok_rate": 100.0,
-      "unrecognized_headers": []
+      "pct_ok": 91.4,
+      "sem_produto_n": 5,
+      "sem_produto_pct": 8.6,
+      "col_map_ok_rate": 94.8,
+      "unrecognized_headers": [
+        "|Ns das Comunicações|"
+      ]
     },
     {
       "sigla": "SGPR",
-      "n_entregas": 15,
+      "n_entregas": 19,
       "extrator": "docling",
       "status": "ok",
-      "pct_ok": 73.3,
-      "sem_produto_n": 4,
-      "sem_produto_pct": 26.7,
-      "col_map_ok_rate": 100.0,
-      "unrecognized_headers": []
+      "pct_ok": 57.9,
+      "sem_produto_n": 8,
+      "sem_produto_pct": 42.1,
+      "col_map_ok_rate": 78.9,
+      "unrecognized_headers": [
+        "Órgão|Secretaria-Geral da Presidência da Repúb|Secretaria-Geral da Presidência da Repúb|Vigência|"
+      ]
     }
   ]
 }
