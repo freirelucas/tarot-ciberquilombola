@@ -3,7 +3,7 @@ import Card from '../Card/Card.jsx'
 import './Spread.css'
 
 export default function Spread() {
-  const { spread, drawnCards, reversed, revealed, phase, drawCards, revealCard } =
+  const { spread, drawnCards, reversed, revealed, phase, drawCards, revealCard, reset } =
     useReadingStore()
 
   if (!spread) {
@@ -48,6 +48,12 @@ export default function Spread() {
 
       {hasCards && phase === 'drawing' && (
         <p className="spread__hint">Clique em cada carta para revelá-la.</p>
+      )}
+
+      {hasCards && (
+        <button className="spread__reset-btn" onClick={reset}>
+          &#x21BB; Recomeçar
+        </button>
       )}
     </div>
   )

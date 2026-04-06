@@ -94,12 +94,48 @@
 .spread__hint {
   color: var(--amber);
   font-size: var(--font-size-sm);
-  animation: blink 2s ease-in-out infinite;
+  animation: blink-hint 2s ease-in-out infinite;
 }
 
 @keyframes blink-hint {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
+}
+
+.spread__reset-btn {
+  padding: var(--sp-2) var(--sp-4);
+  font-size: var(--font-size-xs);
+  border: 1px solid var(--red-dim);
+  background: transparent;
+  color: var(--red);
+  border-radius: var(--radius-md);
+  letter-spacing: 0.05em;
+  transition: all var(--duration-fast) var(--ease-out);
+  opacity: 0.7;
+}
+
+.spread__reset-btn:hover {
+  border-color: var(--red);
+  opacity: 1;
+}
+
+/* Responsive grid for large spreads */
+.spread__grid--sintegracao,
+.spread__grid--platform {
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .spread__grid--sintegracao .card,
+  .spread__grid--platform .card {
+    width: 170px;
+    height: 270px;
+  }
+
+  .spread__grid--sintegracao .card__name,
+  .spread__grid--platform .card__name {
+    font-size: var(--font-size-xs);
+  }
 }
 
 /* Responsive */

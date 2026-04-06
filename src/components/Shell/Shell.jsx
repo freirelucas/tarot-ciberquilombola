@@ -21,6 +21,7 @@ export default function Shell({ children }) {
             className={`shell__nav-btn ${mode === spread.id ? 'shell__nav-btn--active' : ''}`}
             onClick={() => {
               if (phase !== 'idle' && mode !== spread.id) {
+                if (!window.confirm('Abandonar leitura atual?')) return
                 reset()
               }
               setMode(spread.id)

@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { marked } from 'marked'
 import { useReadingStore } from '../../store/useReadingStore'
 import { useHistoryStore } from '../../store/useHistoryStore'
 import { interpret } from '../../services/interpret'
 import './Reading.css'
+
+marked.setOptions({ breaks: true, gfm: true })
 
 export default function Reading() {
   const { spread, drawnCards, reversed, interpretation, setInterpretation, setPhase, reset } =
@@ -95,7 +98,10 @@ export default function Reading() {
 
       {interpretation && (
         <div className="reading__result">
-          <div className="reading__text">{interpretation}</div>
+          <div
+            className="reading__text"
+            dangerouslySetInnerHTML={{ __html: marked.parse(interpretation) }}
+          />
           <div className="reading__result-actions">
             {!saved ? (
               <button className="reading__btn" onClick={handleSave}>

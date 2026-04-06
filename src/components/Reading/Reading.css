@@ -116,7 +116,12 @@
 .reading__loading p {
   color: var(--amber);
   font-size: var(--font-size-sm);
-  animation: blink 2s ease-in-out infinite;
+  animation: blink-loading 2s ease-in-out infinite;
+}
+
+@keyframes blink-loading {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5;
 }
 
 .reading__spinner {
@@ -144,10 +149,49 @@
   padding: var(--sp-6);
   font-size: var(--font-size-sm);
   line-height: 1.8;
-  white-space: pre-wrap;
   color: var(--text);
   max-height: 600px;
   overflow-y: auto;
+}
+
+.reading__text h2 {
+  font-size: var(--font-size-lg);
+  color: var(--green);
+  margin: var(--sp-6) 0 var(--sp-2);
+  border-bottom: 1px dashed var(--rule);
+  padding-bottom: var(--sp-2);
+}
+
+.reading__text h3 {
+  font-size: var(--font-size-base);
+  color: var(--amber);
+  margin: var(--sp-4) 0 var(--sp-2);
+}
+
+.reading__text p {
+  margin-bottom: var(--sp-3);
+}
+
+.reading__text strong {
+  color: var(--text-bright);
+}
+
+.reading__text em {
+  color: var(--text-dim);
+}
+
+.reading__text blockquote {
+  border-left: 3px solid var(--green-dim);
+  padding-left: var(--sp-4);
+  margin: var(--sp-3) 0;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.reading__text hr {
+  border: none;
+  border-top: 1px dashed var(--rule);
+  margin: var(--sp-6) 0;
 }
 
 .reading__result-actions {
