@@ -458,9 +458,179 @@ Timeouts escalam automaticamente para o operador humano (algedônico).
 - Enderle, P. "Your Multi-Agent Framework Handles Operations. What About the Other Five?" *DEV.to*, 2025.
 - Nhilbert. *Viable System Generator* (ViableOS). agent.nhilbert.de, 2026.
 
-### Syntegrity
+### Syntegrity e Malik
 - Truss, J. & Leonard, A. "Team Syntegrity: A New Methodology for Group Work". *Academia.edu*.
 - Espejo, R. & Reyes, A. (2011). *Organizational Systems*. Springer.
+- Pfiffner, M. "From Workshop to Syntegration". Malik Management, St. Gallen.
+- Malik Management. "Malik Syntegration InfoSheet". malik-management.com, 2024.
+- Nittbaur, G. "Stafford Beer's Syntegration as Renascence of the Ancient Greek Agora". *JUKM*, 2003.
+
+---
+
+## Parte 9 — Syntegration com Menos Atores (Fredmund Malik)
+
+Fredmund Malik (Malik Management, St. Gallen) é o principal sistematizador das versões
+menores da Syntegrity de Beer, registradas como **"Syntegration"** (marca Malik).
+A chave: trocar o icosaedro por outros **sólidos de Platão** menores.
+
+### Famílias geométricas e tamanhos
+
+| Sólido | Vértices (tópicos) | Arestas (posições) | Participantes | Faces | Tipo |
+|--------|-------------------|-------------------|--------------|-------|------|
+| **Tetraedro** | 4 | 6 | ~6 | 4 | mínimo viável |
+| **Octaedro** | 6 | 12 | ~12–15 | 8 | grupos pequenos |
+| **Cubo** | 8 | 12 | ~16–24 | 6 | grupos médios (sem papel Critic) |
+| **Icosaedro** (Beer) | 12 | 30 | 30 | 20 | protocolo original |
+
+**Regra de escala**: vértices = nº de tópicos; arestas = nº de posições de participante.
+O papel de **Critic** emerge naturalmente quando faces triangulares se opõem (octaedro, icosaedro).
+No cubo (faces quadradas), o papel Critic some — só Member e Observer. Isso reduz tensão
+adversarial mas acelera convergência em grupos já alinhados.
+
+### Tetraedro — Syntegration mínima (6 participantes, 4 tópicos)
+
+```
+      T1
+     /  \
+   T2 -- T4
+     \  /
+      T3
+
+Cada participante: Member de 1 tópico + Observer dos outros 3
+Sem papel Critic (ausência de face triangular oposta ao mesmo vértice)
+Funciona para: equipes de produto, squads, duplas de pesquisa
+```
+
+**Para agentes Claude**: 4 agentes paralelos, cada um com 1 tópico principal,
+monitorando os outros 3 via arquivo de estado compartilhado (`syntegration_state.json`).
+
+### Octaedro — Syntegration pequena (12–15 participantes, 6 tópicos)
+
+```
+         T1
+        /|\ 
+      T2-+-T3
+      |  |  |   ← anel equatorial
+      T4-+-T5
+        \|/
+         T6
+
+Papel por participante:
+  Member:   1 tópico (principal)
+  Critic:   1 tópico (adversarial, vértice oposto)
+  Observer: 4 tópicos restantes
+```
+
+**Propriedade-chave do octaedro**: cada vértice tem exatamente 4 vizinhos (grau 4),
+garantindo simetria máxima. A tensão Member↔Critic é natural: vértices opostos no
+octaedro são os mais distantes na topologia — pressão adversarial máxima.
+
+**Para agentes**: 6 agentes, cada um com 1 tópico primário e 1 vértice oposto como
+tópico Critic. Máximo de tensão produtiva com mínimo de participantes.
+
+---
+
+## Parte 10 — Geometria e Comunicação Assíncrona
+
+### Por que a geometria importa para comunicação assíncrona?
+
+Em comunicação síncrona (reunião), a topologia do sólido governa *quem fala com quem*.
+Em comunicação **assíncrona** (agentes, mensagens, commits), a geometria governa algo
+diferente e mais profundo: **em quantos passos uma informação alcança todos os nós**.
+
+Isso é o **diâmetro** do grafo. Menor diâmetro = informação mais rápida.
+
+### Tabela de propriedades para comunicação assíncrona
+
+| Sólido | Diâmetro | Grau nodal | Propagação info | Latência async |
+|--------|----------|-----------|----------------|----------------|
+| Tetraedro | 1 | 3 | Qualquer nó alcança todos em 1 passo | Mínima |
+| Octaedro | 2 | 4 | 2 passos máximo entre qualquer par | Baixa |
+| Cubo | 3 | 3 | 3 passos (mais lento entre opostos) | Média |
+| Icosaedro | 3 | 5 | 3 passos, alta resiliência (5 caminhos) | Média, mas resiliente |
+| Rede plana n×n | O(√n) | 2–4 | Cresce com n² participantes | Alta |
+| Grafo completo | 1 | n-1 | Instantâneo, mas n² conexões | Zero, custo alto |
+
+**Insight principal**: o icosaedro não é o mais rápido — é o **mais resiliente**.
+5 caminhos independentes entre qualquer par de nós significa que pode perder até
+4 conexões e ainda propagar informação. Para agentes que podem falhar ou ficar offline,
+isso é crucial.
+
+### Padrões de comunicação assíncrona por sólido
+
+#### Tetraedro assíncrono (4 agentes / tópicos)
+```
+Rodada 0: Cada agente escreve Statement inicial → shared/T{n}_v0.md
+Rodada 1: Cada agente lê os outros 3 → escreve síntese → shared/T{n}_v1.md
+Rodada 2: Convergência — todos leem v1 de todos → Statement final
+Total: 2 rodadas assíncronas → 3 documentos por tópico
+```
+
+#### Octaedro assíncrono (6 agentes / tópicos)
+```
+Rodada 0: Member escreve Statement → T{n}_member.md
+Rodada 1: Critic lê Statement do oposto → escreve crítica → T{n}_critic.md
+Rodada 2: Member lê crítica → revisa → T{n}_v2.md
+Rodada 3: Observer integra ambos os lados → T{n}_synthesis.md
+Total: 4 rodadas, 4 documentos por tópico — tensão adversarial explícita
+```
+
+#### Icosaedro assíncrono (12 tópicos, Beer digital)
+```
+Rodada 0: 12 Members escrevem Statements (paralelo)
+Rodada 1: 12 Critics leem e escrevem críticas (paralelo)
+Rodada 2: 8 Observers integram pares (paralelo)
+Rodada 3: Síntese global via meta-agente S4
+Total: 4 rodadas — Beer digital com 12 agentes simultâneos
+```
+
+### Implementação para agentes Claude (octaedro async)
+
+```python
+# syntegration_octahedron.py — 6 agentes, 4 rodadas assíncronas
+
+TOPICS = ['t1', 't2', 't3', 't4', 't5', 't6']
+# Opostos no octaedro: cada tópico tem 1 oposto
+OPPOSITES = {'t1':'t6', 't2':'t5', 't3':'t4', 't4':'t3', 't5':'t2', 't6':'t1'}
+
+def round0_member(topic: str, agent_output: str):
+    """Agente escreve Statement inicial sobre seu tópico."""
+    Path(f'syntegration/{topic}_member.md').write_text(agent_output)
+
+def round1_critic(topic: str, agent_output: str):
+    """Agente lê Statement do tópico oposto e escreve crítica."""
+    opposite = OPPOSITES[topic]
+    context = Path(f'syntegration/{opposite}_member.md').read_text()
+    # Claude lê context e escreve crítica adversarial
+    Path(f'syntegration/{topic}_critic.md').write_text(agent_output)
+
+def round2_revision(topic: str, agent_output: str):
+    """Member revisa Statement à luz da crítica recebida."""
+    Path(f'syntegration/{topic}_v2.md').write_text(agent_output)
+
+def round3_synthesis(meta_output: str):
+    """Meta-agente (S4) integra todos os tópicos revisados."""
+    Path('syntegration/final_synthesis.md').write_text(meta_output)
+```
+
+### Regra geométrica para escolha de estrutura async
+
+```
+Grupo pequeno (2–6 agentes):   Tetraedro — 1 rodada, custo mínimo
+Grupo médio (6–15 agentes):    Octaedro — 4 rodadas, tensão adversarial
+Grupo grande (15–30 agentes):  Icosaedro — 4 rodadas, máxima resiliência
+Acima de 30:                   Recursão — INFOSET de INFOSETs (Beer)
+```
+
+**Para o PTD-BR (59 órgãos)**: usar octaedro de 6 meta-tópicos (um por eixo EFGD),
+onde cada agente é responsável por 1 eixo como Member e critica o eixo oposto.
+Meta-agente S4 integra na Rodada 3.
+
+---
+
+## Texto completo no GitHub
+
+🔗 **[VSM_CLAUDE_SPINOFF.md — branch claude/setup-docling-pipeline-g11gg](https://github.com/freirelucas/teste/blob/claude/setup-docling-pipeline-g11gg/VSM_CLAUDE_SPINOFF.md)**
 
 ---
 
