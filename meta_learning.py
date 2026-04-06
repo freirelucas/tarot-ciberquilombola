@@ -111,6 +111,89 @@ def _adjusted_thresholds(slope: float, current: dict) -> tuple[int, int]:
         auto_add = min(10, auto_add)
     return auto_add, review
 
+# ── Carregar política S5 por órgão (org_meta.json) ────────────────────────────
+def _load_org_meta() -> dict:
+    """Lê config/org_meta.json — Nível -1 de recursão VSM."""
+    p = Path('config/org_meta.json')
+    if p.exists():
+        try:
+            raw = json.loads(p.read_text(encoding='utf-8'))
+            return {k: v for k, v in raw.items() if not k.startswith('_')}
+        except Exception:
+            pass
+    return {}
+
+# ── Análise per-sigla (S4 Nível -1) ──────────────────────────────────────────
+def _per_sigla_analysis(history: list[dict], org_meta: dict, window: int = 5) -> dict:
+    """
+    Para cada sigla com ≥ window entradas em per_sigla_ok:
+    - Calcula slope individual
+    - Compara com s5_pct_ok_meta do org_meta
+    - Produz recomendação de ação
+    Retorna dict com siglas_abaixo_meta, siglas_convergindo, per_sigla_strategy.
+    """
+    if len(history) < window:
+        return {'per_sigla_strategy': {}, 'siglas_abaixo_meta': [], 'siglas_convergindo': []}
+
+    recent = history[-window:]
+    _default_meta = org_meta.get('_default', {}).get('s5_pct_ok_meta', 80.0) or 80.0
+
+    all_siglas: set[str] = set()
+    for entry in recent:
+        all_siglas.update(entry.get('per_sigla_ok', {}).keys())
+
+    per_sigla_strategy: dict = {}
+    siglas_abaixo: list = []
+    siglas_convergindo: list = []
+
+    for sig in sorted(all_siglas):
+        vals = [e['per_sigla_ok'].get(sig) for e in recent
+                if e.get('per_sigla_ok', {}).get(sig) is not None]
+        if len(vals) < 2:
+            continue
+
+        sig_slope = _slope(vals)
+        om = org_meta.get(sig, org_meta.get('_default', {}))
+        meta = om.get('s5_pct_ok_meta') or _default_meta
+        current_pct = vals[-1]
+        gap = round(current_pct - float(meta), 1)
+        vsm_status = om.get('status', 'ativo')
+
+        if vsm_status == 'excluir':
+            continue  # órgãos excluídos não participam da análise
+
+        # Determinar ação recomendada
+        estrategia_local = om.get('estrategia', 'vocabulario')
+        if current_pct >= float(meta):
+            acao = 'manter'
+            siglas_convergindo.append(sig)
+        elif sig_slope >= 0.3:
+            acao = 'manter_estrategia'  # convergindo bem
+            siglas_convergindo.append(sig)
+        elif sig_slope < 0.0:
+            acao = f'urgente_{estrategia_local}'
+            siglas_abaixo.append({'sigla': sig, 'pct_ok': current_pct, 'meta': meta, 'gap': gap, 'slope': sig_slope})
+        else:
+            acao = estrategia_local
+            if gap < 0:
+                siglas_abaixo.append({'sigla': sig, 'pct_ok': current_pct, 'meta': meta, 'gap': gap, 'slope': sig_slope})
+
+        per_sigla_strategy[sig] = {
+            'slope': sig_slope,
+            'pct_ok_atual': current_pct,
+            'meta': meta,
+            'gap_pp': gap,
+            'acao_recomendada': acao,
+            'vsm_estrategia_local': estrategia_local,
+            'vsm_prioridade': om.get('prioridade', 'normal'),
+        }
+
+    return {
+        'per_sigla_strategy': per_sigla_strategy,
+        'siglas_abaixo_meta': siglas_abaixo,
+        'siglas_convergindo': siglas_convergindo,
+    }
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 def run(window: int = 10) -> dict:
     signals = _load()
@@ -133,9 +216,14 @@ def run(window: int = 10) -> dict:
     new_focus, reasoning = _next_strategy(current_focus, slope)
     auto_add, review_thr = _adjusted_thresholds(slope, current_strategy)
 
-    # Priority siglas: estagnadas + as que já eram prioritárias
+    # Per-sigla analysis (S4 Nível -1 de recursão VSM)
+    org_meta = _load_org_meta()
+    per_sigla = _per_sigla_analysis(history, org_meta, window=min(window, n_entries))
+
+    # Priority siglas: estagnadas + abaixo da meta + as que já eram prioritárias
     existing_priority = set(current_strategy.get('priority_siglas', []))
-    new_priority = sorted(existing_priority | set(stalled))
+    abaixo_siglas = {s['sigla'] for s in per_sigla['siglas_abaixo_meta']}
+    new_priority = sorted(existing_priority | set(stalled) | abaixo_siglas)
 
     # Dominant action nos últimos ciclos
     actions = [e.get('action_type', '') for e in recent]
@@ -156,6 +244,10 @@ def run(window: int = 10) -> dict:
         'review_threshold_new': review_thr,
         'reasoning': reasoning,
         'ts': datetime.utcnow().isoformat(timespec='seconds') + 'Z',
+        # VSM Nível -1: análise per-sigla
+        'per_sigla_strategy': per_sigla['per_sigla_strategy'],
+        'siglas_abaixo_meta': per_sigla['siglas_abaixo_meta'],
+        'siglas_convergindo': per_sigla['siglas_convergindo'],
     }
 
     print(f'[meta_learning] iter={iteration} | window={len(recent)} entradas')
@@ -167,6 +259,12 @@ def run(window: int = 10) -> dict:
     if stalled:
         print(f'  estagnadas: {stalled}')
     print(f'  razão: {reasoning}')
+    if per_sigla['siglas_abaixo_meta']:
+        print(f"  [Nível -1] siglas abaixo da meta S5:")
+        for s in per_sigla['siglas_abaixo_meta'][:5]:
+            print(f"    {s['sigla']}: {s['pct_ok']:.1f}% (meta={s['meta']:.0f}%, gap={s['gap_pp']:+.1f}pp, slope={s['slope']:+.3f})")
+    if per_sigla['siglas_convergindo']:
+        print(f"  [Nível -1] convergindo: {per_sigla['siglas_convergindo'][:5]}")
 
     # Atualizar signals
     signals['meta_insights'].append(insight)

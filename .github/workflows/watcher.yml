@@ -31,12 +31,19 @@ jobs:
           cp ptd_learning_signals.json /tmp/ptd_learning_signals.json 2>/dev/null || echo '{"schema_version":1,"run_history":[],"meta_insights":[],"current_strategy":{"focus":"vocabulario","auto_add_threshold":8,"review_threshold":3,"priority_siglas":[]}}' > /tmp/ptd_learning_signals.json
           echo "[Step A] learning signals: $(jq '.run_history | length' /tmp/ptd_learning_signals.json) entradas"
 
-          # Buscar critérios de parada da branch de trabalho (s3_meta_parameters.json)
+          # Buscar metaparâmetros e política S5 por órgão da branch de trabalho
           git fetch origin claude/setup-docling-pipeline-g11gg --depth=1 2>/dev/null || true
           git show origin/claude/setup-docling-pipeline-g11gg:config/s3_meta_parameters.json \
             > /tmp/s3_meta_parameters.json 2>/dev/null \
             || echo '{"parada_automatica":{"ativo":false}}' > /tmp/s3_meta_parameters.json
           echo "[Step A] parada_automatica.ativo: $(jq -r '.parada_automatica.ativo // false' /tmp/s3_meta_parameters.json)"
+
+          # org_meta.json — S5 por órgão (Nível -1 VSM)
+          git show origin/claude/setup-docling-pipeline-g11gg:config/org_meta.json \
+            > /tmp/org_meta.json 2>/dev/null \
+            || echo '{"_default":{"status":"ativo"}}' > /tmp/org_meta.json
+          N_EXCLUIDOS=$(jq '[to_entries[] | select(.key | startswith("_") | not) | select(.value.status=="excluir")] | length' /tmp/org_meta.json 2>/dev/null || echo 0)
+          echo "[Step A] org_meta: $N_EXCLUIDOS órgão(s) com status=excluir (não bloqueiam Stage 0)"
 
       - name: Verificar se há run novo com falhas
         id: check
@@ -406,7 +413,24 @@ https://claude.ai/code/session_01VMgXMT3uZP2cLZPxUjvR8C"
                   p, c = str(entry), 1
               if p: all_phrases[p] = all_phrases.get(p, 0) + c
 
+          # Carregar órgãos excluídos por política S5 (org_meta.json) — não usar suas frases
+          import os
+          _org_meta_raw = {}
+          _org_meta_path = Path('/tmp/org_meta.json')
+          if _org_meta_path.exists():
+              try:
+                  _org_meta_raw = json.loads(_org_meta_path.read_text())
+              except Exception:
+                  pass
+          _excluidos_vocab = {k for k, v in _org_meta_raw.items()
+                              if not k.startswith('_') and isinstance(v, dict)
+                              and v.get('status') == 'excluir'}
+          if _excluidos_vocab:
+              print(f"[org_meta] Excluindo frases de {_excluidos_vocab} (status=excluir)")
+
           for sig, entries in unmatched_por_sigla.items():
+              if str(sig) in _excluidos_vocab:
+                  continue  # não alimentar vocab com frases de órgãos excluídos
               for entry in entries:
                   p = entry.get('phrase', entry.get('frase', ''))
                   c = entry.get('count', 1)

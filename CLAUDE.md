@@ -23,16 +23,51 @@ L3     ptd_corpus_v21.py      Classificação semântica via Aho-Corasick
 O loop de aprendizado autônomo é gerenciado por `.github/workflows/watcher.yml`, que roda
 a cada 5 minutos, lê o diagnóstico do último run e aplica fixes parametrizados.
 
-### Arquitetura VSM (Viable System Model)
+### Arquitetura VSM (Viable System Model) — Nível 0
 
 | Sistema | Implementação | Status |
 |---------|--------------|--------|
 | S1 — Operações | pipeline por órgão/PDF | ✅ |
-| S2 — Coordenação | `config/` (vocab, col_keys, normas) | ⚠ estático |
-| S3 — Gestão | `watcher.yml` state machine | ✅ |
-| S3* — Auditoria | `gerar_relatorio.py` | ✅ |
-| S4 — Inteligência | `ptd_learning_signals.json` (em construção) | 🔴 |
-| S5 — Política | operador humano + thresholds | ✅ |
+| S2 — Coordenação | `config/` + `s3_meta_parameters.json` | ✅ |
+| S3 — Gestão | `watcher.yml` + `gerar_dashboard_s3.py` | ✅ |
+| S3* — Auditoria | `gerar_relatorio.py` + doc_coverage | ✅ |
+| S4 — Inteligência | `meta_learning.py` + `ptd_learning_signals.json` | ⚠ acumulando |
+| S5 — Política | operador + thresholds em `s3_meta_parameters.json` | ✅ |
+
+### Recursão VSM — 3 Níveis (Beer)
+
+> "Um sistema viável contém sistemas viáveis e está contido por sistemas viáveis."
+
+```
+Nível +1 (pipeline como S1 do IPEA)
+  S5: mandato de pesquisa IPEA
+  S4: inteligência sobre transformação digital federal
+  S3: gestão COGIT/DIEST
+  S1: PTD-BR Pipeline ← somos nós
+
+Nível 0 (pipeline — atual)
+  S5: config/s3_meta_parameters.json + operador (pct_ok ≥ 90%)
+  S4: meta_learning.py + ptd_learning_signals.json
+  S3: watcher.yml + gerar_dashboard_s3.py
+  S3*: gerar_relatorio.py
+  S2: config/ (vocab global, col_keys, correções)
+  S1: extração por órgão (59 unidades S1)
+
+Nível -1 (por-órgão — implementado em 2026-04-06)
+  S5: config/org_meta.json (meta própria, exclusão, prioridade por sigla)
+  S4: per_sigla_strategy em meta_learning.py → estratégia por órgão
+  S3: slope per-sigla monitorado por _stalled_siglas()
+  S3*: vsm_status, vsm_gap_pp, vsm_prioridade em por_orgao do run_summary
+  S2: col_keys_extra[sigla] (config/col_keys_extra.json)
+  S1: extração por PDF individual dentro do órgão
+```
+
+**`config/org_meta.json`** — S5 por órgão (Nível -1):
+- `status`: `ativo` | `excluir` — órgãos excluídos não bloqueiam Stage 0 nem alimentam vocab
+- `s5_pct_ok_meta`: meta individual de pct_ok (padrão: 80%)
+- `estrategia`: `vocabulario` | `col_keys` | `ocr` — estratégia prioritária por órgão
+- `prioridade`: `alta` | `media` | `normal` | `nenhuma`
+- `_default`: política padrão aplicada a órgãos sem entrada explícita
 
 ---
 
@@ -224,14 +259,14 @@ grep -E 'ERROR|WARNING|extraídas|pct_ok' ptd_debug.log
 
 ## Estado atual (2026-04-06)
 
-- **Iteração**: 165
-- **Stage**: 0 — cobertura (5 órgãos noise-only: ABNT-NBR-1, ANS-PLANO, MD, MDA-DOCUME, MEC)
+- **Iteração**: 166
+- **Stage**: 0 — cobertura (noise-only: ABNT-NBR-1 excluído por S5; ANS-PLANO, MD, MDA-DOCUME, MEC ainda ativos)
 - **pct_ok**: 75.5% (meta: ≥ 90%) · **sem_produto_pct**: 21.6%
 - **Sensor**: `top_unmatched_por_sigla` operacional — watcher vê frases por órgão
-- **S4**: `meta_learning.py` ativo · `ptd_learning_signals.json` acumulando · thresholds em `config/s3_meta_parameters.json`
-- **S3**: `gerar_dashboard_s3.py` disponível · Sinal algedônico (Step E watcher.yml) ativo
-- **S3\***: `doc_coverage` no `ptd_run_summary.json` (populado no próximo run de pipeline completo)
-- **Gargalo atual**: 5 órgãos noise-only travam Stage 0; sem_produto_pct 21.6% > meta 20%
+- **S4**: `meta_learning.py` ativo · `ptd_learning_signals.json` acumulando · `per_sigla_strategy` implementado
+- **S3**: `gerar_dashboard_s3.py` com card de recursão VSM · Sinal algedônico (Step E) ativo
+- **S3\***: `doc_coverage` no `ptd_run_summary.json` · `vsm_status/gap/prioridade` por órgão
+- **Nível -1 VSM**: `config/org_meta.json` criado — ABNT-NBR-1 marcado como `excluir`
 
 ### Arquitetura VSM — estado dos sistemas
 
@@ -239,14 +274,14 @@ grep -E 'ERROR|WARNING|extraídas|pct_ok' ptd_debug.log
 |---------|--------------|--------|
 | S1 — Operações | `ptd_pipeline_v30.py` por órgão/PDF | ✅ `rows_por_sha256` no manifesto |
 | S2 — Coordenação | `config/` + `config/s3_meta_parameters.json` | ✅ metaparâmetros centralizados |
-| S3 — Gestão | `watcher.yml` · `gerar_dashboard_s3.py` | ✅ Step E (algedônico) ativo |
-| S3\* — Auditoria | `gerar_relatorio.py` · `doc_coverage` | ✅ cobertura documental no summary |
-| S4 — Inteligência | `meta_learning.py` · `ptd_learning_signals.json` | ⚠ 0 entradas (pipeline não rodou desde Step D) |
-| S5 — Política | Operador + thresholds em `s3_meta_parameters.json` | ✅ algedônico threshold=15 iters |
+| S3 — Gestão | `watcher.yml` · `gerar_dashboard_s3.py` | ✅ Step E (algedônico) + card VSM tree |
+| S3\* — Auditoria | `gerar_relatorio.py` · `doc_coverage` · `vsm_gap_pp` por org | ✅ cobertura documental + nível -1 |
+| S4 — Inteligência | `meta_learning.py` · `ptd_learning_signals.json` · `per_sigla_strategy` | ⚠ acumulando (pipeline precisa rodar) |
+| S5 — Política | `s3_meta_parameters.json` + `config/org_meta.json` (por órgão) | ✅ nível -1 implementado |
 
 ### Próximos objetivos
 
-1. **Stage 0 → 1**: resolver os 5 órgãos noise-only (ABNT-NBR-1 = norma ABNT, não PTD → excluir ou tratar separadamente)
+1. **Stage 0 → 1**: ABNT-NBR-1 excluído; restam 4 noise-only (ANS-PLANO, MD, MDA-DOCUME, MEC)
 2. **sem_produto_pct 21.6% → < 20%**: watcher expandir vocab via `top_unmatched_por_sigla` (já funcionando)
 3. **S4 acumular histórico**: pipeline precisa rodar para `ptd_learning_signals.json` ter entradas
 4. **doc_coverage**: verificar preservação após próximo run completo

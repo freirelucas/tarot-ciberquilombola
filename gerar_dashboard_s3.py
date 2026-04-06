@@ -360,6 +360,115 @@ def _card_por_orgao(d: dict) -> str:
 </div>"""
 
 
+def _card_vsm_tree(d: dict) -> str:
+    """Card de recursão VSM: 3 níveis (IPEA → Pipeline → Por-órgão)."""
+    orgs = d['summary'].get('por_orgao', [])
+    excluidos = set(d['summary'].get('orgaos_excluidos', []))
+    zero_noise = set(d['summary'].get('orgaos_zero_ou_noise', []))
+    pct_ok_global = d['summary'].get('pct_ok', 0)
+
+    # Nível -1: badges por órgão
+    def _badge_org(o: dict) -> str:
+        sig = o['sigla']
+        vsm_st = o.get('vsm_status', 'ativo')
+        pok = o.get('pct_ok', 0)
+        meta = o.get('vsm_s5_meta') or 80.0
+        gap = o.get('vsm_gap_pp')
+        pri = o.get('vsm_prioridade', 'normal')
+        estrategia = o.get('vsm_estrategia', '—')
+
+        if vsm_st == 'excluir':
+            color = '#6b7280'; label = 'excluído'
+        elif sig in zero_noise:
+            color = '#ef4444'; label = 'noise-only'
+        elif pok >= float(meta):
+            color = '#22c55e'; label = 'convergido'
+        elif pok >= float(meta) * 0.8:
+            color = '#f59e0b'; label = 'progredindo'
+        else:
+            color = '#ef4444'; label = 'abaixo meta'
+
+        pri_icon = {'alta': '🔴', 'media': '🟡', 'normal': '🟢', 'nenhuma': '⬜'}.get(pri, '')
+        tip = f"pct_ok={pok}% | meta={meta}% | gap={gap:+.1f}pp | {estrategia}" if gap is not None else f"pct_ok={pok}% | {estrategia}"
+        return (f'<span title="{tip}" style="display:inline-block;margin:2px;padding:2px 6px;'
+                f'border-radius:4px;font-size:11px;background:{color}22;color:{color};'
+                f'border:1px solid {color}66">{pri_icon}{sig}</span>')
+
+    # Separar órgãos por status
+    orgs_excluidos = [o for o in orgs if o.get('vsm_status') == 'excluir']
+    orgs_noise = [o for o in orgs if o['sigla'] in zero_noise and o.get('vsm_status') != 'excluir']
+    orgs_ativos = [o for o in orgs if o.get('vsm_status') != 'excluir' and o['sigla'] not in zero_noise]
+    orgs_convergidos = [o for o in orgs_ativos if o.get('pct_ok', 0) >= (o.get('vsm_s5_meta') or 80.0)]
+    orgs_progress = [o for o in orgs_ativos if o not in orgs_convergidos]
+
+    badges_noise = ''.join(_badge_org(o) for o in orgs_noise) or '<em style="color:#6b7280">nenhum</em>'
+    badges_progress = ''.join(_badge_org(o) for o in sorted(orgs_progress, key=lambda x: x.get('pct_ok', 0))[:20])
+    badges_conv = ''.join(_badge_org(o) for o in orgs_convergidos[:20])
+    badges_excl = ''.join(_badge_org(o) for o in orgs_excluidos) or '<em style="color:#6b7280">nenhum</em>'
+
+    # Resumo Nível -1
+    n_total = len(orgs)
+    n_conv = len(orgs_convergidos)
+    n_noise = len(orgs_noise)
+    n_excl = len(orgs_excluidos)
+
+    return f"""
+<div class="card" style="grid-column: span 2">
+  <h2>Recursão VSM — 3 Níveis (Beer)</h2>
+  <p style="color:#9ca3af;font-size:12px;margin-bottom:12px">
+    <em>"Um sistema viável contém sistemas viáveis e está contido por sistemas viáveis."</em>
+  </p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+    <div style="background:#1f2937;border-radius:8px;padding:12px;border-left:3px solid #6366f1">
+      <div style="font-size:11px;color:#9ca3af;text-transform:uppercase">Nível +1 — IPEA</div>
+      <div style="font-size:13px;margin-top:6px">
+        <strong>S5</strong>: mandato de pesquisa IPEA<br>
+        <strong>S4</strong>: inteligência EFGD federal<br>
+        <strong>S3</strong>: gestão COGIT/DIEST<br>
+        <strong>S1</strong>: <span style="color:#6366f1">PTD-BR Pipeline ← nós</span>
+      </div>
+    </div>
+    <div style="background:#1f2937;border-radius:8px;padding:12px;border-left:3px solid #22c55e">
+      <div style="font-size:11px;color:#9ca3af;text-transform:uppercase">Nível 0 — Pipeline</div>
+      <div style="font-size:13px;margin-top:6px">
+        <strong>S5</strong>: s3_meta_parameters.json<br>
+        <strong>S4</strong>: meta_learning.py<br>
+        <strong>S3</strong>: watcher.yml<br>
+        <strong>S3*</strong>: gerar_relatorio.py<br>
+        <strong>S1</strong>: {n_total} órgãos (<span style="color:#22c55e">{pct_ok_global:.1f}% pct_ok</span>)
+      </div>
+    </div>
+    <div style="background:#1f2937;border-radius:8px;padding:12px;border-left:3px solid #f59e0b">
+      <div style="font-size:11px;color:#9ca3af;text-transform:uppercase">Nível -1 — Por-órgão</div>
+      <div style="font-size:13px;margin-top:6px">
+        <strong>S5</strong>: config/org_meta.json<br>
+        <strong>S4</strong>: per_sigla_strategy<br>
+        <strong>S3</strong>: slope per-sigla<br>
+        <strong>S1</strong>: {n_conv} convergidos / {n_total - n_excl} ativos
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:10px">
+    <span style="font-size:12px;color:#ef4444;font-weight:600">Noise-only ({n_noise}) — bloqueiam Stage 0:</span><br>
+    <div style="margin-top:4px">{badges_noise}</div>
+  </div>
+  <div style="margin-bottom:10px">
+    <span style="font-size:12px;color:#f59e0b;font-weight:600">Em progresso ({len(orgs_progress)}):</span><br>
+    <div style="margin-top:4px">{badges_progress if badges_progress else '<em style="color:#6b7280">nenhum</em>'}</div>
+  </div>
+  <div style="margin-bottom:10px">
+    <span style="font-size:12px;color:#22c55e;font-weight:600">Convergidos ({n_conv}):</span><br>
+    <div style="margin-top:4px">{badges_conv if badges_conv else '<em style="color:#6b7280">nenhum ainda</em>'}</div>
+  </div>
+  <div>
+    <span style="font-size:12px;color:#6b7280;font-weight:600">Excluídos por S5 ({n_excl}) — não contam nas métricas:</span><br>
+    <div style="margin-top:4px">{badges_excl}</div>
+  </div>
+</div>"""
+
+
 # ── Montagem ──────────────────────────────────────────────────────────────────
 
 def _render(d: dict) -> str:
@@ -367,6 +476,7 @@ def _render(d: dict) -> str:
     it = d['iteration']
     cards = '\n'.join([
         _card_kpis(d),
+        _card_vsm_tree(d),
         _card_learning_curve(d),
         _card_algedonico(d),
         _card_doc_coverage(d),

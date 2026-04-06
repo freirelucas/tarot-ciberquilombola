@@ -407,6 +407,20 @@ try:
         _raw_path = DIR_DB / 'ptd_corpus_raw.csv'  # fallback: raw tem parse_flag='raw' para todos
     _raw = pd.read_csv(_raw_path) if _raw_path.exists() else corpus
 
+    # ── Carregar política S5 por órgão (Nível -1 de recursão VSM) ────────
+    _org_meta_path = Path('config/org_meta.json')
+    _org_meta: dict = {}
+    if _org_meta_path.exists():
+        try:
+            _om_raw = json.loads(_org_meta_path.read_text())
+            _org_meta = {k: v for k, v in _om_raw.items() if not k.startswith('_')}
+        except Exception:
+            pass
+    _OM_DEFAULT = _org_meta.get('_default', {
+        'status': 'ativo', 's5_pct_ok_meta': 80.0,
+        'prioridade': 'normal', 'estrategia': 'vocabulario'
+    })
+
     _por_orgao = []
     for _sig, _g in _raw.groupby('sigla'):
         _ext = _g['extrator'].mode()[0] if 'extrator' in _g.columns and len(_g) else None
@@ -430,6 +444,12 @@ try:
                          ['col_headers_raw'].unique().tolist())
             _unrecognized_headers = [h for h in _raw_hdrs if h][:5]
 
+        # VSM Nível -1: política S5 por órgão
+        _om = _org_meta.get(str(_sig), _OM_DEFAULT)
+        _vsm_status_org = _om.get('status', 'ativo')
+        _s5_meta_org    = _om.get('s5_pct_ok_meta', _OM_DEFAULT.get('s5_pct_ok_meta', 80.0))
+        _vsm_gap        = round(_pct_ok_org - float(_s5_meta_org), 1) if _s5_meta_org is not None else None
+
         _por_orgao.append({
             'sigla':          _sig,
             'n_entregas':     int(len(_g)),
@@ -442,6 +462,12 @@ try:
             # Stage 2 — field recognition
             'col_map_ok_rate':       _col_ok_rate,
             'unrecognized_headers':  _unrecognized_headers,
+            # VSM Nível -1: S5 por órgão
+            'vsm_status':     _vsm_status_org,
+            'vsm_s5_meta':    _s5_meta_org,
+            'vsm_gap_pp':     _vsm_gap,
+            'vsm_estrategia': _om.get('estrategia'),
+            'vsm_prioridade': _om.get('prioridade', 'normal'),
         })
 
     _cob_path = DIR_DB / 'ptd_cobertura_passos.csv'
@@ -452,9 +478,11 @@ try:
                    if 'extrator' in _raw.columns else {})
 
     # ── Orgs "noise-only": têm rows mas pct_ok == 0 → ainda no Stage 0 ──
-    _zero_or_noise = list(_zero_sig) + [
+    # Órgãos com status=excluir (ex: ABNT-NBR-1) NÃO bloqueiam Stage 0
+    _excluidos = {o['sigla'] for o in _por_orgao if o.get('vsm_status') == 'excluir'}
+    _zero_or_noise = [s for s in list(_zero_sig) if s not in _excluidos] + [
         o['sigla'] for o in _por_orgao
-        if o['n_entregas'] > 0 and o['pct_ok'] == 0
+        if o['n_entregas'] > 0 and o['pct_ok'] == 0 and o.get('vsm_status') != 'excluir'
     ]
 
     # ── Top frases não-identificadas (sinal para S1 vocab fix) ─────────
@@ -588,6 +616,8 @@ try:
         'top_unmatched_phrases':     _top_unmatched,
         'top_unmatched_por_sigla':   _top_unmatched_por_sigla,
         'por_orgao':                 _por_orgao,
+        # VSM Nível -1: órgãos excluídos por política S5 local
+        'orgaos_excluidos':          sorted(_excluidos),
     }
     _summary_path = DIR_DB / 'ptd_run_summary.json'
     _summary_path.write_text(
