@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "run_history": [
+    {
+      "iteration": 156,
+      "run_id": "24037362807",
+      "ts": "2026-04-06T15:54:29Z",
+      "pct_ok": 63.7,
+      "sem_produto_pct": 34.1,
+      "col_map_ok_rate": 72.4,
+      "n_vocab": 55,
+      "n_col_keys": 16,
+      "action_type": "vocabulario",
+      "delta_pct_ok": null,
+      "per_sigla_ok": {
+        "AGU": 61.5,
+        "FIOCRUZ": 86.6,
+        "FUNAI": 34.5,
+        "INCRA": 4.8,
+        "ITI": 42.5,
+        "MCOM": 91.4,
+        "SGPR": 57.9
+      }
+    }
+  ],
+  "meta_insights": [],
+  "current_strategy": {
+    "focus": "vocabulario",
+    "auto_add_threshold": 8,
+    "review_threshold": 3,
+    "priority_siglas": []
+  }
+}
