@@ -2,10 +2,27 @@
   "_comentario": "Keywords extras de colunas por sigla. Gerado/atualizado pelo watcher (Step B). Ordem importa: mais específico primeiro. Campo: [servico, produto, area, data].",
   "_schema": {
     "SIGLA": {
-      "servico": ["keyword1", "keyword2"],
-      "produto": ["keyword1"],
-      "area": ["keyword1"],
-      "data": ["keyword1"]
+      "servico": [
+        "keyword1",
+        "keyword2"
+      ],
+      "produto": [
+        "keyword1"
+      ],
+      "area": [
+        "keyword1"
+      ],
+      "data": [
+        "keyword1"
+      ]
     }
+  },
+  "INCRA": {
+    "servico": [],
+    "produto": [],
+    "area": [],
+    "data": [
+      "dtpactuada"
+    ]
   }
 }
