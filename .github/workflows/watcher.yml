@@ -24,6 +24,13 @@ jobs:
           fetch-depth: 1
         continue-on-error: true   # branch pode não existir ainda
 
+      - name: "[Step A] Salvar learning signals e summary do pipeline-outputs"
+        run: |
+          # Preserva dados do pipeline-outputs em /tmp antes de trocar de branch
+          cp ptd_run_summary.json    /tmp/ptd_run_summary_po.json    2>/dev/null || echo '{}' > /tmp/ptd_run_summary_po.json
+          cp ptd_learning_signals.json /tmp/ptd_learning_signals.json 2>/dev/null || echo '{"schema_version":1,"run_history":[],"meta_insights":[],"current_strategy":{"focus":"vocabulario","auto_add_threshold":8,"review_threshold":3,"priority_siglas":[]}}' > /tmp/ptd_learning_signals.json
+          echo "[Step A] learning signals: $(jq '.run_history | length' /tmp/ptd_learning_signals.json) entradas"
+
       - name: Verificar se há run novo com falhas
         id: check
         run: |
@@ -375,6 +382,159 @@ jobs:
             --allow-empty
           git push origin pipeline-outputs
 
+      - name: "[Step B] Col_keys_extra — auto-populate de unrecognized_headers"
+        if: steps.check.outputs.status == 'needs_fix'
+        run: |
+          python3 << 'PYEOF'
+          import json
+          from pathlib import Path
+
+          summary_path = Path('/tmp/ptd_run_summary_po.json')
+          if not summary_path.exists():
+              print("[Step B] summary não encontrado — pulando"); exit(0)
+          summary = json.loads(summary_path.read_text())
+
+          col_keys_path = Path('config/col_keys_extra.json')
+          if col_keys_path.exists():
+              col_keys = json.loads(col_keys_path.read_text(encoding='utf-8'))
+          else:
+              col_keys = {'_comentario': 'Gerado pelo watcher — não editar manualmente'}
+
+          # Campo semântico inferido por keywords no nome do header
+          _FIELD_HINTS = {
+              'servico': ('serviço', 'servi', 'descri', 'ação', 'acao', 'atividade',
+                          'iniciativa', 'objeto', 'tarefa', 'atividade', 'nome', 'título'),
+              'produto': ('produto', 'entrega', 'item', 'resultado', 'output'),
+              'area':    ('área', 'area', 'setor', 'unidade', 'órgão', 'responsável'),
+              'data':    ('data', 'prazo', 'previsão', 'previsao', 'dt', 'vigência'),
+          }
+
+          def _infer_field(header_part: str) -> str | None:
+              h = header_part.lower().strip()
+              for field, hints in _FIELD_HINTS.items():
+                  if any(hint in h for hint in hints):
+                      return field
+              return None
+
+          updated = 0
+          for org in summary.get('por_orgao', []):
+              sigla = org.get('sigla', '')
+              col_map_rate = org.get('col_map_ok_rate') or 0
+              unrecog = org.get('unrecognized_headers', [])
+              if not unrecog or col_map_rate >= 50:
+                  continue  # só atua em orgs com col_map ruim
+
+              sigla_cfg = col_keys.get(sigla, {field: [] for field in _FIELD_HINTS})
+              for raw_header_str in unrecog:
+                  parts = [p.strip() for p in raw_header_str.split('|') if p.strip()]
+                  for part in parts:
+                      field = _infer_field(part)
+                      if field:
+                          kw = part.lower().strip()[:30]
+                          if kw not in sigla_cfg.get(field, []):
+                              sigla_cfg.setdefault(field, []).append(kw)
+                              updated += 1
+                              print(f"  [{sigla}] {field}: +'{kw}'")
+
+              col_keys[sigla] = sigla_cfg
+
+          if updated > 0:
+              col_keys_path.write_text(
+                  json.dumps(col_keys, ensure_ascii=False, indent=2), encoding='utf-8')
+              print(f"[Step B] {updated} keyword(s) adicionados a col_keys_extra.json")
+          else:
+              print("[Step B] Nenhum header novo a mapear.")
+          PYEOF
+
+      - name: "[Step D] Learning signals — registrar run + meta-learning"
+        if: steps.check.outputs.status == 'needs_fix'
+        env:
+          ITERATION: ${{ steps.check.outputs.run_id }}
+          PCT_OK: ${{ steps.check.outputs.pct_ok }}
+          SEM_PROD: ${{ steps.check.outputs.sem_prod_pct }}
+          PROBLEM_TYPE: ${{ steps.check.outputs.problem_type }}
+        run: |
+          python3 << 'PYEOF'
+          import json, os
+          from pathlib import Path
+          from datetime import datetime
+
+          signals_path = Path('ptd_learning_signals.json')
+          tmp_signals  = Path('/tmp/ptd_learning_signals.json')
+          summary_path = Path('/tmp/ptd_run_summary_po.json')
+
+          # Carregar sinais existentes do pipeline-outputs
+          signals = json.loads(tmp_signals.read_text()) if tmp_signals.exists() else {
+              'schema_version': 1, 'run_history': [], 'meta_insights': [],
+              'current_strategy': {'focus': 'vocabulario', 'auto_add_threshold': 8,
+                                   'review_threshold': 3, 'priority_siglas': []},
+          }
+
+          summary = json.loads(summary_path.read_text()) if summary_path.exists() else {}
+
+          # Último entry para delta
+          history = signals.get('run_history', [])
+          prev_pct = history[-1]['pct_ok'] if history else None
+          curr_pct = float(os.environ.get('PCT_OK', 0) or 0)
+          delta    = round(curr_pct - prev_pct, 2) if prev_pct is not None else None
+
+          # Vocab count
+          vocab_path = Path('config/produtos_sgd_v23.json')
+          n_vocab = len(json.loads(vocab_path.read_text()).get('produtos', [])) if vocab_path.exists() else 0
+
+          # Col_keys count
+          ck_path = Path('config/col_keys_extra.json')
+          ck_data = json.loads(ck_path.read_text()) if ck_path.exists() else {}
+          n_col_keys = sum(len(v) for k, v in ck_data.items()
+                          if not k.startswith('_') and isinstance(v, dict)
+                          for kws in v.values() if isinstance(kws, list))
+
+          # Per-sigla pct_ok snapshot
+          per_sigla = {o['sigla']: o['pct_ok']
+                       for o in summary.get('por_orgao', [])
+                       if o.get('pct_ok') is not None}
+
+          # Ler iteration do trigger_debug
+          trigger = Path('.trigger_debug').read_text() if Path('.trigger_debug').exists() else ''
+          iteration = 0
+          for line in trigger.splitlines():
+              if line.startswith('iteration:'):
+                  try: iteration = int(line.split(':')[1].strip())
+                  except: pass
+
+          entry = {
+              'iteration':       iteration,
+              'run_id':          summary.get('run_id', os.environ.get('ITERATION', '')),
+              'ts':              datetime.utcnow().isoformat(timespec='seconds') + 'Z',
+              'pct_ok':          curr_pct,
+              'sem_produto_pct': float(os.environ.get('SEM_PROD', 0) or 0),
+              'col_map_ok_rate': summary.get('col_map_ok_rate'),
+              'n_vocab':         n_vocab,
+              'n_col_keys':      n_col_keys,
+              'action_type':     os.environ.get('PROBLEM_TYPE', 'desconhecido'),
+              'delta_pct_ok':    delta,
+              'per_sigla_ok':    per_sigla,
+          }
+          signals['run_history'].append(entry)
+
+          # Meta-learning a cada 10 iterações
+          if iteration > 0 and iteration % 10 == 0:
+              print(f"[Step D] Iteração {iteration} — disparando meta_learning.py")
+              signals_path.write_text(json.dumps(signals, ensure_ascii=False, indent=2))
+              import subprocess
+              subprocess.run(['python3', 'meta_learning.py', '--window', '10'], check=False)
+              # Re-ler sinais com meta-insights gravados pelo script
+              if signals_path.exists():
+                  signals = json.loads(signals_path.read_text())
+          else:
+              signals_path.write_text(json.dumps(signals, ensure_ascii=False, indent=2))
+
+          # Salvar cópia em /tmp para o step "Marcar run como processado"
+          import shutil
+          shutil.copy(signals_path, '/tmp/ptd_learning_signals_updated.json')
+          print(f"[Step D] iter={iteration} pct_ok={curr_pct}% delta={delta} n_vocab={n_vocab}")
+          PYEOF
+
       - name: Commit fixes e disparar próximo run
         if: steps.check.outputs.status == 'needs_fix'
         env:
@@ -413,6 +573,13 @@ jobs:
             COMMIT_DETAIL="qualidade — aguardando revisão humana"
           fi
 
+          # Sempre adicionar aprendizado contínuo (Steps B e D)
+          [ -f config/col_keys_extra.json ] && git add config/col_keys_extra.json || true
+          NEXT_META=$(grep 'iteration:' .trigger_debug | awk '{print $2+1}')
+          if [ $(( NEXT_META % 10 )) -eq 0 ] && [ -f meta_learning.py ]; then
+            git add meta_learning.py
+          fi
+
           NEXT_ITER_VAL=$(grep 'iteration:' .trigger_debug | awk '{print $2}')
           git commit -m "watcher: iteration ${NEXT_ITER_VAL} — ${COMMIT_DETAIL}
 
@@ -431,7 +598,15 @@ jobs:
           git checkout pipeline-outputs
           echo "${{ steps.check.outputs.run_id }}" > .last_processed
           git add .last_processed
-          git commit -m "watcher: marcado run/${{ steps.check.outputs.run_id }} como processado" \
+          # Persistir learning signals no pipeline-outputs (Step D output)
+          if [ -f /tmp/ptd_learning_signals_updated.json ]; then
+            cp /tmp/ptd_learning_signals_updated.json ptd_learning_signals.json
+            git add ptd_learning_signals.json
+          elif ls ../ptd_learning_signals.json 2>/dev/null; then
+            cp ../ptd_learning_signals.json ptd_learning_signals.json
+            git add ptd_learning_signals.json
+          fi
+          git commit -m "watcher: marcado run/${{ steps.check.outputs.run_id }} como processado + learning signals" \
             --allow-empty
           git push origin pipeline-outputs
 
@@ -444,3 +619,10 @@ jobs:
           echo "| Órgãos zerados | ${{ steps.check.outputs.n_zero || '—' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| pct_ok | ${{ steps.check.outputs.pct_ok || '—' }}% |" >> $GITHUB_STEP_SUMMARY
           echo "| sem_produto | ${{ steps.check.outputs.sem_prod_pct || '—' }}% |" >> $GITHUB_STEP_SUMMARY
+          # Métricas de aprendizado contínuo
+          N_HIST=$(jq '.run_history | length' /tmp/ptd_learning_signals.json 2>/dev/null || echo '—')
+          STRATEGY=$(jq -r '.current_strategy.focus // "—"' /tmp/ptd_learning_signals.json 2>/dev/null || echo '—')
+          N_META=$(jq '.meta_insights | length' /tmp/ptd_learning_signals.json 2>/dev/null || echo '—')
+          echo "| Histórico L-C | ${N_HIST} entradas |" >> $GITHUB_STEP_SUMMARY
+          echo "| Estratégia L-B | ${STRATEGY} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Meta-insights | ${N_META} |" >> $GITHUB_STEP_SUMMARY

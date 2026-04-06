@@ -38,13 +38,26 @@ EIXOS: dict[int, str] = {
 # ── Padrões de detecção por palavras-chave (fallback após regex numérico) ─────
 # FIX E5: transpar(?:en|ên) captura "transparente" E "transparência"
 # FIX E6: efici[eê]n captura "eficiente" E "eficiência"
+# S4-expand (2026-04-06): eixos 2/5/6 expandidos com termos sub-representados no corpus
 _EIXO_PATS: list[tuple[int, re.Pattern]] = [
     (1, re.compile(r'cidad[ãa]o|inclusiv|servi[cç]os digitais|unifica[cç][aã]o de canais', re.I)),
-    (2, re.compile(r'integrad|colaborat|interoperab', re.I)),
+    (2, re.compile(
+        r'integrad|colaborat|interoperab'
+        r'|cooper[ao]|compartilh|cat[aá]logo.*servi[cç]|barramento'
+        r'|plataforma.*integr|rede.*compartilh|ecossistema.*digital',
+        re.I)),
     (3, re.compile(r'inteligent|inovad|govern[aâ]n[cç]a.*dados|gest[aã]o.*dados', re.I)),
     (4, re.compile(r'confi[aá]vel|segur|privacidade|ppsi', re.I)),
-    (5, re.compile(r'transpar(?:en|ên)|aberto|participat|dados abertos', re.I)),
-    (6, re.compile(r'efici[eê]n|eficient|sustent|desburocrat|simplifica[çc]', re.I)),
+    (5, re.compile(
+        r'transpar(?:en|ên)|aberto|participat|dados abertos'
+        r'|lai\b|lei.*acesso.*informa|acesso.*informa[çc][aã]o'
+        r'|ouvidoria|controle social|portal.*dados|fiscaliza[çc]',
+        re.I)),
+    (6, re.compile(
+        r'efici[eê]n|eficient|sustent|desburocrat|simplifica[çc]'
+        r'|racionaliz|otimiz|redu[çc][aã]o.*custo|moderniza[çc]'
+        r'|digitaliza[çc].*processo|elimina[çc].*papel|automat',
+        re.I)),
 ]
 
 # ── Regex numérica: "Eixo 3", "E-4", "E.2" ───────────────────────────────────
