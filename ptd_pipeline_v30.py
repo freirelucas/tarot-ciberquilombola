@@ -1162,12 +1162,27 @@ PROVENIENCIA.update({
     json.dumps(PROVENIENCIA, indent=2, ensure_ascii=False))
 
 # ── Manifesto final ───────────────────────────────────────────────────
+# Métrica de preservação documental: n_rows_extraidas por sha256
+# Permite verificar se todas as linhas chegaram ao corpus final (cobertura_documental)
+_rows_por_sha: dict = {}
+if not df_corpus.empty and 'pdf_sha256' in df_corpus.columns:
+    _rows_por_sha = df_corpus.groupby('pdf_sha256').size().to_dict()
+
+# Texto não-nulo: % de linhas com campo 'texto' preenchido
+_texto_nao_nulo = 0
+if not df_corpus.empty and 'texto' in df_corpus.columns:
+    _texto_nao_nulo = round(
+        df_corpus['texto'].notna().mean() * 100, 1
+    ) if len(df_corpus) else 100.0
+
 manifesto = {
     'versao_pipeline':          '3.0-melhorado',
     'data_execucao':            datetime.now().isoformat(),
     'total_pdfs_baixados':      int(df_dl.ok.sum()) if not df_dl.empty else 0,
     'total_registros_extraidos': len(df_corpus),
     'total_riscos':             len(df_riscos),
+    'texto_nao_nulo_pct':       _texto_nao_nulo,
+    'rows_por_sha256':          _rows_por_sha,  # {sha256: n_rows} — base da cobertura_documental
     'outputs': {
         'ptd_corpus_raw.csv':        'corpus bruto de entregas com sha256',
         'ptd_pivot_eixos.csv':       'pivot sigla × eixo — input ptd_corpus_v21',

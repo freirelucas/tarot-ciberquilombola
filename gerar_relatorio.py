@@ -526,6 +526,45 @@ try:
     _stage_labels = {0: 'cobertura', 1: 'parse_quality',
                      2: 'field_recognition', 3: 'riscos_coverage'}
 
+    # ── Cobertura documental: preservação raw → v21 por sha256 ───────────
+    # Verifica que os textos originais foram preservados no corpus final
+    _doc_coverage: dict = {
+        'cobertura_documental_pct': None,
+        'texto_nao_nulo_pct': None,
+        'pdfs_com_perda': [],
+        'pdfs_analisados': 0,
+    }
+    try:
+        _manifest_path = DIR_DB / 'pipeline_manifest.json'
+        if _manifest_path.exists():
+            _manifest = json.loads(_manifest_path.read_text())
+            _rows_por_sha_raw = _manifest.get('rows_por_sha256', {})
+            _texto_nao_nulo_raw = _manifest.get('texto_nao_nulo_pct', None)
+            if _rows_por_sha_raw and not corpus.empty and 'pdf_sha256' in corpus.columns:
+                _rows_v21 = corpus.groupby('pdf_sha256').size().to_dict()
+                _preservacoes = []
+                _pdfs_com_perda = []
+                for sha, n_raw in _rows_por_sha_raw.items():
+                    n_v21 = _rows_v21.get(sha, 0)
+                    pct_pres = round(n_v21 / n_raw * 100, 1) if n_raw else 100.0
+                    _preservacoes.append(pct_pres)
+                    if pct_pres < 95.0:
+                        # Encontrar nome do arquivo para este sha
+                        _fname = next((k for k, v in _manifest.get('pdfs_sha256', {}).items()
+                                       if v == sha), sha[:12])
+                        _pdfs_com_perda.append({'arquivo': _fname, 'sha256': sha[:12],
+                                                'n_raw': n_raw, 'n_v21': n_v21,
+                                                'preservacao_pct': pct_pres})
+                _doc_coverage = {
+                    'cobertura_documental_pct': round(sum(_preservacoes) / len(_preservacoes), 1)
+                        if _preservacoes else None,
+                    'texto_nao_nulo_pct': _texto_nao_nulo_raw,
+                    'pdfs_com_perda': sorted(_pdfs_com_perda, key=lambda x: x['preservacao_pct']),
+                    'pdfs_analisados': len(_preservacoes),
+                }
+    except Exception as _e_cov:
+        _doc_coverage['erro'] = str(_e_cov)
+
     _summary = {
         'run_id':               os.environ.get('GITHUB_RUN_ID', 'local'),
         'timestamp':            datetime.now().strftime('%Y-%m-%dT%H:%M:%S'),
@@ -539,6 +578,8 @@ try:
         'sem_produto_pct':      _sem_prod_global,
         'col_map_ok_rate':      _col_ok_global,
         'extratores':           {str(k): int(v) for k, v in _extratores.items()},
+        # Preservação documental — NOVO
+        'doc_coverage':         _doc_coverage,
         # Stage 0: zero ou noise-only
         'orgaos_zero_entregas': _zero_sig,
         'orgaos_zero_ou_noise': _zero_or_noise,

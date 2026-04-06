@@ -535,6 +535,57 @@ jobs:
           print(f"[Step D] iter={iteration} pct_ok={curr_pct}% delta={delta} n_vocab={n_vocab}")
           PYEOF
 
+      - name: "[Step E] Sinal algedônico — escalação S5 se sem progresso"
+        if: steps.check.outputs.status == 'needs_fix'
+        run: |
+          # Lê metaparâmetros do s3_meta_parameters.json (S2 → S3)
+          MAX_ITERS=$(jq -r '.algedonico.max_iters_sem_progresso // 15' config/s3_meta_parameters.json 2>/dev/null || echo '15')
+          MIN_PROG=$(jq -r '.algedonico.progresso_minimo_pp // 0.5' config/s3_meta_parameters.json 2>/dev/null || echo '0.5')
+          JANELA=$(jq -r '.algedonico.janela_verificacao // 10' config/s3_meta_parameters.json 2>/dev/null || echo '10')
+
+          # Contar iterações consecutivas sem progresso >= MIN_PROG (desde a cauda do histórico)
+          ITERS_SEM=$(python3 - <<PYEOF
+import json, sys
+from pathlib import Path
+p = Path('/tmp/ptd_learning_signals_updated.json')
+if not p.exists():
+    p = Path('/tmp/ptd_learning_signals.json')
+signals = json.loads(p.read_text()) if p.exists() else {}
+history = signals.get('run_history', [])
+min_prog = float('$MIN_PROG')
+iters_sem = 0
+for entry in reversed(history):
+    if (entry.get('delta') or 0) < min_prog:
+        iters_sem += 1
+    else:
+        break
+print(iters_sem)
+PYEOF
+          )
+
+          echo "[Step E] Iterações sem progresso ≥ ${MIN_PROG}pp: ${ITERS_SEM} / ${MAX_ITERS}"
+
+          if [ "${ITERS_SEM}" -ge "${MAX_ITERS}" ]; then
+            echo "🚨 SINAL ALGEDÔNICO ATIVADO: ${ITERS_SEM} iterações sem melhoria ≥ ${MIN_PROG}pp"
+            echo "Escalando para S5 (operador humano)..."
+            python3 -c "
+import json
+from datetime import datetime
+from pathlib import Path
+signal = {
+    'tipo': 'algedonico',
+    'iters_sem_progresso': $ITERS_SEM,
+    'threshold': $MAX_ITERS,
+    'timestamp': datetime.utcnow().isoformat(),
+    'acao_recomendada': 'revisao_humana — inspecionar top 5 siglas estagnadas e config/s3_meta_parameters.json'
+}
+Path('algedonico_signal.json').write_text(json.dumps(signal, indent=2, ensure_ascii=False))
+print('algedonico_signal.json gerado')
+"
+          else
+            echo "✅ Algedônico inativo (${ITERS_SEM}/${MAX_ITERS})"
+          fi
+
       - name: Commit fixes e disparar próximo run
         if: steps.check.outputs.status == 'needs_fix'
         env:
@@ -573,8 +624,9 @@ jobs:
             COMMIT_DETAIL="qualidade — aguardando revisão humana"
           fi
 
-          # Sempre adicionar aprendizado contínuo (Steps B e D)
+          # Sempre adicionar aprendizado contínuo (Steps B, D, E)
           [ -f config/col_keys_extra.json ] && git add config/col_keys_extra.json || true
+          [ -f algedonico_signal.json ] && git add algedonico_signal.json || true
           NEXT_META=$(grep 'iteration:' .trigger_debug | awk '{print $2+1}')
           if [ $(( NEXT_META % 10 )) -eq 0 ] && [ -f meta_learning.py ]; then
             git add meta_learning.py
@@ -626,3 +678,13 @@ jobs:
           echo "| Histórico L-C | ${N_HIST} entradas |" >> $GITHUB_STEP_SUMMARY
           echo "| Estratégia L-B | ${STRATEGY} |" >> $GITHUB_STEP_SUMMARY
           echo "| Meta-insights | ${N_META} |" >> $GITHUB_STEP_SUMMARY
+          # Sinal algedônico
+          if [ -f algedonico_signal.json ]; then
+            ALGD_ITERS=$(jq -r '.iters_sem_progresso // "?"' algedonico_signal.json 2>/dev/null || echo '?')
+            echo "| 🚨 Algedônico | ATIVO — ${ALGD_ITERS} iters sem progresso |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| ✅ Algedônico | Inativo |" >> $GITHUB_STEP_SUMMARY
+          fi
+          # Doc coverage (se disponível no summary)
+          DOC_COV=$(jq -r '.doc_coverage.cobertura_documental_pct // "—"' /tmp/ptd_run_summary_po.json 2>/dev/null || echo '—')
+          echo "| Doc coverage | ${DOC_COV}% |" >> $GITHUB_STEP_SUMMARY

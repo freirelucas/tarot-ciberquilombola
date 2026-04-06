@@ -19,6 +19,20 @@ from datetime import datetime
 _SIGNALS_PATH = Path('ptd_learning_signals.json')
 _DRY_RUN = '--dry-run' in sys.argv
 
+# ── Carregar metaparâmetros do S3 (config/s3_meta_parameters.json) ─────────────
+def _load_meta_params() -> dict:
+    """Lê s3_meta_parameters.json — fallback para defaults hardcoded se ausente."""
+    p = Path('config/s3_meta_parameters.json')
+    if p.exists():
+        try:
+            return json.loads(p.read_text(encoding='utf-8'))
+        except Exception:
+            pass
+    return {}
+
+_META_PARAMS = _load_meta_params()
+_APRENDIZADO = _META_PARAMS.get('aprendizado', {})
+
 # ── Carregar sinais ────────────────────────────────────────────────────────────
 def _load() -> dict:
     if _SIGNALS_PATH.exists():
@@ -66,20 +80,24 @@ def _stalled_siglas(history: list[dict], window: int = 5) -> list[str]:
     return stalled
 
 # ── Decisão de estratégia ─────────────────────────────────────────────────────
-_STRATEGY_ORDER = ['vocabulario', 'col_keys', 'eixo_regex', 'human_review']
+# Carregados de config/s3_meta_parameters.json se disponível
+_STRATEGY_ORDER: list[str] = _APRENDIZADO.get(
+    'estrategia_ordem', ['vocabulario', 'col_keys', 'eixo_regex', 'human_review'])
+_SLOPE_FORTE: float = _APRENDIZADO.get('slope_forte', 0.3)
+_SLOPE_FRACO: float = _APRENDIZADO.get('slope_fraco', 0.1)
+_WINDOW_STALL: int  = _APRENDIZADO.get('janela_stall_sigla', 5)
+_STALL_THRESHOLD: float = _APRENDIZADO.get('stall_threshold_pp', 1.0)
 
 def _next_strategy(current: str, slope: float) -> tuple[str, str]:
-    """Retorna (nova_estratégia, razão)."""
-    if slope >= 0.3:
-        return current, f'slope={slope:.3f}pp/iter ≥ 0.3 — mantendo {current}'
-    elif slope >= 0.1:
-        # Ajustar thresholds dentro da mesma estratégia
-        return current, f'slope={slope:.3f}pp/iter [0.1,0.3) — ajustando thresholds'
+    """Retorna (nova_estratégia, razão). Thresholds lidos de s3_meta_parameters.json."""
+    if slope >= _SLOPE_FORTE:
+        return current, f'slope={slope:.3f}pp/iter ≥ {_SLOPE_FORTE} — mantendo {current}'
+    elif slope >= _SLOPE_FRACO:
+        return current, f'slope={slope:.3f}pp/iter [{_SLOPE_FRACO},{_SLOPE_FORTE}) — ajustando thresholds'
     else:
-        # Trocar para próxima estratégia
         idx = _STRATEGY_ORDER.index(current) if current in _STRATEGY_ORDER else 0
         nxt = _STRATEGY_ORDER[min(idx + 1, len(_STRATEGY_ORDER) - 1)]
-        return nxt, f'slope={slope:.3f}pp/iter < 0.1 — trocando {current} → {nxt}'
+        return nxt, f'slope={slope:.3f}pp/iter < {_SLOPE_FRACO} — trocando {current} → {nxt}'
 
 # ── Ajustar thresholds dinamicamente ─────────────────────────────────────────
 def _adjusted_thresholds(slope: float, current: dict) -> tuple[int, int]:
