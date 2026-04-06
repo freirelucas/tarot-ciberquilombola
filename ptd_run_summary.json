@@ -1,15 +1,15 @@
 {
-  "run_id": "24037362807",
-  "timestamp": "2026-04-06T15:38:07",
+  "run_id": "24038948276",
+  "timestamp": "2026-04-06T16:20:59",
   "branch": "claude/setup-docling-pipeline-g11gg",
   "stage": 1,
   "stage_label": "parse_quality",
   "n_orgaos": 7,
   "n_registros_raw": 273,
   "n_registros_v21": 273,
-  "pct_ok": 63.7,
-  "sem_produto_pct": 34.1,
-  "col_map_ok_rate": 72.4,
+  "pct_ok": 64.5,
+  "sem_produto_pct": 33.3,
+  "col_map_ok_rate": 74.4,
   "extratores": {
     "docling": 273
   },
@@ -26,14 +26,6 @@
     {
       "phrase": "Segurança e Privacidade",
       "count": 10
-    },
-    {
-      "phrase": "Léia Maria da Silva",
-      "count": 6
-    },
-    {
-      "phrase": "Gerente de Relacionamento",
-      "count": 5
     }
   ],
   "top_unmatched_por_sigla": {
@@ -44,10 +36,6 @@
       }
     ],
     "FIOCRUZ": [
-      {
-        "phrase": "Léia Maria da Silva",
-        "count": 3
-      },
       {
         "phrase": "Atraso das demais áreas de",
         "count": 2
@@ -79,10 +67,6 @@
       {
         "phrase": "Ações sugeridas",
         "count": 7
-      },
-      {
-        "phrase": "Léia Maria da Silva",
-        "count": 3
       },
       {
         "phrase": "Pouco provável",
@@ -150,9 +134,9 @@
       "n_entregas": 67,
       "extrator": "docling",
       "status": "ok",
-      "pct_ok": 86.6,
-      "sem_produto_n": 9,
-      "sem_produto_pct": 13.4,
+      "pct_ok": 88.1,
+      "sem_produto_n": 8,
+      "sem_produto_pct": 11.9,
       "col_map_ok_rate": 97.0,
       "unrecognized_headers": [
         "0|1|2|3|4",
@@ -178,12 +162,11 @@
       "n_entregas": 21,
       "extrator": "docling",
       "status": "ok",
-      "pct_ok": 4.8,
-      "sem_produto_n": 14,
-      "sem_produto_pct": 66.7,
-      "col_map_ok_rate": 9.5,
+      "pct_ok": 9.5,
+      "sem_produto_n": 13,
+      "sem_produto_pct": 61.9,
+      "col_map_ok_rate": 23.8,
       "unrecognized_headers": [
-        "DtPactuada|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|30/06/2025|01/07/2025",
         "0|1|2|3|4|5|6",
         "0|1|2|3",
         "0|1|2|3|4"
