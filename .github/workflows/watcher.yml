@@ -247,9 +247,27 @@ jobs:
               print("ptd_run_summary.json não encontrado"); exit(0)
           summary = json.loads(summary_path.read_text())
 
-          unmatched = summary.get('top_unmatched_phrases', [])
-          if not unmatched:
-              print("Sem top_unmatched_phrases — vocabulário parece completo."); exit(0)
+          # Combinar frases globais + por sigla (priorizando por-sigla para S4)
+          unmatched_global = summary.get('top_unmatched_phrases', [])
+          unmatched_por_sigla = summary.get('top_unmatched_por_sigla', {})
+
+          # Agregar todas as frases: global + por sigla, somando counts
+          all_phrases: dict = {}
+          for entry in unmatched_global:
+              if isinstance(entry, dict):
+                  p, c = entry.get('phrase', entry.get('frase', '')), entry.get('count', 0)
+              else:
+                  p, c = str(entry), 1
+              if p: all_phrases[p] = all_phrases.get(p, 0) + c
+
+          for sig, entries in unmatched_por_sigla.items():
+              for entry in entries:
+                  p = entry.get('phrase', entry.get('frase', ''))
+                  c = entry.get('count', 1)
+                  if p: all_phrases[p] = all_phrases.get(p, 0) + c
+
+          if not all_phrases:
+              print("Sem frases não-identificadas — vocabulário parece completo."); exit(0)
 
           produtos_path = Path('config/produtos_sgd_v23.json')
           config = json.loads(produtos_path.read_text())
@@ -258,30 +276,23 @@ jobs:
 
           auto_added = []
           para_revisao = []
+          _IGNORAR = ('eixo', 'diretriz', 'segurança', 'privacidade', 'serviço', 'produto',
+                      'entrega', 'área', 'data', 'prazo')
 
-          for entry in unmatched:
-              # entry pode ser string ou dict {'frase': ..., 'count': ...}
-              if isinstance(entry, dict):
-                  frase = entry.get('frase', '')
-                  count = entry.get('count', 0)
-              else:
-                  frase = str(entry)
-                  count = 0
-
+          for frase, count in sorted(all_phrases.items(), key=lambda x: -x[1]):
               frase = frase.strip()
               if not frase or frase.lower() in produtos_lower:
                   continue
-              # Ignorar subeixos/eixos genéricos
-              if any(x in frase.lower() for x in ('eixo', 'diretriz', 'segurança', 'privacidade')):
+              if any(x in frase.lower() for x in _IGNORAR):
                   continue
 
-              if count >= 10:
-                  # Auto-adicionar (alta frequência, baixo risco)
+              if count >= 8:
+                  # Auto-adicionar (alta frequência agregada, baixo risco)
                   produtos.insert(0, frase)
                   produtos_lower.add(frase.lower())
                   auto_added.append({'frase': frase, 'count': count})
                   print(f"  AUTO: '{frase}' (count={count})")
-              elif count >= 5:
+              elif count >= 3:
                   # Reportar para revisão humana
                   para_revisao.append({'frase': frase, 'count': count})
                   print(f"  REVISÃO: '{frase}' (count={count})")

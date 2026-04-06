@@ -423,6 +423,13 @@ try:
             _g['col_map_ok'].mean() * 100, 1
         ) if 'col_map_ok' in _g.columns and len(_g) else None
 
+        # Headers reais de tabelas não reconhecidas (diagnóstico S4)
+        _unrecognized_headers: list = []
+        if 'col_headers_raw' in _g.columns:
+            _raw_hdrs = (_g[_g['col_headers_raw'].notna() & (_g['col_headers_raw'] != '')]
+                         ['col_headers_raw'].unique().tolist())
+            _unrecognized_headers = [h for h in _raw_hdrs if h][:5]
+
         _por_orgao.append({
             'sigla':          _sig,
             'n_entregas':     int(len(_g)),
@@ -433,7 +440,8 @@ try:
             'sem_produto_n':  _sem_prod_n,
             'sem_produto_pct': _sem_prod_pct,
             # Stage 2 — field recognition
-            'col_map_ok_rate': _col_ok_rate,
+            'col_map_ok_rate':       _col_ok_rate,
+            'unrecognized_headers':  _unrecognized_headers,
         })
 
     _cob_path = DIR_DB / 'ptd_cobertura_passos.csv'
@@ -451,14 +459,18 @@ try:
 
     # ── Top frases não-identificadas (sinal para S1 vocab fix) ─────────
     _top_unmatched: list = []
+    _top_unmatched_por_sigla: dict = {}
     if 'parse_flag' in _raw.columns and 'servico' in _raw.columns:
+        import re as _re
+        _pat_phrase = _re.compile(
+            r'[A-ZÁÀÃÂÉÊÍÓÔÕÚÜÇ][a-záàãâéêíóôõúüç]+(?:\s+[A-ZÁÀÃÂÉÊÍÓÔÕÚÜÇa-záàãâéêíóôõúüç]+){1,4}')
+
+        # Global: bigramas/trigramas mais frequentes em sem_produto
         _sem_prod_rows = _raw[_raw['parse_flag'] == 'sem_produto']['servico'].dropna()
         if len(_sem_prod_rows):
-            # Extrair bigramas/trigramas capitalizados mais frequentes
-            import re as _re
             _phrase_count: dict = {}
             for _txt in _sem_prod_rows.str[:120]:
-                for _m in _re.finditer(r'[A-ZÁÀÃÂÉÊÍÓÔÕÚÜÇ][a-záàãâéêíóôõúüç]+(?:\s+[A-ZÁÀÃÂÉÊÍÓÔÕÚÜÇa-záàãâéêíóôõúüç]+){1,4}', str(_txt)):
+                for _m in _pat_phrase.finditer(str(_txt)):
                     _p = _m.group(0).strip()
                     if len(_p) > 15:
                         _phrase_count[_p] = _phrase_count.get(_p, 0) + 1
@@ -467,6 +479,25 @@ try:
                 for p, c in sorted(_phrase_count.items(), key=lambda x: -x[1])[:20]
                 if c >= 5
             ]
+
+        # Por sigla: top-5 frases para cada org com linhas sem_produto
+        _sigla_col = 'sigla' if 'sigla' in _raw.columns else None
+        if _sigla_col:
+            _sem_rows = _raw[_raw['parse_flag'] == 'sem_produto']
+            for _sig, _grp in _sem_rows.groupby(_sigla_col):
+                if len(_grp) < 2:
+                    continue
+                _pc: dict = {}
+                for _txt in _grp['servico'].dropna().str[:120]:
+                    for _m in _pat_phrase.finditer(str(_txt)):
+                        _p = _m.group(0).strip()
+                        if len(_p) > 10:
+                            _pc[_p] = _pc.get(_p, 0) + 1
+                _top5 = [{'phrase': p, 'count': c}
+                         for p, c in sorted(_pc.items(), key=lambda x: -x[1])[:5]
+                         if c >= 2]
+                if _top5:
+                    _top_unmatched_por_sigla[str(_sig)] = _top5
 
     # Detectar estágio atual da iteração de qualidade
     _n_zero = len(_zero_or_noise)
@@ -512,9 +543,10 @@ try:
         'orgaos_zero_entregas': _zero_sig,
         'orgaos_zero_ou_noise': _zero_or_noise,
         # Stage 1: parse quality signals
-        'orgs_below_50pct':     _orgs_below_50,
-        'top_unmatched_phrases': _top_unmatched,
-        'por_orgao':            _por_orgao,
+        'orgs_below_50pct':          _orgs_below_50,
+        'top_unmatched_phrases':     _top_unmatched,
+        'top_unmatched_por_sigla':   _top_unmatched_por_sigla,
+        'por_orgao':                 _por_orgao,
     }
     _summary_path = DIR_DB / 'ptd_run_summary.json'
     _summary_path.write_text(
