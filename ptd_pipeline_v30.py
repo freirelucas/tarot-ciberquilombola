@@ -496,6 +496,8 @@ def _extrair_docling(path: Path, sigla: str, is_img: bool, pdf_sha256: str,
         # Detectar mapeamento por header (FIX: column-aware extraction)
         cmap = _col_map(df)
         has_headers = bool(cmap)
+        # Capturar headers reais para diagnóstico quando col_map falha
+        _raw_headers = '|'.join(str(c).strip()[:40] for c in df.columns) if not has_headers else ''
 
         for row_idx, (_, row) in enumerate(df.iterrows()):
             cells = [str(v).strip() for v in row.values]
@@ -532,6 +534,7 @@ def _extrair_docling(path: Path, sigla: str, is_img: bool, pdf_sha256: str,
                 'area':         area[:120],
                 'data_entrega': data_e[:20],
                 'col_map_ok':   has_headers,
+                'col_headers_raw': _raw_headers,
                 'extrator':     'docling',
                 'parse_flag':   parse_flag,
                 'pdf_sha256':   pdf_sha256,
