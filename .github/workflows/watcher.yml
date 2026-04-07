@@ -6,8 +6,10 @@ name: PTD Watcher — Loop de Iteração Autônomo
 # Requer secret WORKFLOW_PAT com permissões Contents+Actions no repo.
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'   # a cada 5 minutos
+  # schedule:                   # ← PAUSADO (2026-04-07): revisão ViableOS em andamento
+  #   - cron: '*/5 * * * *'     # reativar só após: (1) s3_meta_parameters.json corrigido,
+  #                              #   (2) pipeline full run com ≥50 órgãos confirmado,
+  #                              #   (3) Vollzug Protocol implementado
   workflow_dispatch:         # execução manual para testar
 
 jobs:
