@@ -1,17 +1,23 @@
 {
-  "run_id": "24037362807",
-  "timestamp": "2026-04-06T15:38:07",
+  "run_id": "24061414379",
+  "timestamp": "2026-04-07T03:00:44",
   "branch": "claude/setup-docling-pipeline-g11gg",
   "stage": 1,
   "stage_label": "parse_quality",
   "n_orgaos": 7,
   "n_registros_raw": 273,
   "n_registros_v21": 273,
-  "pct_ok": 63.7,
-  "sem_produto_pct": 34.1,
-  "col_map_ok_rate": 72.4,
+  "pct_ok": 64.5,
+  "sem_produto_pct": 33.3,
+  "col_map_ok_rate": 74.4,
   "extratores": {
     "docling": 273
+  },
+  "doc_coverage": {
+    "cobertura_documental_pct": 100.0,
+    "texto_nao_nulo_pct": 100.0,
+    "pdfs_com_perda": [],
+    "pdfs_analisados": 15
   },
   "orgaos_zero_entregas": [],
   "orgaos_zero_ou_noise": [],
@@ -26,14 +32,6 @@
     {
       "phrase": "Segurança e Privacidade",
       "count": 10
-    },
-    {
-      "phrase": "Léia Maria da Silva",
-      "count": 6
-    },
-    {
-      "phrase": "Gerente de Relacionamento",
-      "count": 5
     }
   ],
   "top_unmatched_por_sigla": {
@@ -44,10 +42,6 @@
       }
     ],
     "FIOCRUZ": [
-      {
-        "phrase": "Léia Maria da Silva",
-        "count": 3
-      },
       {
         "phrase": "Atraso das demais áreas de",
         "count": 2
@@ -79,10 +73,6 @@
       {
         "phrase": "Ações sugeridas",
         "count": 7
-      },
-      {
-        "phrase": "Léia Maria da Silva",
-        "count": 3
       },
       {
         "phrase": "Pouco provável",
@@ -143,21 +133,31 @@
       "unrecognized_headers": [
         "0|1|2|3",
         "0|1|2|3|4"
-      ]
+      ],
+      "vsm_status": "ativo",
+      "vsm_s5_meta": 80.0,
+      "vsm_gap_pp": -18.5,
+      "vsm_estrategia": "vocabulario",
+      "vsm_prioridade": "media"
     },
     {
       "sigla": "FIOCRUZ",
       "n_entregas": 67,
       "extrator": "docling",
       "status": "ok",
-      "pct_ok": 86.6,
-      "sem_produto_n": 9,
-      "sem_produto_pct": 13.4,
+      "pct_ok": 88.1,
+      "sem_produto_n": 8,
+      "sem_produto_pct": 11.9,
       "col_map_ok_rate": 97.0,
       "unrecognized_headers": [
         "0|1|2|3|4",
         "Risco|Probabilidad e de Ocorrer|Impacto|Opção de tratamento|Descrever ações de tratamento do risco"
-      ]
+      ],
+      "vsm_status": "ativo",
+      "vsm_s5_meta": 90.0,
+      "vsm_gap_pp": -1.9,
+      "vsm_estrategia": "vocabulario",
+      "vsm_prioridade": "normal"
     },
     {
       "sigla": "FUNAI",
@@ -171,23 +171,32 @@
       "unrecognized_headers": [
         "0|1|2|3",
         "||||procedimen to eletrônico"
-      ]
+      ],
+      "vsm_status": "ativo",
+      "vsm_s5_meta": 70.0,
+      "vsm_gap_pp": -35.5,
+      "vsm_estrategia": "vocabulario",
+      "vsm_prioridade": "alta"
     },
     {
       "sigla": "INCRA",
       "n_entregas": 21,
       "extrator": "docling",
       "status": "ok",
-      "pct_ok": 4.8,
-      "sem_produto_n": 14,
-      "sem_produto_pct": 66.7,
-      "col_map_ok_rate": 9.5,
+      "pct_ok": 9.5,
+      "sem_produto_n": 13,
+      "sem_produto_pct": 61.9,
+      "col_map_ok_rate": 23.8,
       "unrecognized_headers": [
-        "DtPactuada|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|31/12/2025|30/06/2025|01/07/2025",
         "0|1|2|3|4|5|6",
         "0|1|2|3",
         "0|1|2|3|4"
-      ]
+      ],
+      "vsm_status": "ativo",
+      "vsm_s5_meta": 70.0,
+      "vsm_gap_pp": -60.5,
+      "vsm_estrategia": "col_keys",
+      "vsm_prioridade": "alta"
     },
     {
       "sigla": "ITI",
@@ -200,7 +209,12 @@
       "col_map_ok_rate": 85.0,
       "unrecognized_headers": [
         "Requisitos/demandas de desenvolvimento e|Pouco Provável|| Muito Alto|Mitigar|1214 o"
-      ]
+      ],
+      "vsm_status": "ativo",
+      "vsm_s5_meta": 75.0,
+      "vsm_gap_pp": -32.5,
+      "vsm_estrategia": "vocabulario",
+      "vsm_prioridade": "alta"
     },
     {
       "sigla": "MCOM",
@@ -213,7 +227,12 @@
       "col_map_ok_rate": 94.8,
       "unrecognized_headers": [
         "|Ns das Comunicações|"
-      ]
+      ],
+      "vsm_status": "ativo",
+      "vsm_s5_meta": 90.0,
+      "vsm_gap_pp": 1.4,
+      "vsm_estrategia": "vocabulario",
+      "vsm_prioridade": "normal"
     },
     {
       "sigla": "SGPR",
@@ -226,7 +245,13 @@
       "col_map_ok_rate": 78.9,
       "unrecognized_headers": [
         "Órgão|Secretaria-Geral da Presidência da Repúb|Secretaria-Geral da Presidência da Repúb|Vigência|"
-      ]
+      ],
+      "vsm_status": "ativo",
+      "vsm_s5_meta": 80.0,
+      "vsm_gap_pp": -22.1,
+      "vsm_estrategia": "vocabulario",
+      "vsm_prioridade": "media"
     }
-  ]
+  ],
+  "orgaos_excluidos": []
 }
