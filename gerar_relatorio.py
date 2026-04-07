@@ -103,7 +103,7 @@ pct_ok    = round(n_ok / len(corpus) * 100, 1) if corpus is not None and len(cor
 alertas = []
 if pct_ok < 50:
     alertas.append(('WARN', f'Cobertura parse OK baixa: {pct_ok}% — revisar parser ou PRODUTOS'))
-if n_orgaos < 60:
+if n_orgaos < 80:
     alertas.append(('WARN', f'Apenas {n_orgaos}/90 órgãos com dados — verificar scraping e downloads'))
 sem_prod = flag_dist.get('sem_produto', 0)
 if sem_prod / len(corpus) > 0.3 if len(corpus) else False:

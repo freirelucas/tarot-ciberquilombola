@@ -5,7 +5,7 @@ Guia para assistentes de IA trabalhando neste repositório.
 ## O que é este projeto
 
 Pipeline autônomo de extração e estruturação dos **Planos de Trabalho Departamental (PTD)**
-de órgãos do Governo Federal Brasileiro. Processa ~130 PDFs de ~59 órgãos e produz um
+de órgãos do Governo Federal Brasileiro. Processa ~130 PDFs de ~90 órgãos e produz um
 corpus analítico estruturado com entregas, produtos, eixos EFGD e riscos.
 
 **Stack**: Python 3.10+, Docling, pytesseract, pandas, Aho-Corasick, GitHub Actions.
@@ -51,7 +51,7 @@ Nível 0 (pipeline — atual)
   S3: watcher.yml + gerar_dashboard_s3.py
   S3*: gerar_relatorio.py
   S2: config/ (vocab global, col_keys, correções)
-  S1: extração por órgão (59 unidades S1)
+  S1: extração por órgão (90 unidades S1)
 
 Nível -1 (por-órgão — implementado em 2026-04-06)
   S5: config/org_meta.json (meta própria, exclusão, prioridade por sigla)

@@ -8,7 +8,7 @@ name: PTD Watcher — Loop de Iteração Autônomo
 on:
   # schedule:                   # ← PAUSADO (2026-04-07): revisão ViableOS em andamento
   #   - cron: '*/5 * * * *'     # reativar só após: (1) s3_meta_parameters.json corrigido,
-  #                              #   (2) pipeline full run com ≥50 órgãos confirmado,
+  #                              #   (2) pipeline full run com ≥80 órgãos confirmado (total: ~90),
   #                              #   (3) Vollzug Protocol implementado
   workflow_dispatch:         # execução manual para testar
 
