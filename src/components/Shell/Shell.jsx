@@ -12,7 +12,7 @@ export default function Shell({ children }) {
     <div className="shell">
       <header className="shell__header">
         <div className="shell__title-group">
-          <h1 className="shell__title cursor-blink">TAROT CIBERNÉTICO</h1>
+          <h1 className="shell__title cursor-blink">TAROT CIBERQUILOMBOLA</h1>
           <p className="shell__subtitle">diagnóstico sistêmico · Beer × Bispo</p>
         </div>
       </header>

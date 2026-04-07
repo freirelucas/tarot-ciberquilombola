@@ -1,4 +1,4 @@
-# TAROT CIBERNÉTICO
+# TAROT CIBERQUILOMBOLA
 
 **Diagnóstico sistêmico cruzando o VSM de Stafford Beer com o pensamento quilombola de Antônio Bispo dos Santos.**
 
@@ -8,7 +8,7 @@
 
 ## O que é
 
-O Tarot Cibernético **não é adivinhação — é diagnóstico**. Usa os 22 Arcanos Maiores como lentes cibernéticas para examinar sistemas (organizações, projetos, comunidades, relações). Cada carta mapeia a um conceito real da cibernética organizacional de Beer, entrelaçado com o pensamento quilombola de Nego Bispo.
+O Tarot CiberQuilombola **não é adivinhação — é diagnóstico**. Usa os 22 Arcanos Maiores como lentes cibernéticas para examinar sistemas (organizações, projetos, comunidades, relações). Cada carta mapeia a um conceito real da cibernética organizacional de Beer, entrelaçado com o pensamento quilombola de Nego Bispo.
 
 ## Funciona sem backend
 

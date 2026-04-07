@@ -1,8 +1,8 @@
-# Integração com IA — Tarot Cibernético
+# Integração com IA — Tarot CiberQuilombola
 
 ## Visão geral
 
-O Tarot Cibernético funciona **100% offline** sem nenhuma API key. A integração com a Anthropic API é um bônus opcional que enriquece as interpretações.
+O Tarot CiberQuilombola funciona **100% offline** sem nenhuma API key. A integração com a Anthropic API é um bônus opcional que enriquece as interpretações.
 
 ## Como funciona
 

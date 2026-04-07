@@ -28,7 +28,7 @@ export const useHistoryStore = create(
       },
     }),
     {
-      name: 'tarot-cibernetico-history',
+      name: 'tarot-ciberquilombola-history',
     }
   )
 )

@@ -41,7 +41,7 @@ export default function Card({ card, isReversed, isRevealed, position, onClick }
           <div className="card__back-pattern">
             <div className="card__back-border" />
             <div className="card__back-symbol">&#x2735;</div>
-            <span className="card__back-label">TAROT<br />CIBERNÉTICO</span>
+            <span className="card__back-label">TAROT<br />CIBERQUILOMBOLA</span>
           </div>
         </div>
 

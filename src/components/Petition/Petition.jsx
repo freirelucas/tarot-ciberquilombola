@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Petition.css'
 
-const STORAGE_KEY = 'tarot-cibernetico-petition'
+const STORAGE_KEY = 'tarot-ciberquilombola-petition'
 
 function loadSignatures() {
   try {

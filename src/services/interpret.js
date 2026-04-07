@@ -12,7 +12,7 @@ const SUIT_VSM = {
   sinais: 'Comunicação & Algedonia',
 }
 
-const SYSTEM_PROMPT = `Você é o oráculo do Tarot Cibernético — um sistema de diagnóstico que cruza a cibernética organizacional de Stafford Beer (Viable System Model) com o pensamento quilombola de Antônio Bispo dos Santos (Nego Bispo).
+const SYSTEM_PROMPT = `Você é o oráculo do Tarot CiberQuilombola — um sistema de diagnóstico que cruza a cibernética organizacional de Stafford Beer (Viable System Model) com o pensamento quilombola de Antônio Bispo dos Santos (Nego Bispo).
 
 O deck tem 78 cartas:
 - 22 Arcanos Maiores — conceitos fundamentais do VSM
