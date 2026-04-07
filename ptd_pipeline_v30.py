@@ -822,10 +822,26 @@ def _extract_codes(text: str, tmpl: str) -> list:
     return [f'N{n}' for n in dict.fromkeys(nums)]
 
 def _is_risk_table(df: pd.DataFrame) -> bool:
+    """Detecta se um DataFrame é tabela de riscos (vs. tabela de entregas).
+
+    Expandido com padrões observados em INCRA, ANS-PLANO, MDA-DOCUME onde
+    tabelas de risco não eram detectadas e entravam no pipeline de entregas.
+    """
     all_text = ' '.join(df.values.flatten().astype(str)).lower()
-    return (3 <= len(df.columns) <= 8) and (
-        bool(re.search(r'provável|certo|improvável|raro', all_text)) or
-        bool(re.search(r'mitigar|transferir|aceitar|evitar', all_text)))
+    # Termos de probabilidade (originais + expandidos)
+    prob_match = bool(re.search(
+        r'provável|certo|improvável|raro|pouco provável|muito provável'
+        r'|praticamente certo|alta probabilidade|baixa probabilidade', all_text))
+    # Termos de tratamento/mitigação (originais + expandidos)
+    treat_match = bool(re.search(
+        r'mitigar|transferir|aceitar|evitar|eliminar|compartilhar'
+        r'|ações de mitigação|ações sugeridas|plano de resposta'
+        r'|ação corretiva|aceitar o risco', all_text))
+    # Termos de impacto/severidade
+    impact_match = bool(re.search(
+        r'impacto|severidade|criticidade|risco identificado'
+        r'|probabilidade.*ocorr|gestão de risco', all_text))
+    return (3 <= len(df.columns) <= 10) and (prob_match or treat_match or impact_match)
 
 def _detect_tmpl(df: pd.DataFrame) -> str:
     t = ' '.join(df.values.flatten().astype(str))

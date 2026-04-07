@@ -78,11 +78,23 @@ jobs:
           echo "pct_ok=$PCT_OK"             >> $GITHUB_OUTPUT
           echo "sem_prod_pct=$SEM_PROD_PCT" >> $GITHUB_OUTPUT
 
+          # Cobertura de riscos (segundo componente do propósito: entregas + riscos)
+          COB_RISCOS=$(jq -r '.risco_coverage.cobertura_riscos_pct // "null"' ptd_run_summary.json)
+          N_RISCOS=$(jq -r '.risco_coverage.n_riscos_total // 0' ptd_run_summary.json)
+          echo "cobertura_riscos_pct=$COB_RISCOS" >> $GITHUB_OUTPUT
+          echo "n_riscos=$N_RISCOS"               >> $GITHUB_OUTPUT
+
           # Classificar tipo de problema dominante ANTES de decidir tratamento
+          # Triple Index: usar gap_type se disponível para distinguir col_keys vs. vocab
+          N_COL_KEYS=$(jq '[.por_orgao // [] | .[] | select(.triple_gap_type == "col_keys")] | length' ptd_run_summary.json 2>/dev/null || echo 0)
           if [ "$N_ZERO" -gt 0 ]; then
             PROBLEM_TYPE="cobertura"      # Stage 0: sem extração → OCR/Docling params
+          elif [ "$N_COL_KEYS" -gt 0 ] && python3 -c "import sys; sys.exit(0 if float('$SEM_PROD_PCT') > 20 else 1)" 2>/dev/null; then
+            PROBLEM_TYPE="col_keys"       # Triple Index: órgãos com cap. baixa → col_keys fix
           elif python3 -c "import sys; sys.exit(0 if float('$SEM_PROD_PCT') > 20 else 1)" 2>/dev/null; then
             PROBLEM_TYPE="vocabulario"    # Stage 1: sem_produto alto → expandir vocab
+          elif [ "$COB_RISCOS" != "null" ] && python3 -c "import sys; sys.exit(0 if float('$COB_RISCOS') < 80 else 1)" 2>/dev/null; then
+            PROBLEM_TYPE="riscos"         # Stage 3: entregas OK mas cobertura de riscos baixa
           else
             PROBLEM_TYPE="qualidade"      # Stage 1b/2+: pct_ok baixo → revisar pipeline
           fi
@@ -484,6 +496,29 @@ https://claude.ai/code/session_01VMgXMT3uZP2cLZPxUjvR8C"
           if para_revisao:
               pending_path.write_text(json.dumps(existing, indent=2, ensure_ascii=False))
               print(f"{len(para_revisao)} frases registradas em vocab_pending_review.json")
+
+          # ── Vollzug Protocol (ViableOS): gravar evidência da ação em /tmp ────
+          from datetime import datetime
+          _top_phrase = list(all_phrases.keys())[0] if all_phrases else None
+          _filtradas = []
+          for fp, fc in sorted(all_phrases.items(), key=lambda x: -x[1]):
+              if fp.lower() in {p.lower() for p in produtos_lower if fp.lower() != fp.lower()} or \
+                 any(x in fp.lower() for x in _IGNORAR):
+                  _filtradas.append({'frase': fp, 'motivo': 'em _IGNORAR'})
+          vollzug = {
+              'problem_type':        'vocabulario',
+              'quittung_ts':         datetime.utcnow().isoformat(timespec='seconds') + 'Z',
+              'top_phrase':          _top_phrase,
+              'n_frases_candidatas': len(all_phrases),
+              'vollzug_acoes':       [f"adicionado '{a['frase']}' (count={a['count']})" for a in auto_added]
+                                     or ['nenhuma adição (sem frases acima do threshold ou todas filtradas)'],
+              'vollzug_filtradas':   _filtradas[:5],
+              'vollzug_ts':          datetime.utcnow().isoformat(timespec='seconds') + 'Z',
+              'bestätigung_pendente': True,
+          }
+          Path('/tmp/vollzug_current.json').write_text(
+              json.dumps(vollzug, ensure_ascii=False, indent=2))
+          print(f"[Vollzug] Quittung+Vollzug gravados: {len(auto_added)} adições, {len(_filtradas)} filtradas")
           PYEOF
 
       - name: Gravar stage_status.json e checkpoint humano
@@ -667,6 +702,25 @@ https://claude.ai/code/session_01VMgXMT3uZP2cLZPxUjvR8C"
                   try: iteration = int(line.split(':')[1].strip())
                   except: pass
 
+          # ── Vollzug Protocol: ler evidência da ação + calcular Bestätigung ──
+          vollzug_path = Path('/tmp/vollzug_current.json')
+          vollzug_data = json.loads(vollzug_path.read_text()) if vollzug_path.exists() else None
+
+          # Bestätigung: se último entry tinha vollzug pendente, calcular delta por sigla
+          if history and history[-1].get('vollzug', {}).get('bestätigung_pendente'):
+              prev_entry = history[-1]
+              prev_per_sigla = prev_entry.get('per_sigla_ok', {})
+              bestätigung_deltas = {
+                  sig: round(curr_ok - prev_per_sigla[sig], 1)
+                  for sig, curr_ok in per_sigla.items()
+                  if sig in prev_per_sigla
+              }
+              prev_entry['vollzug']['bestätigung'] = bestätigung_deltas
+              prev_entry['vollzug']['bestätigung_pendente'] = False
+              prev_entry['vollzug']['bestätigung_ts'] = datetime.utcnow().isoformat(timespec='seconds') + 'Z'
+              n_improved = sum(1 for d in bestätigung_deltas.values() if d > 0)
+              print(f"[Vollzug] Bestätigung: {n_improved}/{len(bestätigung_deltas)} siglas melhoraram após ação anterior")
+
           entry = {
               'iteration':       iteration,
               'run_id':          summary.get('run_id', os.environ.get('ITERATION', '')),
@@ -679,6 +733,7 @@ https://claude.ai/code/session_01VMgXMT3uZP2cLZPxUjvR8C"
               'action_type':     os.environ.get('PROBLEM_TYPE', 'desconhecido'),
               'delta_pct_ok':    delta,
               'per_sigla_ok':    per_sigla,
+              'vollzug':         vollzug_data,   # None se nenhuma ação executada
           }
           signals['run_history'].append(entry)
 

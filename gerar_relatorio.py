@@ -468,6 +468,16 @@ try:
             'vsm_gap_pp':     _vsm_gap,
             'vsm_estrategia': _om.get('estrategia'),
             'vsm_prioridade': _om.get('prioridade', 'normal'),
+            # Triple Index (Beer/ViableOS): Actuality / Capability / Potentiality
+            'triple_actuality':    _pct_ok_org,
+            'triple_capability':   _col_ok_rate,   # max atingível sem mudar estrutura
+            'triple_potentiality': float(_s5_meta_org) if _s5_meta_org else 80.0,
+            'triple_gap_type': (
+                'ocr'         if (_g['texto'].isna().mean() > 0.5 if 'texto' in _g.columns else False) else
+                'col_keys'    if (_col_ok_rate is not None and _col_ok_rate < 60) else
+                'vocabulario' if (_col_ok_rate is not None and (_col_ok_rate - _pct_ok_org) > 20) else
+                'ruido'
+            ),
         })
 
     _cob_path = DIR_DB / 'ptd_cobertura_passos.csv'
@@ -593,6 +603,30 @@ try:
     except Exception as _e_cov:
         _doc_coverage['erro'] = str(_e_cov)
 
+    # ── Cobertura de riscos (segundo corpus do propósito: entregas + riscos) ─
+    _riscos_path = DIR_DB / 'ptd_riscos.csv'
+    _risco_coverage: dict = {'cobertura_riscos_pct': None, 'n_orgaos_com_riscos': 0, 'n_riscos_total': 0}
+    try:
+        if _riscos_path.exists():
+            _df_riscos = pd.read_csv(_riscos_path)
+            _n_org_risco = int(_df_riscos['sigla'].nunique()) if 'sigla' in _df_riscos.columns else 0
+            _n_riscos    = int(len(_df_riscos))
+            _cobertura_r = round(_n_org_risco / max(n_orgaos, 1) * 100, 1) if n_orgaos > 0 else 0.0
+            # Por sigla: n_riscos
+            _riscos_por_sigla = _df_riscos.groupby('sigla').size().to_dict() if 'sigla' in _df_riscos.columns else {}
+            # Adicionar n_riscos ao por_orgao
+            for _o in _por_orgao:
+                _o['n_riscos'] = int(_riscos_por_sigla.get(_o['sigla'], 0))
+            _risco_coverage = {
+                'cobertura_riscos_pct': _cobertura_r,
+                'n_orgaos_com_riscos':  _n_org_risco,
+                'n_riscos_total':       _n_riscos,
+                'meta_cobertura_riscos': 80.0,
+                'abaixo_meta':          _cobertura_r < 80.0,
+            }
+    except Exception as _e_r:
+        _risco_coverage['erro'] = str(_e_r)
+
     _summary = {
         'run_id':               os.environ.get('GITHUB_RUN_ID', 'local'),
         'timestamp':            datetime.now().strftime('%Y-%m-%dT%H:%M:%S'),
@@ -606,7 +640,9 @@ try:
         'sem_produto_pct':      _sem_prod_global,
         'col_map_ok_rate':      _col_ok_global,
         'extratores':           {str(k): int(v) for k, v in _extratores.items()},
-        # Preservação documental — NOVO
+        # Corpus de riscos (segundo componente do propósito)
+        'risco_coverage':       _risco_coverage,
+        # Preservação documental
         'doc_coverage':         _doc_coverage,
         # Stage 0: zero ou noise-only
         'orgaos_zero_entregas': _zero_sig,

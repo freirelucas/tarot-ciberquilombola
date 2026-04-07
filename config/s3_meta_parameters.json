@@ -63,5 +63,27 @@
     "s5_eixos_min_pct": 5.0,
     "s4_slope_minimo_para_acao": 0.1,
     "s3_ciclo_minutos": 5
+  },
+  "operational_modes": {
+    "_descricao": "Modos operacionais do watcher (ViableOS). Normal → Elevated → Crisis.",
+    "normal": {
+      "trigger": "padrão",
+      "autonomia_s1": "full",
+      "acoes_permitidas": ["vocab_expansion", "ocr_advance", "col_keys_fix"],
+      "reporting_frequency": "cada_run"
+    },
+    "elevated": {
+      "trigger": "3+ iters sem efeito mensurável (Bestätigung ≈ 0) OU pct_ok caiu >5pp",
+      "autonomia_s1": "restricted",
+      "acoes_permitidas": ["diagnostico_triple_index", "algedonico_report"],
+      "acoes_bloqueadas": ["vocab_expansion"],
+      "reporting_frequency": "cada_run_com_diagnostico"
+    },
+    "crisis": {
+      "trigger": "pct_ok caiu >10pp vs máximo histórico OU corpus <20 órgãos OU S5 inacessível",
+      "autonomia_s1": "none",
+      "acoes_permitidas": ["github_issue", "parada_automatica"],
+      "reativacao": "confirmacao_humana_obrigatoria"
+    }
   }
 }

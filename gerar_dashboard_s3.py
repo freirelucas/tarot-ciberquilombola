@@ -129,13 +129,25 @@ def _card_kpis(d: dict) -> str:
     n = s.get('n_registros_v21', 0)
     sem_prod = s.get('sem_produto_pct', 0)
     badge = 'ok' if pct >= 80 else ('warn' if pct >= 60 else 'fail')
+    # Riscos — segundo componente do propósito
+    rc = s.get('risco_coverage', {})
+    n_riscos = rc.get('n_riscos_total', 0)
+    cob_riscos = rc.get('cobertura_riscos_pct')
+    riscos_badge = ('ok' if cob_riscos and cob_riscos >= 80 else
+                    'warn' if cob_riscos and cob_riscos >= 50 else 'fail')
+    riscos_val = f"{cob_riscos}%" if cob_riscos is not None else "—"
     return f"""
 <div class="card" style="grid-column:1/-1">
   <h2>Painel de Controle S3 — Sistema 3 (Gestão)</h2>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:8px">
+    Propósito: corpus de <strong>entregas</strong> + <strong>riscos</strong> dos PTDs disponíveis no Portal gov.br
+  </p>
   <div class="kpi-row">
     <div class="kpi"><div class="val">{it}</div><div class="lbl">Iteração atual</div></div>
-    <div class="kpi"><div class="val"><span class="badge {badge}">{pct}%</span></div><div class="lbl">pct_ok</div></div>
+    <div class="kpi"><div class="val"><span class="badge {badge}">{pct}%</span></div><div class="lbl">pct_ok entregas</div></div>
     <div class="kpi"><div class="val">{n:,}</div><div class="lbl">Entregas v21</div></div>
+    <div class="kpi"><div class="val"><span class="badge {riscos_badge}">{riscos_val}</span></div><div class="lbl">Cobertura riscos</div></div>
+    <div class="kpi"><div class="val">{n_riscos:,}</div><div class="lbl">Riscos extraídos</div></div>
     <div class="kpi"><div class="val">{sem_prod}%</div><div class="lbl">sem_produto</div></div>
     <div class="kpi"><div class="val">{stage}</div><div class="lbl">Stage atual</div></div>
   </div>
