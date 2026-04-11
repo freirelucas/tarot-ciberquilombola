@@ -47,6 +47,30 @@ export default function Reading() {
     setSaved(true)
   }
 
+  function handleDownload() {
+    const lines = []
+    lines.push(`# TAROT CIBERQUILOMBOLA`)
+    lines.push(`**Modo:** ${spread.name_pt}`)
+    lines.push(`**Data:** ${new Date().toLocaleDateString('pt-BR')}\n`)
+    lines.push(`## Cartas\n`)
+    drawnCards.forEach((c, i) => {
+      const pos = spread.positions[i]
+      const rev = reversed[i] ? ' (Reversa)' : ''
+      lines.push(`- **${pos.label}:** ${c.numeral} ${c.name_pt}${rev}`)
+    })
+    lines.push(`\n---\n`)
+    lines.push(`## Diagnóstico\n`)
+    lines.push(interpretation)
+    const content = lines.join('\n')
+    const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `leitura-${spread.id}-${new Date().toISOString().slice(0, 10)}.md`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
   return (
     <div className="reading">
       {!interpretation && !loading && (
@@ -110,6 +134,9 @@ export default function Reading() {
             ) : (
               <span className="reading__saved">Salvo no histórico local</span>
             )}
+            <button className="reading__btn reading__btn--download" onClick={handleDownload}>
+              &#x2B73; Baixar Leitura
+            </button>
             <button className="reading__btn reading__btn--reset" onClick={reset}>
               Nova Leitura
             </button>

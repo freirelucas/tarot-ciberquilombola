@@ -58,6 +58,16 @@
   cursor: not-allowed;
 }
 
+.reading__btn--download {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.reading__btn--download:hover {
+  border-color: var(--cyan);
+  background: var(--bg-hover);
+}
+
 .reading__btn--reset {
   border-color: var(--red-dim);
   color: var(--red);

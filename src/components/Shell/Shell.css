@@ -78,6 +78,10 @@
   text-align: center;
 }
 
+.shell__nav-btn--baralho {
+  border-style: dashed;
+}
+
 .shell__nav-btn--manifesto {
   border-style: dashed;
 }
