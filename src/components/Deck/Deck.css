@@ -9,7 +9,6 @@
   gap: var(--sp-12);
 }
 
-/* Sections */
 .deck__section {
   display: flex;
   flex-direction: column;
@@ -30,7 +29,16 @@
   text-align: center;
 }
 
-/* The Fool — center point */
+/* === RODA — Major Arcana wheel === */
+
+.deck__roda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+  width: 100%;
+}
+
 .deck__fool {
   display: flex;
   flex-direction: column;
@@ -61,88 +69,128 @@
   letter-spacing: 0.15em;
 }
 
-/* Triangle — Ouspensky 3×7 */
-.deck__triangle {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-6);
-  width: 100%;
-}
-
-.deck__row {
+/* Journeys — concentric rings */
+.deck__journey {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sp-2);
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius-lg);
+  width: 100%;
 }
 
-.deck__row-label {
-  font-size: var(--font-size-xs);
-  color: var(--text-dim);
+.deck__journey--1 { border-color: var(--green-dim); }
+.deck__journey--2 { border-color: var(--amber-dim); }
+.deck__journey--3 { border-color: var(--red-dim); }
+
+.deck__journey-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.deck__journey-name {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-.deck__row-source {
-  color: var(--green-dim);
+.deck__journey--1 .deck__journey-name { color: var(--green); }
+.deck__journey--2 .deck__journey-name { color: var(--amber); }
+.deck__journey--3 .deck__journey-name { color: var(--red); }
+
+.deck__journey-source {
+  font-size: 0.65rem;
+  color: var(--text-dim);
   font-style: italic;
-  text-transform: none;
-  letter-spacing: 0;
 }
 
-.deck__row-cards {
+.deck__journey-desc {
+  font-size: var(--font-size-xs);
+  color: var(--text-dim);
+}
+
+.deck__journey-cards {
   display: flex;
   gap: var(--sp-2);
   justify-content: center;
   flex-wrap: wrap;
 }
 
-/* Minor Arcana Square */
-.deck__square {
+/* === ENCRUZILHADA — Minor Arcana crossroads === */
+
+.deck__crossroads {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--sp-4);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--sp-6);
   width: 100%;
+  position: relative;
 }
 
-.deck__suit {
+.deck__cross-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-2xl);
+  color: var(--green-dim);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.deck__path {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-2);
+  gap: var(--sp-3);
 }
 
-.deck__suit-header {
+.deck__path-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: var(--sp-2);
-  padding: var(--sp-2) 0;
+  gap: var(--sp-1);
+  padding-bottom: var(--sp-2);
   border-bottom: var(--border-thin);
 }
 
-.deck__suit-icon {
-  font-size: var(--font-size-lg);
+.deck__path-icon {
+  font-size: var(--font-size-xl);
 }
 
-.deck__suit-name {
+.deck__path-name {
   font-size: var(--font-size-xs);
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-.deck__suit--circuitos .deck__suit-header { color: var(--cyan); border-color: var(--cyan); }
-.deck__suit--territorios .deck__suit-header { color: var(--amber); border-color: var(--amber); }
-.deck__suit--ferramentas .deck__suit-header { color: var(--green); border-color: var(--green); }
-.deck__suit--sinais .deck__suit-header { color: var(--red); border-color: var(--red); }
+.deck__path-direction {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
 
-.deck__suit-cards {
+.deck__path--circuitos .deck__path-header { color: var(--cyan); border-color: var(--cyan); }
+.deck__path--territorios .deck__path-header { color: var(--amber); border-color: var(--amber); }
+.deck__path--ferramentas .deck__path-header { color: var(--green); border-color: var(--green); }
+.deck__path--sinais .deck__path-header { color: var(--red); border-color: var(--red); }
+
+.deck__path-cards {
   display: flex;
   flex-direction: column;
   gap: var(--sp-2);
   align-items: center;
 }
 
-/* Detail overlay */
+/* === DETAIL OVERLAY === */
+
 .deck__overlay {
   position: fixed;
   inset: 0;
@@ -179,7 +227,14 @@
   line-height: 1;
 }
 
-/* Navigation arrows */
+.deck__detail-close:hover {
+  color: var(--red);
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Navigation */
 .deck__detail-nav {
   display: flex;
   align-items: center;
@@ -225,13 +280,7 @@
   text-align: center;
 }
 
-.deck__detail-close:hover {
-  color: var(--red);
-  background: none;
-  border: none;
-  box-shadow: none;
-}
-
+/* Detail content */
 .deck__detail-header {
   margin-bottom: var(--sp-4);
 }
@@ -333,19 +382,30 @@
   line-height: 1.6;
 }
 
-/* Responsive */
+/* === RESPONSIVE === */
+
 @media (max-width: 768px) {
-  .deck__square {
-    grid-template-columns: repeat(2, 1fr);
+  .deck__crossroads {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
   }
 }
 
 @media (max-width: 480px) {
-  .deck__square {
+  .deck__crossroads {
     grid-template-columns: 1fr;
+  }
+
+  .deck__cross-center {
+    display: none;
   }
 
   .deck__detail {
     padding: var(--sp-4);
+  }
+
+  .deck__fool .card--mini {
+    width: 90px;
+    height: 120px;
   }
 }
