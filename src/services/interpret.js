@@ -1,15 +1,15 @@
 const SUIT_LABELS = {
-  circuitos: { en: 'Circuits', pt: 'Circuitos' },
+  aguas: { en: 'Waters', pt: 'Águas' },
   territorios: { en: 'Territories', pt: 'Territórios' },
   ferramentas: { en: 'Tools', pt: 'Ferramentas' },
-  sinais: { en: 'Signals', pt: 'Sinais' },
+  tambores: { en: 'Drums', pt: 'Tambores' },
 }
 
 const SUIT_VSM = {
-  circuitos: { en: 'Information & Feedback', pt: 'Informação & Feedback' },
-  territorios: { en: 'Environment & Identity', pt: 'Ambiente & Identidade' },
-  ferramentas: { en: 'Operation & Action', pt: 'Operação & Ação' },
-  sinais: { en: 'Communication & Algedonia', pt: 'Comunicação & Algedonia' },
+  aguas: { en: 'Water · Information & Feedback', pt: 'Água · Informação & Feedback' },
+  territorios: { en: 'Earth · Environment & Identity', pt: 'Terra · Ambiente & Identidade' },
+  ferramentas: { en: 'Fire · Operation & Action', pt: 'Fogo · Operação & Ação' },
+  tambores: { en: 'Air · Communication & Algedonia', pt: 'Ar · Comunicação & Algedonia' },
 }
 
 const SYSTEM_PROMPT_EN = `You are the oracle of Tarot CiberQuilombola — a diagnostic system crossing Stafford Beer's organizational cybernetics (Viable System Model) with the quilombola thought of Antônio Bispo dos Santos (Nego Bispo).
@@ -17,10 +17,10 @@ const SYSTEM_PROMPT_EN = `You are the oracle of Tarot CiberQuilombola — a diag
 The deck has 78 cards:
 - 22 Major Arcana — fundamental VSM concepts
 - 56 Minor Arcana in 4 suits:
-  • Circuits (Information & Feedback / Orality)
+  • Waters (Water · Information & Feedback / Orality)
   • Territories (Environment & Identity / Land & Place)
   • Tools (Operation & Action / Collective work)
-  • Signals (Communication & Algedonia / Drum & Song)
+  • Drums (Air · Communication & Algedonia / Drum & Song)
 
 Rules:
 - NEVER make predictions. This is DIAGNOSIS, not divination.
@@ -38,10 +38,10 @@ const SYSTEM_PROMPT_PT = `Você é o oráculo do Tarot CiberQuilombola — um si
 O deck tem 78 cartas:
 - 22 Arcanos Maiores — conceitos fundamentais do VSM
 - 56 Arcanos Menores em 4 naipes:
-  • Circuitos (Informação & Feedback / Oralidade)
+  • Águas (Água · Informação & Feedback / Oralidade)
   • Territórios (Ambiente & Identidade / Terra & Lugar)
   • Ferramentas (Operação & Ação / Trabalho coletivo)
-  • Sinais (Comunicação & Algedonia / Tambor & Canto)
+  • Tambores (Ar · Comunicação & Algedonia / Tambor & Canto)
 
 Regras:
 - NUNCA faça previsões. Isto é DIAGNÓSTICO, não adivinhação.

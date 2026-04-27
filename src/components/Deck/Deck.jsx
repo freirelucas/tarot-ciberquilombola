@@ -5,17 +5,24 @@ import Card from '../Card/Card.jsx'
 import './Deck.css'
 
 const SUIT_LABELS = {
-  circuitos: { en: 'Circuits', pt: 'Circuitos' },
+  aguas: { en: 'Waters', pt: 'Águas' },
   territorios: { en: 'Territories', pt: 'Territórios' },
   ferramentas: { en: 'Tools', pt: 'Ferramentas' },
-  sinais: { en: 'Signals', pt: 'Sinais' },
+  tambores: { en: 'Drums', pt: 'Tambores' },
 }
 
 const SUIT_ICONS = {
-  circuitos: '↻',
+  aguas: '〰',
   territorios: '⌂',
   ferramentas: '⚒',
-  sinais: '☲',
+  tambores: '𝄞',
+}
+
+const SUIT_ELEMENTS = {
+  aguas: { en: 'Water', pt: 'Água' },
+  territorios: { en: 'Earth', pt: 'Terra' },
+  ferramentas: { en: 'Fire', pt: 'Fogo' },
+  tambores: { en: 'Air', pt: 'Ar' },
 }
 
 const JOURNEYS = [
@@ -25,13 +32,13 @@ const JOURNEYS = [
 ]
 
 const CROSSROAD_LABELS = {
-  circuitos: { en: 'North · Orality', pt: 'Norte · Oralidade' },
-  territorios: { en: 'South · Land', pt: 'Sul · Terra' },
-  ferramentas: { en: 'East · Craft', pt: 'Leste · Ofício' },
-  sinais: { en: 'West · Drum', pt: 'Oeste · Tambor' },
+  aguas: { en: 'North · Water · Orality', pt: 'Norte · Água · Oralidade' },
+  territorios: { en: 'South · Earth · Land', pt: 'Sul · Terra · Lugar' },
+  ferramentas: { en: 'East · Fire · Craft', pt: 'Leste · Fogo · Ofício' },
+  tambores: { en: 'West · Air · Drum', pt: 'Oeste · Ar · Tambor' },
 }
 
-const SUITS = ['circuitos', 'ferramentas', 'territorios', 'sinais']
+const SUITS = ['aguas', 'ferramentas', 'territorios', 'tambores']
 
 const fool = cards.find((c) => c.id === 0)
 const majorCards = cards.filter((c) => c.arcana === 'major')
@@ -129,7 +136,10 @@ export default function Deck() {
         </p>
 
         <div className="deck__crossroads">
-          <div className="deck__cross-center">✦</div>
+          <div className="deck__cross-center" title={lang === 'en' ? 'Exu — Lord of the Crossroads' : 'Exu — Senhor da Encruzilhada'}>
+            <span className="deck__cross-symbol">✦</span>
+            <span className="deck__cross-label">Exu</span>
+          </div>
           {minorBySuit.map((suitCards, si) => (
             <div key={SUITS[si]} className={`deck__path deck__path--${SUITS[si]}`}>
               <div className="deck__path-header">
@@ -164,7 +174,7 @@ export default function Deck() {
               <h3 className="deck__detail-name">{c(selected, 'name')}</h3>
               {selected.suit && (
                 <span className={`deck__detail-suit deck__detail-suit--${selected.suit}`}>
-                  {SUIT_ICONS[selected.suit]} {SUIT_LABELS[selected.suit][lang]}
+                  {SUIT_ICONS[selected.suit]} {SUIT_LABELS[selected.suit][lang]} · {SUIT_ELEMENTS[selected.suit][lang]}
                 </span>
               )}
             </div>

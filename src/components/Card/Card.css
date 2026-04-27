@@ -115,15 +115,15 @@
   letter-spacing: 0.05em;
 }
 
-.card__act--circuitos  { color: var(--cyan); }
+.card__act--aguas  { color: var(--cyan); }
 .card__act--territorios { color: var(--amber); }
 .card__act--ferramentas { color: var(--green); }
-.card__act--sinais      { color: var(--red); }
+.card__act--tambores      { color: var(--red); }
 
-.card__front--circuitos  { border-left: 3px solid var(--cyan); }
+.card__front--aguas  { border-left: 3px solid var(--cyan); }
 .card__front--territorios { border-left: 3px solid var(--amber); }
 .card__front--ferramentas { border-left: 3px solid var(--green); }
-.card__front--sinais      { border-left: 3px solid var(--red); }
+.card__front--tambores      { border-left: 3px solid var(--red); }
 
 .card__name {
   font-size: var(--font-size-sm);
@@ -233,7 +233,7 @@
   border-left: 3px solid var(--green);
 }
 
-.card--mini--circuitos {
+.card--mini--aguas {
   border-left: 3px solid var(--cyan);
 }
 
@@ -245,7 +245,7 @@
   border-left: 3px solid var(--green);
 }
 
-.card--mini--sinais {
+.card--mini--tambores {
   border-left: 3px solid var(--red);
 }
 
@@ -255,9 +255,9 @@
   color: var(--green);
 }
 
-.card--mini--circuitos .card__mini-numeral { color: var(--cyan); }
+.card--mini--aguas .card__mini-numeral { color: var(--cyan); }
 .card--mini--territorios .card__mini-numeral { color: var(--amber); }
-.card--mini--sinais .card__mini-numeral { color: var(--red); }
+.card--mini--tambores .card__mini-numeral { color: var(--red); }
 
 .card__mini-name {
   font-size: 0.6rem;

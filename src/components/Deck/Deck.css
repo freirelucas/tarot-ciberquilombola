@@ -137,11 +137,26 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: var(--font-size-2xl);
-  color: var(--green-dim);
   z-index: 1;
   pointer-events: none;
-  opacity: 0.4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.deck__cross-symbol {
+  font-size: var(--font-size-2xl);
+  color: var(--red);
+  opacity: 0.6;
+}
+
+.deck__cross-label {
+  font-size: 0.6rem;
+  color: var(--red-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
 }
 
 .deck__path {
@@ -177,10 +192,10 @@
   letter-spacing: 0.1em;
 }
 
-.deck__path--circuitos .deck__path-header { color: var(--cyan); border-color: var(--cyan); }
+.deck__path--aguas .deck__path-header { color: var(--cyan); border-color: var(--cyan); }
 .deck__path--territorios .deck__path-header { color: var(--amber); border-color: var(--amber); }
 .deck__path--ferramentas .deck__path-header { color: var(--green); border-color: var(--green); }
-.deck__path--sinais .deck__path-header { color: var(--red); border-color: var(--red); }
+.deck__path--tambores .deck__path-header { color: var(--red); border-color: var(--red); }
 
 .deck__path-cards {
   display: flex;
@@ -306,10 +321,10 @@
   letter-spacing: 0.05em;
 }
 
-.deck__detail-suit--circuitos { color: var(--cyan); }
+.deck__detail-suit--aguas { color: var(--cyan); }
 .deck__detail-suit--territorios { color: var(--amber); }
 .deck__detail-suit--ferramentas { color: var(--green); }
-.deck__detail-suit--sinais { color: var(--red); }
+.deck__detail-suit--tambores { color: var(--red); }
 
 .deck__detail-concept {
   font-size: var(--font-size-sm);

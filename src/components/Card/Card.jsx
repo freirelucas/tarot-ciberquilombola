@@ -9,17 +9,17 @@ const ACT_LABELS = {
 }
 
 const SUIT_LABELS = {
-  circuitos: { en: 'Circuits', pt: 'Circuitos' },
+  aguas: { en: 'Waters', pt: 'Águas' },
   territorios: { en: 'Territories', pt: 'Territórios' },
   ferramentas: { en: 'Tools', pt: 'Ferramentas' },
-  sinais: { en: 'Signals', pt: 'Sinais' },
+  tambores: { en: 'Drums', pt: 'Tambores' },
 }
 
 const SUIT_ICONS = {
-  circuitos: '↻',
+  aguas: '〰',
   territorios: '⌂',
   ferramentas: '⚒',
-  sinais: '☲',
+  tambores: '𝄞',
 }
 
 export default function Card({ card, isReversed, isRevealed, position, onClick, mini }) {
