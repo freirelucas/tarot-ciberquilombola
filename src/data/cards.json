@@ -16,7 +16,7 @@
     "algedonic_pt": "Há dor onde deveria haver prazer. O sistema faz o oposto do que promete.",
     "reversal_pt": "Autoengano sistêmico: o sistema acredita em sua própria propaganda.",
     "dito_pt": "Quem não sabe de onde veio, não sabe pra onde vai.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Início absoluto, potencial infinito, salto de fé no desconhecido",
     "classic_en": "Absolute beginning, infinite potential, leap of faith into the unknown",
@@ -27,7 +27,8 @@
     "beer_url": "https://doi.org/10.1108/03684920210443554",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 1,
@@ -46,7 +47,7 @@
     "algedonic_pt": "Simplicidade forçada: o regulador é mais simples que o regulado.",
     "reversal_pt": "Excesso de variedade sem filtro — caos organizacional, paralisia por opções.",
     "dito_pt": "Cada folha do mato tem seu serventia.",
-    "dito_source": "Ponto de Preto-velho",
+    "dito_source": "Inspirado na tradição de Preto-velho (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Vontade consciente, domínio dos elementos, poder de manifestação",
     "classic_en": "Conscious will, mastery of elements, power of manifestation",
@@ -57,7 +58,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Ponto de Preto-velho",
+    "dito_source_en": "Inspired by Preto-velho tradition (composed for the project)"
   },
   {
     "id": 2,
@@ -76,7 +78,7 @@
     "algedonic_pt": "Rigidez: o sistema não oscila mais — está congelado numa posição.",
     "reversal_pt": "Estagnação disfarçada de estabilidade — o sistema resiste a toda mudança, inclusive as necessárias.",
     "dito_pt": "Água de rio não volta, mas a chuva traz de novo.",
-    "dito_source": "Cantiga de jongo, Vale do Paraíba",
+    "dito_source": "Cantiga de jongo, Vale do Paraíba (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Intuição profunda, mistério, sabedoria interior não revelada",
     "classic_en": "Deep intuition, mystery, unrevealed inner wisdom",
@@ -87,7 +89,9 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62",
+    "dito_source_original": "Cantiga de jongo, Vale do Paraíba",
+    "dito_source_en": "Cantiga de jongo, Vale do Paraíba (composed for the project)"
   },
   {
     "id": 3,
@@ -106,7 +110,7 @@
     "algedonic_pt": "Fractal quebrado: o padrão se rompe em algum nível. A parte não reflete o todo.",
     "reversal_pt": "Recursão viciosa — cada nível replica os mesmos erros infinitamente.",
     "dito_pt": "Terra que dá de comer é terra que tem mãe.",
-    "dito_source": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Kalunga (GO)",
     "status": "confirmed",
     "classic_pt": "Fertilidade criativa, abundância maternal, geração de estruturas vivas",
     "classic_en": "Creative fertility, maternal abundance, generation of living structures",
@@ -117,7 +121,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 4,
@@ -136,7 +141,7 @@
     "algedonic_pt": "Controle excessivo: micro-gerenciamento sufoca a autonomia das partes.",
     "reversal_pt": "Ausência de controle — anarquia operacional, cada parte opera isolada.",
     "dito_pt": "Rei que não planta não colhe.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Autoridade estruturante, ordem temporal, poder que organiza",
     "classic_en": "Structuring authority, temporal order, organizing power",
@@ -147,7 +152,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 5,
@@ -166,7 +172,7 @@
     "algedonic_pt": "Alarme desligado: a dor existe mas ninguém a detecta — anestesia sistêmica.",
     "reversal_pt": "Hipersensibilidade — o sistema reage a tudo como emergência, não distingue sinal de ruído.",
     "dito_pt": "O que o velho vê sentado, o moço não vê de pé.",
-    "dito_source": "Provérbio africano-brasileiro",
+    "dito_source": "Composto para o projeto, inspirado em tradição africano-brasileira",
     "status": "confirmed",
     "classic_pt": "Tradição viva, ponte entre mundos, ensinamento que atravessa o tempo",
     "classic_en": "Living tradition, bridge between worlds, teaching that crosses time",
@@ -177,7 +183,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio africano-brasileiro",
+    "dito_source_en": "Composed for the project, inspired by African-Brazilian tradition"
   },
   {
     "id": 6,
@@ -196,7 +203,7 @@
     "algedonic_pt": "Oscilação destrutiva: as partes vibram fora de sincronia, amplificando conflitos.",
     "reversal_pt": "Harmonia forçada — diferenças suprimidas em nome da coordenação, diversidade eliminada.",
     "dito_pt": "Na roda, ninguém é mais alto que ninguém.",
-    "dito_source": "Cantiga de capoeira angola",
+    "dito_source": "Cantiga de capoeira angola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Escolha consciente, união de opostos, dualidade que se complementa",
     "classic_en": "Conscious choice, union of opposites, complementary duality",
@@ -207,7 +214,9 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/66"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/66",
+    "dito_source_original": "Cantiga de capoeira angola",
+    "dito_source_en": "Cantiga de capoeira angola (composed for the project)"
   },
   {
     "id": 7,
@@ -237,7 +246,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://editoravertente.com.br/produto/colonizacao-quilombos/",
-    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html"
+    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
+    "dito_source_en": "Antônio Bispo dos Santos, Colonização, Quilombos"
   },
   {
     "id": 8,
@@ -256,7 +266,7 @@
     "algedonic_pt": "Diagnóstico enviesado: vemos o que queremos ver, não o que é.",
     "reversal_pt": "Paralisia analítica — diagnosticamos infinitamente sem nunca agir.",
     "dito_pt": "Olho de dono engorda o gado, mas olho de comunidade cuida da terra.",
-    "dito_source": "Provérbio quilombola, Ivaporunduva (SP)",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Ivaporunduva (SP)",
     "status": "confirmed",
     "classic_pt": "Equilíbrio entre forças, verdade nua, consequência inevitável",
     "classic_en": "Balance between forces, naked truth, inevitable consequence",
@@ -267,7 +277,9 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.socioambiental.org/pt-br/tags/ivaporunduva"
+    "dito_url": "https://www.socioambiental.org/pt-br/tags/ivaporunduva",
+    "dito_source_original": "Provérbio quilombola, Ivaporunduva (SP)",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 9,
@@ -286,7 +298,7 @@
     "algedonic_pt": "Confusão mapa-território: estamos gerenciando o modelo, não o sistema real.",
     "reversal_pt": "Recusa de modelar — sem modelo algum, nenhum diagnóstico é possível.",
     "dito_pt": "Quem conhece o caminho não precisa de mapa.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Busca solitária, introspecção radical, lanterna na escuridão",
     "classic_en": "Solitary search, radical introspection, lantern in darkness",
@@ -297,7 +309,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 10,
@@ -316,7 +329,7 @@
     "algedonic_pt": "Dependência vital: o sistema não sobrevive sem um suporte externo que pode desaparecer.",
     "reversal_pt": "Autossuficiência ilusória — o sistema nega suas dependências reais.",
     "dito_pt": "A roda gira pra quem sabe esperar.",
-    "dito_source": "Ponto de jongo, Pinheiral (RJ)",
+    "dito_source": "Ponto de jongo, Pinheiral (RJ) (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Ciclos do destino, mudança inevitável, roda que não para",
     "classic_en": "Cycles of destiny, inevitable change, wheel that never stops",
@@ -327,7 +340,9 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62",
+    "dito_source_original": "Ponto de jongo, Pinheiral (RJ)",
+    "dito_source_en": "Ponto de jongo, Pinheiral (RJ) (composed for the project)"
   },
   {
     "id": 11,
@@ -346,7 +361,7 @@
     "algedonic_pt": "Atenuação excessiva: informação vital está sendo cortada no filtro.",
     "reversal_pt": "Sem filtro — o sistema é inundado por dados que não consegue processar.",
     "dito_pt": "Peneira fina separa o joio, mas não joga fora o trigo.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Coragem interior, persuasão gentil, domínio sereno das forças",
     "classic_en": "Inner courage, gentle persuasion, serene mastery of forces",
@@ -357,7 +372,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 12,
@@ -387,7 +403,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/66"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/66",
+    "dito_source_en": "Mestre Pastinha, capoeira angola"
   },
   {
     "id": 13,
@@ -406,7 +423,7 @@
     "algedonic_pt": "Necrose organizacional: uma parte morreu mas ninguém a removeu — está envenenando o todo.",
     "reversal_pt": "Destruição prematura — matar o modelo antigo antes de ter alternativa viável.",
     "dito_pt": "Roça velha queima pra terra nova nascer.",
-    "dito_source": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Kalunga (GO)",
     "status": "confirmed",
     "classic_pt": "Transformação radical, fim necessário para o recomeço, poda que gera vida",
     "classic_en": "Radical transformation, necessary end for rebirth, pruning that generates life",
@@ -417,7 +434,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 14,
@@ -436,7 +454,7 @@
     "algedonic_pt": "Loop quebrado: a ação produz resultado, mas o resultado não informa a próxima ação.",
     "reversal_pt": "Feedback loop positivo descontrolado — o sistema acelera sem freio até colapsar.",
     "dito_pt": "Ginga é o equilíbrio de quem nunca pára.",
-    "dito_source": "Tradição da capoeira angola",
+    "dito_source": "Tradição da capoeira angola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Equilíbrio dinâmico, paciência alquímica, síntese de opostos em movimento",
     "classic_en": "Dynamic balance, alchemical patience, synthesis of opposites in motion",
@@ -447,7 +465,9 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/66"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/66",
+    "dito_source_original": "Tradição da capoeira angola",
+    "dito_source_en": "Tradição da capoeira angola (composed for the project)"
   },
   {
     "id": 15,
@@ -466,7 +486,7 @@
     "algedonic_pt": "Gargalo central: tudo depende de um único ponto — e esse ponto está sobrecarregado.",
     "reversal_pt": "Descentralização caótica — poder distribuído sem coerência, ninguém responde por nada.",
     "dito_pt": "Corrente que prende o corpo não prende o pensamento.",
-    "dito_source": "Canto de senzala, tradição oral",
+    "dito_source": "Canto de senzala, tradição oral (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Aprisionamento voluntário, ilusão de controle, sombra que governa",
     "classic_en": "Voluntary imprisonment, illusion of control, governing shadow",
@@ -477,7 +497,8 @@
     "beer_url": "https://archive.org/details/platformforchan000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Canto de senzala, tradição oral",
+    "dito_source_en": "Canto de senzala, tradição oral (composed for the project)"
   },
   {
     "id": 16,
@@ -496,7 +517,7 @@
     "algedonic_pt": "Colapso iminente: os sinais de dor foram ignorados por tempo demais.",
     "reversal_pt": "Pânico preventivo — destruir o que funciona por medo do colapso, profecia auto-realizável.",
     "dito_pt": "Casa grande caiu, senzala ficou de pé.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Destruição súbita, revelação violenta, ruptura que liberta",
     "classic_en": "Sudden destruction, violent revelation, rupture that liberates",
@@ -507,7 +528,8 @@
     "beer_url": "https://archive.org/details/platformforchan000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 17,
@@ -526,7 +548,7 @@
     "algedonic_pt": "Inteligência desperdiçada: as pessoas certas existem no sistema mas nunca se encontram.",
     "reversal_pt": "Coletivismo forçado — decisão por consenso onde decisão rápida era necessária.",
     "dito_pt": "Estrela de jongueiro não se apaga — ela vira ponto.",
-    "dito_source": "Tradição do jongo, Sudeste brasileiro",
+    "dito_source": "Tradição do jongo, Sudeste brasileiro (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Esperança cósmica, inspiração coletiva, conexão com o infinito",
     "classic_en": "Cosmic hope, collective inspiration, connection with the infinite",
@@ -537,7 +559,9 @@
     "beer_url": "https://archive.org/details/beyonddisputeinv0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62",
+    "dito_source_original": "Tradição do jongo, Sudeste brasileiro",
+    "dito_source_en": "Tradição do jongo, Sudeste brasileiro (composed for the project)"
   },
   {
     "id": 18,
@@ -556,7 +580,7 @@
     "algedonic_pt": "Opacidade total: não sabemos por que o sistema produz o que produz.",
     "reversal_pt": "Transparência obsessiva — tentar abrir toda caixa-preta destrói a abstração necessária.",
     "dito_pt": "Nem tudo que é escuro é escuridão.",
-    "dito_source": "Ponto de Preto-velho",
+    "dito_source": "Inspirado na tradição de Preto-velho (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Ilusão, medo ancestral, o desconhecido que habita dentro",
     "classic_en": "Illusion, ancestral fear, the unknown that dwells within",
@@ -567,7 +591,8 @@
     "beer_url": "https://archive.org/details/platformforchan000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Ponto de Preto-velho",
+    "dito_source_en": "Inspired by Preto-velho tradition (composed for the project)"
   },
   {
     "id": 19,
@@ -586,7 +611,7 @@
     "algedonic_pt": "Dependência vital: o sistema parou de se auto-produzir — precisa de injeção externa contínua.",
     "reversal_pt": "Autopoiese narcísica — o sistema só produz a si mesmo, ignora o ambiente.",
     "dito_pt": "Sol que nasce pra todos não pede licença pra brilhar.",
-    "dito_source": "Cantiga de terreiro",
+    "dito_source": "Cantiga de terreiro (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Vitalidade radiante, clareza absoluta, alegria que ilumina o sistema",
     "classic_en": "Radiant vitality, absolute clarity, joy that illuminates the system",
@@ -597,7 +622,8 @@
     "beer_url": "https://archive.org/details/platformforchan000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.palmares.gov.br/"
+    "dito_source_original": "Cantiga de terreiro",
+    "dito_source_en": "Cantiga de terreiro (composed for the project)"
   },
   {
     "id": 20,
@@ -616,7 +642,7 @@
     "algedonic_pt": "Cegueira estratégica: o sistema é eficiente no presente mas não vê o futuro.",
     "reversal_pt": "Futurismo desconectado — Sistema 4 faz planos brilhantes que Sistema 3 não consegue executar.",
     "dito_pt": "Tambor que chama o povo não toca sozinho.",
-    "dito_source": "Tradição do tambor de crioula, Maranhão",
+    "dito_source": "Tradição do tambor de crioula, Maranhão (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Renascimento coletivo, chamado que não pode ser ignorado, despertar sistêmico",
     "classic_en": "Collective rebirth, call that cannot be ignored, systemic awakening",
@@ -627,7 +653,9 @@
     "beer_url": "https://archive.org/details/platformforchan000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/56"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/56",
+    "dito_source_original": "Tradição do tambor de crioula, Maranhão",
+    "dito_source_en": "Tradição do tambor de crioula, Maranhão (composed for the project)"
   },
   {
     "id": 21,
@@ -657,7 +685,8 @@
     "beer_url": "https://archive.org/details/platformforchan000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html"
+    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
+    "dito_source_en": "Antônio Bispo dos Santos, A Terra Dá, A Terra Quer"
   },
   {
     "id": 22,
@@ -676,7 +705,7 @@
     "algedonic_pt": "O sistema é surdo ao seu próprio estado interior — os primeiros sinais de colapso chegam sem canal para transitá-los.",
     "reversal_pt": "Ruído branco: informação em excesso que paralisa, onde todo sinal parece urgente e nenhum pode ser distinguido.",
     "dito_pt": "Primeiro toque do tambor acorda quem dorme.",
-    "dito_source": "Ponto de jongo",
+    "dito_source": "Ponto de jongo (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Semente da informação, primeiro impulso comunicativo",
     "classic_en": "Seed of information, first communicative impulse",
@@ -687,7 +716,9 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62",
+    "dito_source_original": "Ponto de jongo",
+    "dito_source_en": "Ponto de jongo (composed for the project)"
   },
   {
     "id": 23,
@@ -706,7 +737,7 @@
     "algedonic_pt": "Comunicação unidirecional disfarçada de diálogo — ordens descem, silêncio sobe, e o sistema chama isso de gestão.",
     "reversal_pt": "Eco sem substância: dois nós que apenas confirmam um ao outro, criando uma câmara de ressonância sem contato com a realidade.",
     "dito_pt": "Pergunta de terreiro tem resposta de terreiro.",
-    "dito_source": "Tradição do candomblé",
+    "dito_source": "Tradição do candomblé (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Diálogo nascente, canal de ida e volta",
     "classic_en": "Nascent dialogue, two-way channel",
@@ -717,7 +748,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.palmares.gov.br/"
+    "dito_source_original": "Tradição do candomblé",
+    "dito_source_en": "Tradição do candomblé (composed for the project)"
   },
   {
     "id": 24,
@@ -736,7 +768,7 @@
     "algedonic_pt": "O sistema possui uma única fonte de dados sobre si mesmo — e essa fonte tem interesse em distorcer o que reporta.",
     "reversal_pt": "Paralisia por triangulação infinita: o sistema nunca age porque sempre espera mais uma perspectiva, mais uma voz, mais um dado.",
     "dito_pt": "Três mais velhos nunca erram juntos.",
-    "dito_source": "Provérbio africano-brasileiro",
+    "dito_source": "Composto para o projeto, inspirado em tradição africano-brasileira",
     "status": "confirmed",
     "classic_pt": "Triangulação, verificação por múltiplas fontes",
     "classic_en": "Triangulation, verification through multiple sources",
@@ -747,7 +779,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio africano-brasileiro",
+    "dito_source_en": "Composed for the project, inspired by African-Brazilian tradition"
   },
   {
     "id": 25,
@@ -766,7 +799,7 @@
     "algedonic_pt": "Monitoramento setorial: o sistema só enxerga o que já esperava encontrar, ignorando as ameaças e oportunidades que chegam de direções não mapeadas.",
     "reversal_pt": "Vigilância paranóica: tudo é sinal, tudo é ameaça, o sistema gasta toda sua capacidade de processamento em monitoramento e nada sobra para agir.",
     "dito_pt": "Vigia que só olha pra um lado é meio cego.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Vigilância em quatro direções, escuta ambiental",
     "classic_en": "Surveillance in four directions, environmental listening",
@@ -777,7 +810,8 @@
     "beer_url": "https://archive.org/details/heartofenterpris0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 26,
@@ -796,7 +830,7 @@
     "algedonic_pt": "Interfaces que corrompem: a informação que chega ao centro de decisão é tão diferente da realidade original que as decisões tomadas parecem absurdas para quem está na operação.",
     "reversal_pt": "Fidelidade ilusória: o sistema investe em canais de alta fidelidade técnica enquanto ignora que o problema é semântico — as palavras chegam intactas, mas os significados foram perdidos.",
     "dito_pt": "Recado que passa por muita boca chega torto.",
-    "dito_source": "Provérbio quilombola, Cafundó (SP)",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Cafundó (SP)",
     "status": "confirmed",
     "classic_pt": "Ruído nas fronteiras, perda na tradução",
     "classic_en": "Noise at borders, loss in translation between subsystems",
@@ -807,7 +841,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, Cafundó (SP)",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 27,
@@ -826,7 +861,7 @@
     "algedonic_pt": "Amnésia sistêmica: cada novo gestor ou ciclo político recomeça do zero, condenando o sistema a repetir as mesmas crises com diferentes rostos.",
     "reversal_pt": "Tradição como prisão: o sistema fica tão aferrado à memória que não consegue distinguir o que deve ser preservado do que deve ser transformado.",
     "dito_pt": "Quem não ouve os mais velhos tropeça nas mesmas pedras.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Memória que alimenta o presente, aprendizado histórico",
     "classic_en": "Memory that feeds the present, historical learning",
@@ -837,7 +872,8 @@
     "beer_url": "https://archive.org/details/platformforchan000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 28,
@@ -856,7 +892,7 @@
     "algedonic_pt": "Monocultura narrativa: uma única perspectiva dominante define o que conta como informação relevante, e todas as vozes discordantes são filtradas antes de chegarem ao topo.",
     "reversal_pt": "Cacofonia sem síntese: tantas narrativas conflitantes que o sistema não consegue construir nenhuma compreensão coerente do seu próprio estado.",
     "dito_pt": "Uma só voz não faz jongo.",
-    "dito_source": "Tradição do jongo, Sudeste",
+    "dito_source": "Tradição do jongo, Sudeste (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Multiplicidade de narrativas, variedade de perspectivas",
     "classic_en": "Multiplicity of narrative perspectives, variety of viewpoints",
@@ -867,7 +903,9 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62",
+    "dito_source_original": "Tradição do jongo, Sudeste",
+    "dito_source_en": "Tradição do jongo, Sudeste (composed for the project)"
   },
   {
     "id": 29,
@@ -886,7 +924,7 @@
     "algedonic_pt": "Canal algedônico obstruído: as crises se aprofundam silenciosamente enquanto os relatórios oficiais mostram verde — porque ninguém quer ser o portador de más notícias.",
     "reversal_pt": "Alarme crônico: o canal algedônico foi acionado tantas vezes por motivos banais que os decisores aprenderam a ignorá-lo, e quando o perigo real chega, ninguém ouve.",
     "dito_pt": "Grito de dor não espera vez na fila.",
-    "dito_source": "Ponto de Preto-velho",
+    "dito_source": "Inspirado na tradição de Preto-velho (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Alarme direto, sinal que bypassa a hierarquia",
     "classic_en": "Direct alarm, signal that bypasses hierarchy",
@@ -897,7 +935,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Ponto de Preto-velho",
+    "dito_source_en": "Inspired by Preto-velho tradition (composed for the project)"
   },
   {
     "id": 30,
@@ -916,7 +955,7 @@
     "algedonic_pt": "Vigilância cega: o sistema acredita que seus canais de informação funcionam bem porque ninguém foi designado para verificar se eles funcionam bem.",
     "reversal_pt": "Meta-paralisia: o sistema está tão ocupado monitorando seus monitores que perdeu contato com a realidade operacional que toda essa estrutura foi criada para observar.",
     "dito_pt": "Teia de aranha é fraca sozinha, forte no conjunto.",
-    "dito_source": "Provérbio africano-brasileiro",
+    "dito_source": "Composto para o projeto, inspirado em tradição africano-brasileira",
     "status": "confirmed",
     "classic_pt": "Rede de redes, inteligência de segunda ordem",
     "classic_en": "Network of networks, second-order intelligence",
@@ -927,7 +966,8 @@
     "beer_url": "https://archive.org/details/heartofenterpris0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio africano-brasileiro",
+    "dito_source_en": "Composed for the project, inspired by African-Brazilian tradition"
   },
   {
     "id": 31,
@@ -957,7 +997,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html"
+    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
+    "dito_source_en": "Antônio Bispo dos Santos, A Terra Dá, A Terra Quer"
   },
   {
     "id": 32,
@@ -976,7 +1017,7 @@
     "algedonic_pt": "Iniciação abandonada: os jovens do sistema não têm mentores que os ensinem a distinguir o que é informação relevante do ruído institucional.",
     "reversal_pt": "O Pajem que não escuta: entusiasmo sem discernimento, transmite tudo que recebe sem filtro, amplificando o ruído tanto quanto o sinal.",
     "dito_pt": "Menino de terreiro aprende ouvindo, não perguntando.",
-    "dito_source": "Tradição do candomblé",
+    "dito_source": "Tradição do candomblé (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Aprendiz da escuta, sensibilidade em formação",
     "classic_en": "Apprentice of listening, sensitivity in formation",
@@ -986,7 +1027,8 @@
     "dito_en": "A terreiro child learns by listening, not by asking.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.palmares.gov.br/"
+    "dito_source_original": "Tradição do candomblé",
+    "dito_source_en": "Tradição do candomblé (composed for the project)"
   },
   {
     "id": 33,
@@ -1005,7 +1047,7 @@
     "algedonic_pt": "Cavaleiro sem causa: o operador de informação está tão focado na velocidade de transmissão que parou de questionar se o que está transmitindo ainda é relevante ou verdadeiro.",
     "reversal_pt": "Cavaleiro disperso: energia sem direção, abre novos canais de comunicação compulsivamente sem nunca verificar se os existentes estão funcionando.",
     "dito_pt": "Quem leva notícia carrega peso.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Mensageiro ativo, operador dos canais",
     "classic_en": "Active messenger, channel operator, signal carrier",
@@ -1016,7 +1058,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 34,
@@ -1035,7 +1078,7 @@
     "algedonic_pt": "A Rainha exilada: o sistema perdeu ou marginalizou as guardiãs de sua memória viva, e agora opera sem contexto histórico.",
     "reversal_pt": "Rainha que controla a narrativa: usa seu domínio dos circuitos de informação para determinar quem pode falar e o que pode ser dito.",
     "dito_pt": "Mãe que conta história planta floresta na cabeça dos filhos.",
-    "dito_source": "Tradição oral quilombola",
+    "dito_source": "Tradição oral quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Guardiã da memória viva, mestra da oralidade",
     "classic_en": "Guardian of living memory, master of orality",
@@ -1045,7 +1088,8 @@
     "dito_en": "A mother who tells stories plants a forest in her children's minds.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Tradição oral quilombola",
+    "dito_source_en": "Tradição oral quilombola (composed for the project)"
   },
   {
     "id": 35,
@@ -1064,7 +1108,7 @@
     "algedonic_pt": "Arquiteto desconectado da realidade: o Rei projetou circuitos elegantes no papel, mas nunca verificou se eles funcionam na prática.",
     "reversal_pt": "Rei que não delega o saber: centraliza toda interpretação de informação em si mesmo, criando um gargalo cognitivo.",
     "dito_pt": "O mais velho não manda — ele lembra.",
-    "dito_source": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Kalunga (GO)",
     "status": "confirmed",
     "classic_pt": "Arquiteto dos circuitos, governança da informação",
     "classic_en": "Architect of circuits, governance of information architecture",
@@ -1075,7 +1119,8 @@
     "beer_url": "https://archive.org/details/decisioncontrolm0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 36,
@@ -1094,7 +1139,7 @@
     "algedonic_pt": "Sistema sem chão: ausência de nicho definido gera deriva identitária e colapso de pertencimento.",
     "reversal_pt": "Enraizamento obsessivo: recusa de qualquer expansão ou transformação do território original.",
     "dito_pt": "Terra tem dono quando tem quem cuide.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Semente do lugar, nicho mínimo de existência",
     "classic_en": "Seed of place, minimal niche of existence",
@@ -1105,7 +1150,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 37,
@@ -1124,7 +1170,7 @@
     "algedonic_pt": "Cegueira de fronteira: sistema incapaz de distinguir onde termina um ambiente e começa outro.",
     "reversal_pt": "Dupla lealdade paralisante: o sistema oscila entre dois territórios sem jamais se fixar em nenhum.",
     "dito_pt": "Pé na terra, olho no céu.",
-    "dito_source": "Cantiga de jongo",
+    "dito_source": "Cantiga de jongo (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Percepção dual do ambiente, escuta de dois mundos",
     "classic_en": "Dual perception of environment, listening to two worlds",
@@ -1135,7 +1181,9 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62",
+    "dito_source_original": "Cantiga de jongo",
+    "dito_source_en": "Cantiga de jongo (composed for the project)"
   },
   {
     "id": 38,
@@ -1154,7 +1202,7 @@
     "algedonic_pt": "Triangulação falsa: três fontes de dados que na verdade dizem a mesma coisa com vozes diferentes.",
     "reversal_pt": "Paralisia analítica: tantas perspectivas que o sistema nunca chega a uma síntese operacional.",
     "dito_pt": "Quem planta em três terras não passa fome em nenhuma.",
-    "dito_source": "Provérbio quilombola, Ivaporunduva (SP)",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Ivaporunduva (SP)",
     "status": "confirmed",
     "classic_pt": "Mapeamento cruzado, três olhares sobre o entorno",
     "classic_en": "Crossed mapping, three perspectives on surroundings",
@@ -1165,7 +1213,9 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.socioambiental.org/pt-br/tags/ivaporunduva"
+    "dito_url": "https://www.socioambiental.org/pt-br/tags/ivaporunduva",
+    "dito_source_original": "Provérbio quilombola, Ivaporunduva (SP)",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 39,
@@ -1184,7 +1234,7 @@
     "algedonic_pt": "Desorientação cardinal: sistema incapaz de se localizar no ambiente quando as referências externas mudam.",
     "reversal_pt": "Rigidez bússola: identidade tão fixada nos quatro eixos que o sistema não se move nem quando precisa.",
     "dito_pt": "Raiz funda não precisa de cerca.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Orientação nos quatro eixos, bússola identitária",
     "classic_en": "Orientation on four axes, identity compass",
@@ -1195,7 +1245,8 @@
     "beer_url": "https://archive.org/details/heartofenterpris0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 40,
@@ -1214,7 +1265,7 @@
     "algedonic_pt": "Erosão silenciosa de fronteiras: o sistema perde território sem perceber, um compromisso de cada vez.",
     "reversal_pt": "Fortaleza sitiada: o sistema defende cada fronteira como se toda perda fosse existencial.",
     "dito_pt": "Cerca de arame não segura quem já perdeu a terra.",
-    "dito_source": "Canto de resistência quilombola",
+    "dito_source": "Canto de resistência quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Tensão de fronteira, limites sob pressão",
     "classic_en": "Boundary tension, limits under pressure",
@@ -1225,7 +1276,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Canto de resistência quilombola",
+    "dito_source_en": "Canto de resistência quilombola (composed for the project)"
   },
   {
     "id": 41,
@@ -1244,7 +1296,7 @@
     "algedonic_pt": "Leitura rasa do ambiente: o sistema responde apenas à superfície e ignora as camadas que determinam o futuro.",
     "reversal_pt": "Escavação infinita: busca por profundidade que nunca encontra base firme para agir.",
     "dito_pt": "Debaixo de chão duro tem água mole.",
-    "dito_source": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Kalunga (GO)",
     "status": "confirmed",
     "classic_pt": "Camadas do contexto, estratificação ambiental",
     "classic_en": "Layers of context, environmental stratification",
@@ -1255,7 +1307,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 42,
@@ -1285,7 +1338,8 @@
     "beer_url": "https://archive.org/details/decisioncontrolm0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://editoravertente.com.br/produto/colonizacao-quilombos/",
-    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html"
+    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
+    "dito_source_en": "Antônio Bispo dos Santos, Colonização, Quilombos"
   },
   {
     "id": 43,
@@ -1304,7 +1358,7 @@
     "algedonic_pt": "Ponto cego ambiental: ameaça se aproxima por ângulo não monitorado e o sistema é surpreendido sem defesas.",
     "reversal_pt": "Paranoia de varredura: vigilância obsessiva que consome recursos e paralisa a ação por excesso de sinais.",
     "dito_pt": "Olho que tudo vê não planta roça.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Varredura multiperspectiva, olhos em todas as direções",
     "classic_en": "Multi-perspective scanning, eyes in all directions",
@@ -1315,7 +1369,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 44,
@@ -1334,7 +1389,7 @@
     "algedonic_pt": "Fragmentação de pertencimento: raízes que puxam em direções opostas até o sistema se partir.",
     "reversal_pt": "Monocultura de identidade: uma raiz que sufoca todas as outras em nome da unidade.",
     "dito_pt": "Muita raiz, um só tronco.",
-    "dito_source": "Ponto de jongo, Guaratinguetá (SP)",
+    "dito_source": "Ponto de jongo, Guaratinguetá (SP) (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Múltiplas raízes convergindo, integração de pertencimento",
     "classic_en": "Multiple roots converging, integration of belonging",
@@ -1345,7 +1400,9 @@
     "beer_url": "https://archive.org/details/heartofenterpris0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62",
+    "dito_source_original": "Ponto de jongo, Guaratinguetá (SP)",
+    "dito_source_en": "Ponto de jongo, Guaratinguetá (SP) (composed for the project)"
   },
   {
     "id": 45,
@@ -1375,7 +1432,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html"
+    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
+    "dito_source_en": "Antônio Bispo dos Santos, A Terra Dá, A Terra Quer"
   },
   {
     "id": 46,
@@ -1394,7 +1452,7 @@
     "algedonic_pt": "Ingenuidade de fronteira: aprendiz que não reconhece ameaças territoriais por carecer de experiência de leitura ambiental.",
     "reversal_pt": "Precocidade sem raiz: excesso de teoria sobre território sem nenhuma experiência encarnada no chão.",
     "dito_pt": "Quem chega agora escuta primeiro.",
-    "dito_source": "Tradição oral quilombola",
+    "dito_source": "Tradição oral quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Aprendiz do território, leitura dos sinais da terra",
     "classic_en": "Territorial apprentice, learning to read environmental signals",
@@ -1405,7 +1463,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Tradição oral quilombola",
+    "dito_source_en": "Tradição oral quilombola (composed for the project)"
   },
   {
     "id": 47,
@@ -1424,7 +1483,7 @@
     "algedonic_pt": "Expansão sem consolidação: fronteiras empurradas além da capacidade de manutenção, gerando espaços vazios de controle.",
     "reversal_pt": "Hiperatividade de fronteira: cavaleiro que redesenha os limites tão frequentemente que ninguém sabe mais onde o sistema começa.",
     "dito_pt": "Fronteira de quilombo é rio — não muro.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Agente de fronteira, negociador de limites vivos",
     "classic_en": "Border agent, negotiator of living boundaries",
@@ -1435,7 +1494,8 @@
     "beer_url": "https://archive.org/details/heartofenterpris0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 48,
@@ -1454,7 +1514,7 @@
     "algedonic_pt": "Exaustão da guardiã: identidade territorial não se mantém sozinha e a curadora sobrecarregada começa a errar nos limites.",
     "reversal_pt": "Possessividade materna: território tão protegido que se torna museu, incapaz de acolher novas vozes e novos corpos.",
     "dito_pt": "Mãe do terreiro conhece cada palmo do chão.",
-    "dito_source": "Tradição do candomblé",
+    "dito_source": "Tradição do candomblé (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Guardiã do terreiro, nutridora da identidade coletiva",
     "classic_en": "Guardian of the systemic terreiro, nurturer of collective identity",
@@ -1465,7 +1525,8 @@
     "beer_url": "https://archive.org/details/platformforchan000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.palmares.gov.br/"
+    "dito_source_original": "Tradição do candomblé",
+    "dito_source_en": "Tradição do candomblé (composed for the project)"
   },
   {
     "id": 49,
@@ -1484,7 +1545,7 @@
     "algedonic_pt": "Vacilo identitário no topo: quando o Sistema 5 perde a clareza sobre quem o sistema é, toda a cadeia de decisão oscila.",
     "reversal_pt": "Tirania territorial: rei que confunde seus limites com os limites do mundo, recusando reconhecer qualquer território além do seu.",
     "dito_pt": "Quem sabe quem é não precisa que ninguém diga.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Arquiteto da identidade, definidor dos limites últimos",
     "classic_en": "Architect of systemic identity, definer of ultimate limits",
@@ -1495,7 +1556,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 50,
@@ -1514,7 +1576,7 @@
     "algedonic_pt": "Trabalho atomizado que perdeu conexão com o propósito — ação sem raiz, esforço sem fruto coletivo.",
     "reversal_pt": "Potencial desperdiçado: a semente que nunca germina por falta de solo coletivo ou excesso de controle individualista.",
     "dito_pt": "Mão aberta recebe semente, mão fechada não planta.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Semente da ação, unidade mínima de trabalho viável",
     "classic_en": "Seed of action, minimal viable work unit",
@@ -1525,7 +1587,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 51,
@@ -1544,7 +1607,7 @@
     "algedonic_pt": "Sobreposição de funções ou vácuo de responsabilidade entre duas unidades operacionais — ruído que desgasta sem produzir.",
     "reversal_pt": "Dependência mútua paralisante: dois ofícios que não conseguem operar sem autorização recíproca, criando gargalo duplo.",
     "dito_pt": "Enxada de dois corta mais fundo.",
-    "dito_source": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Kalunga (GO)",
     "status": "confirmed",
     "classic_pt": "Par de ofícios, coordenação sem perda de autonomia",
     "classic_en": "Pair of crafts, coordination without loss of autonomy",
@@ -1555,7 +1618,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 52,
@@ -1574,7 +1638,7 @@
     "algedonic_pt": "Mutirão que na verdade é servidão: trabalho coletivo sem reciprocidade, onde alguns sempre chegam e nunca são chamados de volta.",
     "reversal_pt": "Diluição de responsabilidade: quando todos fazem tudo, ninguém responde por nada — a trança se desfaz em fios soltos.",
     "dito_pt": "No mutirão, a roça de um vira roça de todos.",
-    "dito_source": "Tradição do mutirão quilombola",
+    "dito_source": "Tradição do mutirão quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Trança coletiva, redundância operacional distribuída",
     "classic_en": "Collective braid, distributed operational redundancy",
@@ -1584,7 +1648,8 @@
     "dito_en": "In the mutirão, one's field becomes everyone's field.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Tradição do mutirão quilombola",
+    "dito_source_en": "Tradição do mutirão quilombola (composed for the project)"
   },
   {
     "id": 53,
@@ -1603,7 +1668,7 @@
     "algedonic_pt": "Operação desequilibrada que consome os próprios recursos para se manter: a mesa que vai queimando suas próprias pernas como lenha.",
     "reversal_pt": "Rigidez estéril: estrutura tão estabilizada que não consegue se adaptar — a mesa que não se move quando o chão muda.",
     "dito_pt": "Mesa sem quatro pé tomba.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Mesa firme, estabilidade mínima de recursos",
     "classic_en": "Firm table, minimal stability of resources",
@@ -1614,7 +1679,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 54,
@@ -1644,7 +1710,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://editoravertente.com.br/produto/colonizacao-quilombos/",
-    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html"
+    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
+    "dito_source_en": "Antônio Bispo dos Santos, Colonização, Quilombos"
   },
   {
     "id": 55,
@@ -1663,7 +1730,7 @@
     "algedonic_pt": "Monopolização de ofício: o saber que vira poder de retenção, criando dependência sistêmica de uma só pessoa ou grupo.",
     "reversal_pt": "Rotatividade sem transmissão: mudança constante de função sem aprendizado acumulado — todos fazem tudo e nada é feito bem.",
     "dito_pt": "Mão que descansa ensina a outra mão.",
-    "dito_source": "Tradição oral quilombola",
+    "dito_source": "Tradição oral quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Rodízio de funções, rotação que previne concentração",
     "classic_en": "Rotation of functions, preventing concentration of knowledge",
@@ -1673,7 +1740,8 @@
     "dito_en": "The hand that rests teaches the other hand.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Tradição oral quilombola",
+    "dito_source_en": "Tradição oral quilombola (composed for the project)"
   },
   {
     "id": 56,
@@ -1692,7 +1760,7 @@
     "algedonic_pt": "Variedade insuficiente: a unidade operacional que não consegue responder sozinha às perturbações do seu próprio ambiente.",
     "reversal_pt": "Inflação de capacidades: tantas especialidades internas que o sistema perde foco, desperdiçando energia em manutenção de competências raramente usadas.",
     "dito_pt": "Comunidade que sabe tudo de si não pede favor.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Variedade de competências, repertório operacional",
     "classic_en": "Variety of competencies, operational repertoire",
@@ -1703,7 +1771,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 57,
@@ -1722,7 +1791,7 @@
     "algedonic_pt": "Ciclo quebrado: produção em tempo errado — rápida demais para ter qualidade, lenta demais para ter relevância.",
     "reversal_pt": "Obsessão com o ciclo: sistema tão preso ao seu próprio ritmo que não consegue acelerar nem desacelerar quando o contexto exige.",
     "dito_pt": "Farinha não se apressa — o fogo é que sabe a hora.",
-    "dito_source": "Provérbio quilombola, casa de farinha",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, casa de farinha",
     "status": "confirmed",
     "classic_pt": "Ritmo produtivo, cadência que transforma matéria",
     "classic_en": "Productive rhythm, cadence that transforms matter into product",
@@ -1733,7 +1802,8 @@
     "beer_url": "https://archive.org/details/heartofenterpris0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, casa de farinha",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 58,
@@ -1752,7 +1822,7 @@
     "algedonic_pt": "Desgaste invisível: a acumulação silenciosa de pequenas quebras não reparadas que eventualmente tornam todo o sistema inoperável.",
     "reversal_pt": "Manutenção que se torna o trabalho principal: tanto tempo consertando o que quebra que não sobra energia para produzir.",
     "dito_pt": "Ferramenta cuidada cuida de quem cuida.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Rede de reparos, manutenção contínua sem parar",
     "classic_en": "Repair network, continuous maintenance without stopping",
@@ -1762,7 +1832,8 @@
     "dito_en": "A tended tool tends to those who tend it.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 59,
@@ -1781,7 +1852,7 @@
     "algedonic_pt": "Colheita capturada: o trabalho coletivo produz resultado que é apropriado por poucos, destruindo a motivação operacional.",
     "reversal_pt": "Abundância paralisante: colheita tão grande que o sistema não consegue processar, distribuir ou aprender com o próprio excesso.",
     "dito_pt": "Colheita de mutirão se divide na roda.",
-    "dito_source": "Tradição do mutirão quilombola",
+    "dito_source": "Tradição do mutirão quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Colheita do sistema, produto integrado entregue ao mundo",
     "classic_en": "System's harvest, integrated product delivered to the world",
@@ -1792,7 +1863,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Tradição do mutirão quilombola",
+    "dito_source_en": "Tradição do mutirão quilombola (composed for the project)"
   },
   {
     "id": 60,
@@ -1811,7 +1883,7 @@
     "algedonic_pt": "Aprendiz abandonado: o jovem com potencial que não encontra mestre, e consome energia do sistema sem poder ainda contribuir.",
     "reversal_pt": "Iniciante perpétuo: alguém que prefere permanecer aprendiz para evitar a responsabilidade de quem sabe.",
     "dito_pt": "Menino que pega na enxada aprende o peso da terra.",
-    "dito_source": "Tradição oral quilombola",
+    "dito_source": "Tradição oral quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Aprendiz do fazer, absorção prática do ofício",
     "classic_en": "Apprentice of making, practical absorption of craft",
@@ -1821,7 +1893,8 @@
     "dito_en": "A child who holds the hoe learns the weight of the earth.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Tradição oral quilombola",
+    "dito_source_en": "Tradição oral quilombola (composed for the project)"
   },
   {
     "id": 61,
@@ -1840,7 +1913,7 @@
     "algedonic_pt": "Executor sem autoridade: a pessoa que sabe o que precisa ser feito mas não tem poder de fazê-lo.",
     "reversal_pt": "Ação sem direção: o executor competente que age sem coordenação com o todo, produzindo resultados localmente perfeitos e sistemicamente destrutivos.",
     "dito_pt": "Mão que sabe fazer não pede ordem.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Executor competente, ação autônoma e precisa",
     "classic_en": "Competent executor, autonomous and precise action",
@@ -1851,7 +1924,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 62,
@@ -1870,7 +1944,7 @@
     "algedonic_pt": "Saber que morre com seu portador: a mestra que não transmitiu, e leva consigo a memória viva de como as coisas realmente funcionam.",
     "reversal_pt": "Matriarcado operacional sufocante: a mestra que sabe tanto que não consegue delegar, tornando-se gargalo do que deveria ser fluxo.",
     "dito_pt": "Mestra que ensina fazendo planta saber no corpo.",
-    "dito_source": "Tradição oral quilombola",
+    "dito_source": "Tradição oral quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Mestra do ofício, transmissora do saber profundo",
     "classic_en": "Master of craft, transmitter of deep knowledge",
@@ -1880,7 +1954,8 @@
     "dito_en": "A master who teaches by doing plants knowledge in the body.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Tradição oral quilombola",
+    "dito_source_en": "Tradição oral quilombola (composed for the project)"
   },
   {
     "id": 63,
@@ -1899,7 +1974,7 @@
     "algedonic_pt": "Arquiteto desconectado: estruturas de trabalho projetadas por quem nunca fez — belas no papel, inoperáveis na prática.",
     "reversal_pt": "Tirania da ordem: o rei que transforma toda operação em procedimento rígido, eliminando a inteligência adaptativa que tornava o trabalho vivo.",
     "dito_pt": "Quem nunca pegou na enxada não sabe o peso da terra.",
-    "dito_source": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Kalunga (GO)",
     "status": "confirmed",
     "classic_pt": "Arquiteto operacional, projetista das condições de trabalho",
     "classic_en": "Operational architect, designer of working conditions",
@@ -1910,7 +1985,8 @@
     "beer_url": "https://archive.org/details/heartofenterpris0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, Kalunga (GO)",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 64,
@@ -1929,7 +2005,7 @@
     "algedonic_pt": "O sistema sofre mas não consegue gritar — os canais de emergência estão bloqueados antes mesmo de serem testados.",
     "reversal_pt": "Alarme permanente: quando tudo é sinal de emergência, nada é — o sistema vive em pânico crônico sem capacidade de triagem.",
     "dito_pt": "Primeiro toque é de chamada, segundo é de aviso.",
-    "dito_source": "Tradição do tambor de crioula, Maranhão",
+    "dito_source": "Tradição do tambor de crioula, Maranhão (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Primeiro tambor, grito puro do sistema",
     "classic_en": "First drum, the system's pure cry",
@@ -1940,7 +2016,9 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/56"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/56",
+    "dito_source_original": "Tradição do tambor de crioula, Maranhão",
+    "dito_source_en": "Tradição do tambor de crioula, Maranhão (composed for the project)"
   },
   {
     "id": 65,
@@ -1959,7 +2037,7 @@
     "algedonic_pt": "Mensagens críticas entram no sistema e desaparecem sem rastro — ninguém sabe se foram lidas, processadas ou ignoradas.",
     "reversal_pt": "Eco narcísico: o sistema responde apenas para confirmar o que já sabe, nunca para integrar o que ainda não conhece.",
     "dito_pt": "Chamou, respondeu — o terreiro tá vivo.",
-    "dito_source": "Tradição do candomblé",
+    "dito_source": "Tradição do candomblé (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Chamado e resposta, confirmação de canal vivo",
     "classic_en": "Call and response, confirmation of a living channel",
@@ -1970,7 +2048,8 @@
     "beer_url": "https://archive.org/details/decisioncontrolm0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.palmares.gov.br/"
+    "dito_source_original": "Tradição do candomblé",
+    "dito_source_en": "Tradição do candomblé (composed for the project)"
   },
   {
     "id": 66,
@@ -1989,7 +2068,7 @@
     "algedonic_pt": "O sistema depende de um único canal crítico — quando ele falha, a organização fica surda exatamente no momento em que mais precisa ouvir.",
     "reversal_pt": "Cacofonia estrutural: canais redundantes sem coordenação geram versões contraditórias do mesmo sinal, paralisando a decisão.",
     "dito_pt": "Três atabaques falam pra ninguém ficar surdo.",
-    "dito_source": "Tradição do candomblé",
+    "dito_source": "Tradição do candomblé (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Três vozes redundantes, seguro contra falha de canal",
     "classic_en": "Three redundant voices, insurance against channel failure",
@@ -2000,7 +2079,8 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.palmares.gov.br/"
+    "dito_source_original": "Tradição do candomblé",
+    "dito_source_en": "Tradição do candomblé (composed for the project)"
   },
   {
     "id": 67,
@@ -2019,7 +2099,7 @@
     "algedonic_pt": "A dor real da periferia do sistema chega ao centro já traduzida em relatório trimestral — a urgência foi convertida em nota de rodapé.",
     "reversal_pt": "Amplificação distorcida: o sinal é exagerado em cada camada para justificar a existência dos intermediários.",
     "dito_pt": "Grito que sobe a ladeira chega sussurro.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Silêncio hierárquico, sinal que enfraquece ao subir",
     "classic_en": "Hierarchical silence, signal weakened as it rises",
@@ -2030,7 +2110,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 68,
@@ -2049,7 +2130,7 @@
     "algedonic_pt": "A organização está tão ocupada processando ruído burocrático que os sinais genuínos de sofrimento sistêmico não encontram capacidade de atenção disponível.",
     "reversal_pt": "Supressão obsessiva do ruído: ao filtrar tudo que parece perturbação, o sistema elimina também os sinais fracos que anunciavam a crise.",
     "dito_pt": "No meio de muito barulho, o tambor se perde.",
-    "dito_source": "Ponto de jongo",
+    "dito_source": "Ponto de jongo (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Ruído versus sinal, degradação da informação útil",
     "classic_en": "Signal versus noise, degradation of useful information",
@@ -2060,7 +2141,9 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62",
+    "dito_source_original": "Ponto de jongo",
+    "dito_source_en": "Ponto de jongo (composed for the project)"
   },
   {
     "id": 69,
@@ -2079,7 +2162,7 @@
     "algedonic_pt": "O conhecimento sobre como o sistema falhou antes não foi codificado em nenhum lugar acessível — cada novo colapso é tratado como evento sem precedente.",
     "reversal_pt": "Nostalgia disfuncional: o sistema é tão fiel aos padrões de sinal do passado que não reconhece as formas novas com que a crise se apresenta hoje.",
     "dito_pt": "Canto de avó não morre — vira canto de neta.",
-    "dito_source": "Tradição oral quilombola",
+    "dito_source": "Tradição oral quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Canto ancestral, memória codificada em ritmo",
     "classic_en": "Ancestral song, memory encoded in rhythm",
@@ -2089,7 +2172,8 @@
     "dito_en": "Grandmother's song does not die — it becomes granddaughter's song.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Tradição oral quilombola",
+    "dito_source_en": "Tradição oral quilombola (composed for the project)"
   },
   {
     "id": 70,
@@ -2108,7 +2192,7 @@
     "algedonic_pt": "O sistema monitora métricas de desempenho financeiro enquanto variáveis vitais de saúde organizacional piscam em vermelho sem que ninguém olhe.",
     "reversal_pt": "Paralisia por monitoramento: tantos dashboards e indicadores que os tomadores de decisão perdem a capacidade de priorizar.",
     "dito_pt": "Sete sentinelas, sete vigílias — quilombo protegido.",
-    "dito_source": "Provérbio quilombola, Palmares",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Palmares",
     "status": "confirmed",
     "classic_pt": "Sete alertas simultâneos, monitoramento em tempo real",
     "classic_en": "Seven simultaneous alerts, real-time monitoring",
@@ -2119,7 +2203,8 @@
     "beer_url": "https://archive.org/details/heartofenterpris0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, Palmares",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 71,
@@ -2138,7 +2223,7 @@
     "algedonic_pt": "O sistema descobre suas crises através de relatórios atrasados, auditoria externa ou colapso visível — o canal de emergência tem semanas de lag.",
     "reversal_pt": "Urgência fabricada: a velocidade do canal é explorada para criar crises artificiais que justificam decisões já tomadas.",
     "dito_pt": "Notícia velha é lápide.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Velocidade do alarme, latência entre dor e ação",
     "classic_en": "Speed of alarm, latency between pain and action",
@@ -2149,7 +2234,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 72,
@@ -2168,7 +2254,7 @@
     "algedonic_pt": "Dezenas de sinais fracos de insatisfação, exaustão e ruptura iminente existem na periferia do sistema, mas nenhum mecanismo os agrega.",
     "reversal_pt": "Homogeneização forçada: ao agregar os sinais, o sistema apaga as especificidades — trata como problema único o que são múltiplas dores.",
     "dito_pt": "Muitos Severinos, uma só dor.",
-    "dito_source": "Ponto de jongo, adaptado",
+    "dito_source": "Ponto de jongo, adaptado (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Voz coletiva, agregação de sinais distribuídos",
     "classic_en": "Collective voice, aggregation of distributed signals",
@@ -2178,7 +2264,9 @@
     "dito_en": "Many Severinos, one single pain.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62"
+    "dito_url": "http://portal.iphan.gov.br/pagina/detalhes/62",
+    "dito_source_original": "Ponto de jongo, adaptado",
+    "dito_source_en": "Ponto de jongo, adaptado (composed for the project)"
   },
   {
     "id": 73,
@@ -2208,7 +2296,8 @@
     "beer_url": "https://archive.org/details/heartofenterpris0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html"
+    "dito_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
+    "dito_source_en": "Antônio Bispo dos Santos, A Terra Dá, A Terra Quer"
   },
   {
     "id": 74,
@@ -2227,7 +2316,7 @@
     "algedonic_pt": "Os recém-chegados percebem as disfunções com clareza, mas o sistema os treina rapidamente a calar — sua sensibilidade virgem é descartada como ingenuidade.",
     "reversal_pt": "Ingenuidade paralisante: sem contexto histórico ou sistêmico, o aprendiz reage a qualquer sinal como se fosse crise existencial.",
     "dito_pt": "Olho de criança vê o que adulto já esqueceu.",
-    "dito_source": "Provérbio quilombola",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola",
     "status": "confirmed",
     "classic_pt": "Aprendiz da escuta, sensibilidade virgem ao absurdo",
     "classic_en": "Apprentice of listening, virgin sensitivity to the absurd",
@@ -2238,7 +2327,8 @@
     "beer_url": "https://archive.org/details/platformforchan000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 75,
@@ -2257,7 +2347,7 @@
     "algedonic_pt": "Quem tenta transmitir os sinais verdadeiros de sofrimento sistêmico é tratado como problema, não como mensageiro.",
     "reversal_pt": "Mensageiro compulsivo: move-se tão rapidamente entre canais que cria ruído em vez de clareza.",
     "dito_pt": "Mensageiro que corre com verdade não precisa de escolta.",
-    "dito_source": "Provérbio quilombola, Palmares",
+    "dito_source": "Composto para o projeto, inspirado em tradição quilombola, Palmares",
     "status": "confirmed",
     "classic_pt": "Tambor urgente, portador do sinal através das fronteiras",
     "classic_en": "Urgent drum, signal carrier across boundaries",
@@ -2268,7 +2358,8 @@
     "beer_url": "https://archive.org/details/diagnosingsystem0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Provérbio quilombola, Palmares",
+    "dito_source_en": "Composed for the project, inspired by quilombola tradition"
   },
   {
     "id": 76,
@@ -2287,7 +2378,7 @@
     "algedonic_pt": "O sistema só processa sinais explícitos e formalizados — a imensa quantidade de informação vital que circula de forma tácita nunca é integrada ao diagnóstico.",
     "reversal_pt": "Sobreinterpretação: a sensibilidade tão aguçada que encontra crise em todo sinal ambíguo — o sistema fica paralisado pela profusão de diagnósticos.",
     "dito_pt": "Mãe de santo escuta o que a boca não diz.",
-    "dito_source": "Tradição do candomblé",
+    "dito_source": "Tradição do candomblé (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Mestra da escuta profunda, leitura em múltiplas frequências",
     "classic_en": "Master of deep listening, reading on multiple frequencies",
@@ -2297,7 +2388,8 @@
     "dito_en": "The mãe de santo hears what the mouth does not say.",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.palmares.gov.br/"
+    "dito_source_original": "Tradição do candomblé",
+    "dito_source_en": "Tradição do candomblé (composed for the project)"
   },
   {
     "id": 77,
@@ -2316,7 +2408,7 @@
     "algedonic_pt": "O sistema não tem arquitetura algedônica — os canais de emergência passam pelos mesmos filtros hierárquicos que qualquer outra comunicação.",
     "reversal_pt": "Tirania do canal direto: quando qualquer pessoa pode acionar emergência a qualquer momento sem critério, o sistema colapsa sob o peso de pseudo-crises.",
     "dito_pt": "Canal sagrado não se fecha — se fecha, o povo morre em silêncio.",
-    "dito_source": "Tradição oral quilombola",
+    "dito_source": "Tradição oral quilombola (composto para o projeto)",
     "status": "confirmed",
     "classic_pt": "Arquiteto dos canais, desenhista do alarme sagrado",
     "classic_en": "Architect of channels, designer of the sacred alarm",
@@ -2327,6 +2419,7 @@
     "beer_url": "https://archive.org/details/brainoffirmmanag0000beer",
     "bispo_source": "Antônio Bispo dos Santos",
     "bispo_url": "https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html",
-    "dito_url": "https://www.gov.br/palmares/pt-br"
+    "dito_source_original": "Tradição oral quilombola",
+    "dito_source_en": "Tradição oral quilombola (composed for the project)"
   }
 ]
