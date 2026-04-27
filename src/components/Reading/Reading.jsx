@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { marked } from 'marked'
 import { useReadingStore } from '../../store/useReadingStore'
 import { useLangStore } from '../../store/useLangStore'
@@ -8,99 +8,93 @@ import './Reading.css'
 marked.setOptions({ breaks: true, gfm: true })
 
 export default function Reading() {
-  const { spread, drawnCards, reversed, interpretation, setInterpretation, setPhase, reset } =
+  const { spread, drawnCards, reversed, interpretation, setInterpretation, setPhase, phase, reset } =
     useReadingStore()
   const { lang, t } = useLangStore()
-  const [loading, setLoading] = useState(false)
   const [apiKey, setApiKey] = useState('')
   const [showApiInput, setShowApiInput] = useState(false)
-
-  if (!spread || drawnCards.length === 0) return null
+  const autoRan = useRef(false)
 
   const posLabel = (i) => lang === 'en' ? spread.positions[i].label_en : spread.positions[i].label_pt
 
-  async function handleInterpret(useApi) {
-    setLoading(true)
+  useEffect(() => {
+    if (phase === 'reading' && !interpretation && !autoRan.current && spread && drawnCards.length > 0) {
+      autoRan.current = true
+      setPhase('interpreting')
+      interpret(drawnCards, reversed, spread, null, lang)
+        .then((result) => setInterpretation(result.text))
+        .catch(() => setInterpretation(lang === 'en' ? 'Error generating interpretation.' : 'Erro ao gerar interpretação.'))
+    }
+  }, [phase, interpretation, spread, drawnCards, reversed, lang, setInterpretation, setPhase])
+
+  useEffect(() => {
+    autoRan.current = false
+  }, [spread])
+
+  if (!spread || drawnCards.length === 0) return null
+
+  async function handleAiInterpret() {
     setPhase('interpreting')
     try {
-      const key = useApi ? apiKey : null
-      const result = await interpret(drawnCards, reversed, spread, key, lang)
+      const result = await interpret(drawnCards, reversed, spread, apiKey, lang)
       setInterpretation(result.text)
     } catch {
       setInterpretation(lang === 'en' ? 'Error generating interpretation. Try again.' : 'Erro ao gerar interpretação. Tente novamente.')
-    } finally {
-      setLoading(false)
     }
   }
 
-  function handleDownload() {
+  function handleDownloadPdf() {
     const sName = lang === 'en' ? spread.name_en : spread.name_pt
-    const lines = []
-    lines.push(`# TAROT CIBERQUILOMBOLA`)
-    lines.push(`**${lang === 'en' ? 'Mode' : 'Modo'}:** ${sName}`)
-    lines.push(`**${lang === 'en' ? 'Date' : 'Data'}:** ${new Date().toLocaleDateString(lang === 'en' ? 'en-US' : 'pt-BR')}\n`)
-    lines.push(`## ${lang === 'en' ? 'Cards' : 'Cartas'}\n`)
-    drawnCards.forEach((c, i) => {
+    const dateStr = new Date().toLocaleDateString(lang === 'en' ? 'en-US' : 'pt-BR')
+    const modeLabel = lang === 'en' ? 'Mode' : 'Modo'
+    const dateLabel = lang === 'en' ? 'Date' : 'Data'
+    const cardsLabel = lang === 'en' ? 'Cards' : 'Cartas'
+    const diagLabel = lang === 'en' ? 'Diagnosis' : 'Diagnóstico'
+
+    const cardsHtml = drawnCards.map((c, i) => {
       const rev = reversed[i] ? ` (${t('reversed')})` : ''
       const name = lang === 'en' ? c.name_en : c.name_pt
-      lines.push(`- **${posLabel(i)}:** ${c.numeral} ${name}${rev}`)
-    })
-    lines.push(`\n---\n`)
-    lines.push(`## ${lang === 'en' ? 'Diagnosis' : 'Diagnóstico'}\n`)
-    lines.push(interpretation)
-    const content = lines.join('\n')
-    const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `reading-${spread.id}-${new Date().toISOString().slice(0, 10)}.md`
-    a.click()
-    URL.revokeObjectURL(url)
+      return `<li><strong>${posLabel(i)}:</strong> ${c.numeral} ${name}${rev}</li>`
+    }).join('')
+
+    const diagHtml = marked.parse(interpretation)
+
+    const html = `<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>Tarot CiberQuilombola — ${sName}</title>
+<style>
+  body { font-family: 'Courier New', monospace; max-width: 700px; margin: 40px auto; padding: 20px; color: #222; line-height: 1.7; }
+  h1 { font-size: 18px; letter-spacing: 0.1em; border-bottom: 2px solid #48B890; padding-bottom: 8px; }
+  h2 { font-size: 14px; color: #48B890; margin-top: 24px; }
+  h3 { font-size: 13px; color: #B07A1A; margin-top: 16px; }
+  .meta { font-size: 12px; color: #666; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 4px; font-size: 13px; }
+  blockquote { border-left: 3px solid #48B890; padding-left: 12px; margin: 12px 0; color: #555; font-style: italic; }
+  hr { border: none; border-top: 1px dashed #ccc; margin: 24px 0; }
+  .footer { font-size: 10px; color: #999; text-align: center; margin-top: 40px; border-top: 1px solid #eee; padding-top: 12px; }
+</style></head><body>
+<h1>TAROT CIBERQUILOMBOLA</h1>
+<p class="meta"><strong>${modeLabel}:</strong> ${sName} &nbsp;|&nbsp; <strong>${dateLabel}:</strong> ${dateStr}</p>
+<h2>${cardsLabel}</h2>
+<ul>${cardsHtml}</ul>
+<hr>
+<h2>${diagLabel}</h2>
+${diagHtml}
+<div class="footer">Tarot CiberQuilombola — Beer × Bispo<br>freirelucas.github.io/tarot-ciberquilombola</div>
+</body></html>`
+
+    const printWindow = window.open('', '_blank')
+    if (printWindow) {
+      printWindow.document.write(html)
+      printWindow.document.close()
+      setTimeout(() => printWindow.print(), 300)
+    }
   }
 
   return (
     <div className="reading">
-      {!interpretation && !loading && (
-        <div className="reading__actions">
-          <button className="reading__btn reading__btn--local" onClick={() => handleInterpret(false)}>
-            &#x25B6; {t('localDiagnosis')}
-          </button>
-
-          <div className="reading__divider">{t('or')}</div>
-
-          {!showApiInput ? (
-            <button
-              className="reading__btn reading__btn--api"
-              onClick={() => setShowApiInput(true)}
-            >
-              &#x2728; {t('aiDiagnosis')}
-            </button>
-          ) : (
-            <div className="reading__api-input">
-              <label htmlFor="api-key" className="reading__api-label">
-                {t('apiKeyLabel')}
-              </label>
-              <input
-                id="api-key"
-                type="password"
-                className="reading__input"
-                placeholder="sk-ant-..."
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-              />
-              <button
-                className="reading__btn reading__btn--api"
-                onClick={() => handleInterpret(true)}
-                disabled={!apiKey}
-              >
-                &#x2728; {t('interpretWithClaude')}
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-
-      {loading && (
+      {phase === 'interpreting' && !interpretation && (
         <div className="reading__loading">
           <span className="reading__spinner" />
           <p>{t('processing')}</p>
@@ -113,10 +107,36 @@ export default function Reading() {
             className="reading__text"
             dangerouslySetInnerHTML={{ __html: marked.parse(interpretation) }}
           />
+
           <div className="reading__result-actions">
-            <button className="reading__btn reading__btn--download" onClick={handleDownload}>
-              &#x2B73; {t('downloadReading')}
+            <button className="reading__btn reading__btn--download" onClick={handleDownloadPdf}>
+              &#x2B73; {t('downloadReading')} (PDF)
             </button>
+
+            {!showApiInput ? (
+              <button className="reading__btn reading__btn--api" onClick={() => setShowApiInput(true)}>
+                &#x2728; {t('aiDiagnosis')}
+              </button>
+            ) : (
+              <div className="reading__api-input">
+                <input
+                  id="api-key"
+                  type="password"
+                  className="reading__input"
+                  placeholder="sk-ant-..."
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                />
+                <button
+                  className="reading__btn reading__btn--api"
+                  onClick={handleAiInterpret}
+                  disabled={!apiKey}
+                >
+                  &#x2728; {t('interpretWithClaude')}
+                </button>
+              </div>
+            )}
+
             <button className="reading__btn reading__btn--reset" onClick={reset}>
               {t('newReading')}
             </button>

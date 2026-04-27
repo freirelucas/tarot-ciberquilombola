@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLangStore } from '../../store/useLangStore'
 import './Petition.css'
 
 const API_URL = import.meta.env.VITE_PETITION_API || ''
@@ -13,7 +14,8 @@ function loadLocalSignatures() {
 }
 
 export default function Petition() {
-  const [tab, setTab] = useState('petition') // 'petition' | 'manifesto'
+  const { lang } = useLangStore()
+  const [tab, setTab] = useState('petition')
   const [name, setName] = useState('')
   const [city, setCity] = useState('')
   const [signed, setSigned] = useState(false)
@@ -37,159 +39,114 @@ export default function Petition() {
     e.preventDefault()
     if (!name.trim()) return
     setLoading(true)
-
-    const entry = {
-      name: name.trim(),
-      city: city.trim() || null,
-      date: new Date().toISOString().slice(0, 10),
-    }
-
+    const entry = { name: name.trim(), city: city.trim() || null, date: new Date().toISOString().slice(0, 10) }
     if (API_URL) {
       try {
-        await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(entry),
-          redirect: 'follow',
-        })
+        await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(entry), redirect: 'follow' })
         const fresh = await fetch(API_URL).then((r) => r.json())
-        if (Array.isArray(fresh)) {
-          setSignatures(fresh)
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh))
-        }
+        if (Array.isArray(fresh)) { setSignatures(fresh); localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh)) }
       } catch {
-        const updated = [...signatures, entry]
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
-        setSignatures(updated)
+        const updated = [...signatures, entry]; localStorage.setItem(STORAGE_KEY, JSON.stringify(updated)); setSignatures(updated)
       }
     } else {
-      const updated = [...signatures, entry]
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
-      setSignatures(updated)
+      const updated = [...signatures, entry]; localStorage.setItem(STORAGE_KEY, JSON.stringify(updated)); setSignatures(updated)
     }
-
-    setSigned(true)
-    setLoading(false)
-    setName('')
-    setCity('')
+    setSigned(true); setLoading(false); setName(''); setCity('')
   }
+
+  const en = lang === 'en'
 
   return (
     <div className="petition">
       <div className="petition__tabs">
-        <button
-          className={`petition__tab ${tab === 'petition' ? 'petition__tab--active' : ''}`}
-          onClick={() => setTab('petition')}
-        >
-          Abaixo-assinado
+        <button className={`petition__tab ${tab === 'petition' ? 'petition__tab--active' : ''}`} onClick={() => setTab('petition')}>
+          {en ? 'Petition' : 'Abaixo-assinado'}
         </button>
-        <button
-          className={`petition__tab ${tab === 'manifesto' ? 'petition__tab--active' : ''}`}
-          onClick={() => setTab('manifesto')}
-        >
-          Manifesto
+        <button className={`petition__tab ${tab === 'manifesto' ? 'petition__tab--active' : ''}`} onClick={() => setTab('manifesto')}>
+          {en ? 'Manifesto' : 'Manifesto'}
         </button>
       </div>
 
       {tab === 'petition' ? (
         <div className="petition__content">
           <h2 className="petition__title">
-            Pela publica&ccedil;&atilde;o de <em>Platform for Change</em> em portugu&ecirc;s a pre&ccedil;os acess&iacute;veis
+            {en
+              ? <>{`For the publication of `}<em>Platform for Change</em>{` in Portuguese at accessible prices`}</>
+              : <>{`Pela publicação de `}<em>Platform for Change</em>{` em português a preços acessíveis`}</>}
           </h2>
 
           <div className="petition__comparison">
             <div className="petition__price petition__price--beer">
               <span className="petition__price-label">Platform for Change</span>
               <span className="petition__price-author">Stafford Beer, 1975</span>
-              <span className="petition__price-value petition__price-value--high">US$ 65&ndash;78</span>
-              <span className="petition__price-note">Novo, em ingl&ecirc;s. Sem tradu&ccedil;&atilde;o para o portugu&ecirc;s.</span>
-              <span className="petition__price-note">Usado a partir de US$ 47</span>
+              <span className="petition__price-value petition__price-value--high">US$ 65–78</span>
+              <span className="petition__price-note">{en ? 'New, in English. No Portuguese translation.' : 'Novo, em inglês. Sem tradução para o português.'}</span>
             </div>
             <div className="petition__price petition__price--bispo">
-              <span className="petition__price-label">A Terra D&aacute;, A Terra Quer</span>
-              <span className="petition__price-author">Ant&ocirc;nio Bispo dos Santos, 2023</span>
+              <span className="petition__price-label">A Terra Dá, A Terra Quer</span>
+              <span className="petition__price-author">Antônio Bispo dos Santos, 2023</span>
               <span className="petition__price-value petition__price-value--low">R$ 53</span>
-              <span className="petition__price-note">Novo, em portugu&ecirc;s. Editora Ubu.</span>
-              <span className="petition__price-note">&asymp; US$ 10</span>
+              <span className="petition__price-note">{en ? 'New, in Portuguese. Ubu Editora. ≈ US$ 10' : 'Novo, em português. Editora Ubu. ≈ US$ 10'}</span>
             </div>
           </div>
 
           <div className="petition__text">
-            <p>
-              H&aacute; meio s&eacute;culo, Stafford Beer publicou <em>Platform for Change</em> &mdash; treze argumentos
-              para a transforma&ccedil;&atilde;o de como organizamos a vida coletiva. O livro nunca foi traduzido
-              para o portugu&ecirc;s. Custa entre US$ 65 e US$ 78 novo (cerca de R$ 350&ndash;420), valor
-              inacess&iacute;vel para a maioria dos leitores brasileiros, latino-americanos e africanos de l&iacute;ngua portuguesa.
-            </p>
-            <p>
-              Enquanto isso, <em>A Terra D&aacute;, A Terra Quer</em> de Ant&ocirc;nio Bispo dos Santos &mdash;
-              obra fundamental do pensamento quilombola &mdash; custa R$ 53 na Editora Ubu. Um livro
-              que transforma vis&otilde;es de mundo est&aacute; acess&iacute;vel. O outro, n&atilde;o.
-            </p>
-            <p>
-              Beer sonhou com sistemas que servissem ao povo, n&atilde;o ao mercado. Bispo nos
-              ensinou que o saber que n&atilde;o circula apodrece. <strong>Um livro trancado atr&aacute;s de um
-              pre&ccedil;o proibitivo contradiz o pr&oacute;prio conte&uacute;do que carrega.</strong>
-            </p>
-            <p>
-              Pedimos aos detentores dos direitos autorais de Stafford Beer e &agrave; editora
-              Wiley que viabilizem uma edi&ccedil;&atilde;o em portugu&ecirc;s de <em>Platform for Change</em>
-              a pre&ccedil;os compat&iacute;veis com a realidade do Sul Global &mdash; idealmente na faixa
-              de R$ 50&ndash;80, como as obras de pensamento cr&iacute;tico j&aacute; publicadas no Brasil.
-            </p>
-
-            <h3>Ao assinar, voc&ecirc; autoriza:</h3>
-            <ul>
-              <li>Que o organizador desta peti&ccedil;&atilde;o endre&ccedil;e a lista de signat&aacute;rios aos detentores dos direitos autorais de Stafford Beer e &agrave; editora Wiley &amp; Sons;</li>
-              <li>Que seu nome e cidade (se informada) sejam listados publicamente como signat&aacute;rio(a);</li>
-              <li>Que a peti&ccedil;&atilde;o seja enviada a editoras brasileiras e portuguesas como demonstra&ccedil;&atilde;o de demanda por uma edi&ccedil;&atilde;o acess&iacute;vel.</li>
-            </ul>
+            {en ? (
+              <>
+                <p>Half a century ago, Stafford Beer published <em>Platform for Change</em> — thirteen arguments for transforming how we organize collective life. The book has never been translated into Portuguese. It costs US$ 65–78 new, inaccessible to most readers in Brazil, Latin America, and Portuguese-speaking Africa.</p>
+                <p>Meanwhile, <em>A Terra Dá, A Terra Quer</em> by Antônio Bispo dos Santos — a fundamental work of quilombola thought — costs R$ 53 from Ubu Editora. One world-changing book is accessible. The other is not.</p>
+                <p>Beer dreamed of systems that served the people, not the market. Bispo taught us that knowledge that does not circulate rots. <strong>A book locked behind a prohibitive price contradicts its own content.</strong></p>
+                <p>We ask the copyright holders of Stafford Beer and Wiley to make possible a Portuguese edition of <em>Platform for Change</em> at prices compatible with the Global South — ideally R$ 50–80.</p>
+                <h3>By signing, you authorize:</h3>
+                <ul>
+                  <li>The organizer to send the list of signatories to Beer&rsquo;s copyright holders and Wiley &amp; Sons;</li>
+                  <li>Your name and city (if provided) to be listed publicly;</li>
+                  <li>The petition to be sent to Brazilian and Portuguese publishers as a demonstration of demand.</li>
+                </ul>
+              </>
+            ) : (
+              <>
+                <p>Há meio século, Stafford Beer publicou <em>Platform for Change</em> — treze argumentos para a transformação de como organizamos a vida coletiva. O livro nunca foi traduzido para o português. Custa entre US$ 65 e US$ 78 novo (cerca de R$ 350–420), valor inacessível para a maioria dos leitores brasileiros, latino-americanos e africanos de língua portuguesa.</p>
+                <p>Enquanto isso, <em>A Terra Dá, A Terra Quer</em> de Antônio Bispo dos Santos — obra fundamental do pensamento quilombola — custa R$ 53 na Editora Ubu. Um livro que transforma visões de mundo está acessível. O outro, não.</p>
+                <p>Beer sonhou com sistemas que servissem ao povo, não ao mercado. Bispo nos ensinou que o saber que não circula apodrece. <strong>Um livro trancado atrás de um preço proibitivo contradiz o próprio conteúdo que carrega.</strong></p>
+                <p>Pedimos aos detentores dos direitos autorais de Stafford Beer e à editora Wiley que viabilizem uma edição em português de <em>Platform for Change</em> a preços compatíveis com a realidade do Sul Global — idealmente na faixa de R$ 50–80.</p>
+                <h3>Ao assinar, você autoriza:</h3>
+                <ul>
+                  <li>Que o organizador desta petição endereçe a lista de signatários aos detentores dos direitos autorais de Stafford Beer e à editora Wiley &amp; Sons;</li>
+                  <li>Que seu nome e cidade (se informada) sejam listados publicamente como signatário(a);</li>
+                  <li>Que a petição seja enviada a editoras brasileiras e portuguesas como demonstração de demanda por uma edição acessível.</li>
+                </ul>
+              </>
+            )}
           </div>
 
           {signed ? (
             <div className="petition__thanks">
-              <p>Assinatura registrada. Obrigado por apoiar o acesso ao conhecimento sist&ecirc;mico.</p>
-              <p className="petition__thanks-note">{API_URL ? 'Sua assinatura é visível para todos os visitantes.' : 'Salva localmente neste navegador.'}</p>
+              <p>{en ? 'Signature registered. Thank you for supporting access to systemic knowledge.' : 'Assinatura registrada. Obrigado por apoiar o acesso ao conhecimento sistêmico.'}</p>
+              <p className="petition__thanks-note">{API_URL ? (en ? 'Your signature is visible to all visitors.' : 'Sua assinatura é visível para todos os visitantes.') : (en ? 'Saved locally in this browser.' : 'Salva localmente neste navegador.')}</p>
             </div>
           ) : (
             <form className="petition__form" onSubmit={handleSign}>
               <div className="petition__field">
-                <label htmlFor="pet-name">Nome completo *</label>
-                <input
-                  id="pet-name"
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  placeholder="Seu nome"
-                />
+                <label htmlFor="pet-name">{en ? 'Full name *' : 'Nome completo *'}</label>
+                <input id="pet-name" type="text" value={name} onChange={(e) => setName(e.target.value)} required placeholder={en ? 'Your name' : 'Seu nome'} />
               </div>
               <div className="petition__field">
-                <label htmlFor="pet-city">Cidade / Pa&iacute;s</label>
-                <input
-                  id="pet-city"
-                  type="text"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  placeholder="Ex: S&atilde;o Paulo, Brasil"
-                />
+                <label htmlFor="pet-city">{en ? 'City / Country' : 'Cidade / País'}</label>
+                <input id="pet-city" type="text" value={city} onChange={(e) => setCity(e.target.value)} placeholder={en ? 'e.g. São Paulo, Brazil' : 'Ex: São Paulo, Brasil'} />
               </div>
               <button type="submit" className="petition__submit" disabled={loading}>
-                {loading ? 'Enviando...' : 'Assinar petição'}
+                {loading ? (en ? 'Sending...' : 'Enviando...') : (en ? 'Sign petition' : 'Assinar petição')}
               </button>
             </form>
           )}
 
           {signatures.length > 0 && (
             <div className="petition__signatures">
-              <h3>{signatures.length} signat&aacute;rio{signatures.length > 1 ? 's' : ''}</h3>
+              <h3>{signatures.length} {signatures.length > 1 ? (en ? 'signatories' : 'signatários') : (en ? 'signatory' : 'signatário')}</h3>
               <ul>
                 {signatures.map((s, i) => (
-                  <li key={i}>
-                    <strong>{s.name}</strong>
-                    {s.city && <span> &mdash; {s.city}</span>}
-                    <span className="petition__sig-date"> ({s.date})</span>
-                  </li>
+                  <li key={i}><strong>{s.name}</strong>{s.city && <span> — {s.city}</span>}<span className="petition__sig-date"> ({s.date})</span></li>
                 ))}
               </ul>
             </div>
@@ -198,71 +155,43 @@ export default function Petition() {
       ) : (
         <div className="petition__content petition__manifesto">
           <h2 className="petition__title">
-            Manifesto: Cibern&eacute;tica &amp; Quilombo
+            {en ? 'Manifesto: Cybernetics & Quilombo' : 'Manifesto: Cibernética & Quilombo'}
           </h2>
           <h3 className="petition__manifesto-sub">
-            Por que Beer e Bispo precisam se encontrar em portugu&ecirc;s
+            {en ? 'Why Beer and Bispo need to meet in Portuguese' : 'Por que Beer e Bispo precisam se encontrar em português'}
           </h3>
 
           <blockquote className="petition__quote petition__quote--beer">
             <p>&ldquo;The purpose of a system is what it does.&rdquo;</p>
-            <cite>&mdash; Stafford Beer, 1974</cite>
+            <cite>— Stafford Beer, 1974</cite>
           </blockquote>
-
           <blockquote className="petition__quote petition__quote--bispo">
-            <p>&ldquo;N&oacute;s n&atilde;o somos o que dizemos que somos. N&oacute;s somos o que fazemos.&rdquo;</p>
-            <cite>&mdash; Ant&ocirc;nio Bispo dos Santos</cite>
+            <p>&ldquo;Nós não somos o que dizemos que somos. Nós somos o que fazemos.&rdquo;</p>
+            <cite>— Antônio Bispo dos Santos</cite>
           </blockquote>
 
           <div className="petition__manifesto-body">
-            <p>
-              Dois homens. Dois continentes. Duas tradi&ccedil;&otilde;es de pensamento que nunca se
-              encontraram em vida &mdash; mas dizem a mesma coisa em linguagens diferentes.
-            </p>
-            <p>
-              <strong>Stafford Beer</strong> (1926&ndash;2002), ciberneticista brit&acirc;nico, passou a vida
-              construindo ferramentas para que organiza&ccedil;&otilde;es complexas pudessem se conhecer a
-              si mesmas. Seu Modelo de Sistema Vi&aacute;vel n&atilde;o &eacute; uma teoria de controle &mdash; &eacute;
-              uma teoria de <em>autonomia</em>: como cada parte de um sistema pode governar a si
-              mesma sem perder coer&ecirc;ncia com o todo. Beer sonhou com um socialismo
-              cibern&eacute;tico no Chile de Allende. O golpe destruiu o sonho, n&atilde;o a id&eacute;ia.
-            </p>
-            <p>
-              <strong>Ant&ocirc;nio Bispo dos Santos</strong> (1959&ndash;2023), lavrador e pensador
-              quilombola do Piau&iacute;, viveu o que Beer teorizou. Os quilombos s&atilde;o sistemas
-              vi&aacute;veis &mdash; comunidades que mantiveram exist&ecirc;ncia aut&ocirc;noma sob condi&ccedil;&otilde;es
-              de opress&atilde;o extrema, desenvolvendo circuitos de informa&ccedil;&atilde;o oral,
-              ferramentas de trabalho coletivo, sinais alged&ocirc;nicos corporificados e
-              territ&oacute;rios de identidade que resistiram a s&eacute;culos de viol&ecirc;ncia colonial.
-            </p>
-            <p>
-              Beer chamava de <em>homeostase</em> o que Bispo chamava de <em>equil&iacute;brio da terra</em>.
-              Beer falava em <em>variedade requerida</em>; Bispo dizia que <em>&ldquo;a terra n&atilde;o &eacute; uma s&oacute;&rdquo;</em>.
-              Beer projetava <em>canais alged&ocirc;nicos</em> para que a dor do sistema chegasse ao
-              centro de decis&atilde;o; nos quilombos, <em>o tambor j&aacute; fazia isso h&aacute; s&eacute;culos</em>.
-            </p>
-            <p>
-              O problema &eacute; simples: <strong>Beer est&aacute; trancado em ingl&ecirc;s caro. Bispo est&aacute;
-              acess&iacute;vel em portugu&ecirc;s.</strong> O di&aacute;logo que deveria acontecer &mdash; entre
-              cibern&eacute;tica ocidental e epistemologia quilombola &mdash; n&atilde;o pode acontecer
-              enquanto um dos interlocutores custa sete vezes mais que o outro.
-            </p>
-            <p>
-              <em>Platform for Change</em> n&atilde;o &eacute; um livro de gest&atilde;o. &Eacute; um chamado para
-              reorganizar a sociedade usando a intelig&ecirc;ncia dos sistemas vivos. Cada um
-              dos treze argumentos de Beer poderia ter sido escrito por Bispo em outra
-              linguagem &mdash; a linguagem da terra, do mutir&atilde;o, do terreiro.
-            </p>
-            <p>
-              <strong>Este manifesto pede uma coisa:</strong> que o pensamento sist&ecirc;mico deixe de
-              ser privil&eacute;gio de quem l&ecirc; ingl&ecirc;s e pode pagar US$ 70 por um livro. Que
-              Beer e Bispo possam finalmente se encontrar na mesma l&iacute;ngua, na mesma
-              estante, ao alcance da mesma m&atilde;o.
-            </p>
-            <p className="petition__manifesto-close">
-              Porque o prop&oacute;sito de um livro &eacute; o que ele faz.<br />
-              E um livro que n&atilde;o pode ser lido n&atilde;o faz nada.
-            </p>
+            {en ? (
+              <>
+                <p>Two men. Two continents. Two traditions of thought that never met in life — but say the same thing in different languages.</p>
+                <p><strong>Stafford Beer</strong> (1926–2002), British cybernetician, spent his life building tools so that complex organizations could know themselves. His Viable System Model is not a theory of control — it is a theory of <em>autonomy</em>: how each part of a system can govern itself without losing coherence with the whole. Beer dreamed of cybernetic socialism in Allende&rsquo;s Chile. The coup destroyed the dream, not the idea.</p>
+                <p><strong>Antônio Bispo dos Santos</strong> (1959–2023), farmer and quilombola thinker from Piauí, lived what Beer theorized. Quilombos are viable systems — communities that maintained autonomous existence under extreme oppression, developing oral information circuits, collective work tools, embodied algedonic signals, and identity territories that resisted centuries of colonial violence.</p>
+                <p>Beer called <em>homeostasis</em> what Bispo called <em>balance of the earth</em>. Beer spoke of <em>requisite variety</em>; Bispo said <em>&ldquo;the land is not just one&rdquo;</em>. Beer designed <em>algedonic channels</em> so the system&rsquo;s pain could reach the decision center; in quilombos, <em>the drum had been doing this for centuries</em>.</p>
+                <p>The problem is simple: <strong>Beer is locked in expensive English. Bispo is accessible in Portuguese.</strong> The dialogue that should happen — between Western cybernetics and quilombola epistemology — cannot happen while one interlocutor costs seven times more than the other.</p>
+                <p><em>Platform for Change</em> is not a management book. It is a call to reorganize society using the intelligence of living systems. Each of Beer&rsquo;s thirteen arguments could have been written by Bispo in another language — the language of the earth, of the mutirão, of the terreiro.</p>
+                <p className="petition__manifesto-close">Because the purpose of a book is what it does.<br />And a book that cannot be read does nothing.</p>
+              </>
+            ) : (
+              <>
+                <p>Dois homens. Dois continentes. Duas tradições de pensamento que nunca se encontraram em vida — mas dizem a mesma coisa em linguagens diferentes.</p>
+                <p><strong>Stafford Beer</strong> (1926–2002), ciberneticista britânico, passou a vida construindo ferramentas para que organizações complexas pudessem se conhecer a si mesmas. Seu Modelo de Sistema Viável não é uma teoria de controle — é uma teoria de <em>autonomia</em>: como cada parte de um sistema pode governar a si mesma sem perder coerência com o todo. Beer sonhou com um socialismo cibernético no Chile de Allende. O golpe destruiu o sonho, não a idéia.</p>
+                <p><strong>Antônio Bispo dos Santos</strong> (1959–2023), lavrador e pensador quilombola do Piauí, viveu o que Beer teorizou. Os quilombos são sistemas viáveis — comunidades que mantiveram existência autônoma sob condições de opressão extrema, desenvolvendo circuitos de informação oral, ferramentas de trabalho coletivo, sinais algedônicos corporificados e territórios de identidade que resistiram a séculos de violência colonial.</p>
+                <p>Beer chamava de <em>homeostase</em> o que Bispo chamava de <em>equilíbrio da terra</em>. Beer falava em <em>variedade requerida</em>; Bispo dizia que <em>&ldquo;a terra não é uma só&rdquo;</em>. Beer projetava <em>canais algedônicos</em> para que a dor do sistema chegasse ao centro de decisão; nos quilombos, <em>o tambor já fazia isso há séculos</em>.</p>
+                <p>O problema é simples: <strong>Beer está trancado em inglês caro. Bispo está acessível em português.</strong> O diálogo que deveria acontecer — entre cibernética ocidental e epistemologia quilombola — não pode acontecer enquanto um dos interlocutores custa sete vezes mais que o outro.</p>
+                <p><em>Platform for Change</em> não é um livro de gestão. É um chamado para reorganizar a sociedade usando a inteligência dos sistemas vivos. Cada um dos treze argumentos de Beer poderia ter sido escrito por Bispo em outra linguagem — a linguagem da terra, do mutirão, do terreiro.</p>
+                <p className="petition__manifesto-close">Porque o propósito de um livro é o que ele faz.<br />E um livro que não pode ser lido não faz nada.</p>
+              </>
+            )}
           </div>
         </div>
       )}
