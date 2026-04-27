@@ -58,6 +58,16 @@
   cursor: not-allowed;
 }
 
+.reading__btn--download {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.reading__btn--download:hover {
+  border-color: var(--cyan);
+  background: var(--bg-hover);
+}
+
 .reading__btn--reset {
   border-color: var(--red-dim);
   color: var(--red);
@@ -206,4 +216,31 @@
   color: var(--green);
   font-size: var(--font-size-sm);
   padding: var(--sp-3) var(--sp-6);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .reading {
+    padding: var(--sp-2) 0;
+  }
+
+  .reading__text {
+    padding: var(--sp-3);
+    max-height: 400px;
+    font-size: var(--font-size-xs);
+  }
+
+  .reading__result-actions {
+    gap: var(--sp-2);
+    padding: var(--sp-3) 0;
+  }
+
+  .reading__btn {
+    padding: var(--sp-2) var(--sp-3);
+    font-size: var(--font-size-xs);
+  }
+
+  .reading__api-input {
+    max-width: 100%;
+  }
 }

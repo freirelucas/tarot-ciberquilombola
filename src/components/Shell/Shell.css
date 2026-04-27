@@ -78,6 +78,10 @@
   text-align: center;
 }
 
+.shell__nav-btn--baralho {
+  border-style: dashed;
+}
+
 .shell__nav-btn--manifesto {
   border-style: dashed;
 }
@@ -129,17 +133,44 @@
     padding: var(--sp-2);
   }
 
+  .shell__header {
+    padding: var(--sp-4) 0 var(--sp-2);
+  }
+
   .shell__title {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
+    letter-spacing: 0.1em;
+  }
+
+  .shell__subtitle {
+    font-size: 0.7rem;
+  }
+
+  .shell__nav {
+    gap: var(--sp-1);
+    padding: var(--sp-2) 0;
   }
 
   .shell__nav-btn {
-    min-width: 90px;
-    padding: var(--sp-2) var(--sp-3);
+    min-width: 75px;
+    padding: var(--sp-2);
+  }
+
+  .shell__nav-count {
+    font-size: var(--font-size-base);
+  }
+
+  .shell__nav-label {
+    font-size: 0.6rem;
+  }
+
+  .shell__main {
+    padding: var(--sp-3) 0;
   }
 
   .shell__footer {
     flex-direction: column;
-    gap: var(--sp-4);
+    gap: var(--sp-3);
+    padding: var(--sp-3) 0 var(--sp-2);
   }
 }

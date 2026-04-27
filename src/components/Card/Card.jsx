@@ -21,7 +21,20 @@ const SUIT_ICONS = {
   sinais: '\u2632',
 }
 
-export default function Card({ card, isReversed, isRevealed, position, onClick }) {
+export default function Card({ card, isReversed, isRevealed, position, onClick, mini }) {
+  if (mini) {
+    return (
+      <button
+        className={`card card--mini ${card.suit ? `card--mini--${card.suit}` : 'card--mini--major'}`}
+        onClick={onClick}
+        aria-label={`${card.numeral} ${card.name_pt}`}
+      >
+        <span className="card__mini-numeral">{card.numeral}</span>
+        <span className="card__mini-name">{card.name_pt}</span>
+      </button>
+    )
+  }
+
   return (
     <div
       className={`card ${isRevealed ? 'card--revealed' : ''} ${isReversed && isRevealed ? 'card--reversed' : ''}`}
@@ -57,6 +70,9 @@ export default function Card({ card, isReversed, isRevealed, position, onClick }
           </div>
           <h3 className="card__name">{card.name_pt}</h3>
           <p className="card__concept">{card.concept_pt}</p>
+          {card.classic_pt && (
+            <p className="card__classic">{card.classic_pt}</p>
+          )}
           {position && (
             <div className="card__position">
               <span className="card__position-label">{position.label}</span>

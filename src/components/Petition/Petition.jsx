@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Petition.css'
 
+const API_URL = import.meta.env.VITE_PETITION_API || ''
 const STORAGE_KEY = 'tarot-ciberquilombola-petition'
 
-function loadSignatures() {
+function loadLocalSignatures() {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
   } catch {
@@ -16,20 +17,58 @@ export default function Petition() {
   const [name, setName] = useState('')
   const [city, setCity] = useState('')
   const [signed, setSigned] = useState(false)
-  const [signatures, setSignatures] = useState(loadSignatures)
+  const [signatures, setSignatures] = useState(loadLocalSignatures)
+  const [loading, setLoading] = useState(false)
 
-  function handleSign(e) {
+  useEffect(() => {
+    if (!API_URL) return
+    fetch(`${API_URL}/signatures`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setSignatures(data)
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+        }
+      })
+      .catch(() => {})
+  }, [])
+
+  async function handleSign(e) {
     e.preventDefault()
     if (!name.trim()) return
+    setLoading(true)
+
     const entry = {
       name: name.trim(),
       city: city.trim() || null,
       date: new Date().toISOString().slice(0, 10),
     }
-    const updated = [...signatures, entry]
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
-    setSignatures(updated)
+
+    if (API_URL) {
+      try {
+        const res = await fetch(`${API_URL}/signatures`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(entry),
+        })
+        if (res.ok) {
+          const fresh = await fetch(`${API_URL}/signatures`).then((r) => r.json())
+          setSignatures(fresh)
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh))
+        }
+      } catch {
+        const updated = [...signatures, entry]
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
+        setSignatures(updated)
+      }
+    } else {
+      const updated = [...signatures, entry]
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
+      setSignatures(updated)
+    }
+
     setSigned(true)
+    setLoading(false)
     setName('')
     setCity('')
   }
@@ -109,6 +148,7 @@ export default function Petition() {
           {signed ? (
             <div className="petition__thanks">
               <p>Assinatura registrada. Obrigado por apoiar o acesso ao conhecimento sist&ecirc;mico.</p>
+              <p className="petition__thanks-note">{API_URL ? 'Sua assinatura é visível para todos os visitantes.' : 'Salva localmente neste navegador.'}</p>
             </div>
           ) : (
             <form className="petition__form" onSubmit={handleSign}>
@@ -133,8 +173,8 @@ export default function Petition() {
                   placeholder="Ex: S&atilde;o Paulo, Brasil"
                 />
               </div>
-              <button type="submit" className="petition__submit">
-                Assinar peti&ccedil;&atilde;o
+              <button type="submit" className="petition__submit" disabled={loading}>
+                {loading ? 'Enviando...' : 'Assinar petição'}
               </button>
             </form>
           )}
