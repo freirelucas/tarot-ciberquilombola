@@ -84,11 +84,11 @@
 }
 
 .spread__grid--vsm {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .spread__grid--platform {
-  max-width: 1000px;
+  max-width: 100%;
 }
 
 .spread__hint {
