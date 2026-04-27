@@ -22,7 +22,7 @@ export default function Petition() {
 
   useEffect(() => {
     if (!API_URL) return
-    fetch(`${API_URL}/signatures`)
+    fetch(API_URL)
       .then((r) => r.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
@@ -46,13 +46,14 @@ export default function Petition() {
 
     if (API_URL) {
       try {
-        const res = await fetch(`${API_URL}/signatures`, {
+        await fetch(API_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify(entry),
+          redirect: 'follow',
         })
-        if (res.ok) {
-          const fresh = await fetch(`${API_URL}/signatures`).then((r) => r.json())
+        const fresh = await fetch(API_URL).then((r) => r.json())
+        if (Array.isArray(fresh)) {
           setSignatures(fresh)
           localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh))
         }
