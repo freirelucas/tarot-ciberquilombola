@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { marked } from 'marked'
 import { useReadingStore } from '../../store/useReadingStore'
-import { useHistoryStore } from '../../store/useHistoryStore'
 import { useLangStore } from '../../store/useLangStore'
 import { interpret } from '../../services/interpret'
 import './Reading.css'
@@ -11,12 +10,10 @@ marked.setOptions({ breaks: true, gfm: true })
 export default function Reading() {
   const { spread, drawnCards, reversed, interpretation, setInterpretation, setPhase, reset } =
     useReadingStore()
-  const { addReading } = useHistoryStore()
   const { lang, t } = useLangStore()
   const [loading, setLoading] = useState(false)
   const [apiKey, setApiKey] = useState('')
   const [showApiInput, setShowApiInput] = useState(false)
-  const [saved, setSaved] = useState(false)
 
   if (!spread || drawnCards.length === 0) return null
 
@@ -34,21 +31,6 @@ export default function Reading() {
     } finally {
       setLoading(false)
     }
-  }
-
-  function handleSave() {
-    addReading({
-      mode: spread.id,
-      spreadName: lang === 'en' ? spread.name_en : spread.name_pt,
-      cards: drawnCards.map((c, i) => ({
-        id: c.id,
-        name: lang === 'en' ? c.name_en : c.name_pt,
-        reversed: !!reversed[i],
-        position: posLabel(i),
-      })),
-      interpretation,
-    })
-    setSaved(true)
   }
 
   function handleDownload() {
@@ -132,13 +114,6 @@ export default function Reading() {
             dangerouslySetInnerHTML={{ __html: marked.parse(interpretation) }}
           />
           <div className="reading__result-actions">
-            {!saved ? (
-              <button className="reading__btn" onClick={handleSave}>
-                {t('saveHistory')}
-              </button>
-            ) : (
-              <span className="reading__saved">{t('savedHistory')}</span>
-            )}
             <button className="reading__btn reading__btn--download" onClick={handleDownload}>
               &#x2B73; {t('downloadReading')}
             </button>
