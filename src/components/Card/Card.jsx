@@ -63,6 +63,9 @@ export default function Card({ card, isReversed, isRevealed, position, onClick, 
         </div>
 
         <div className={`card__front ${card.suit ? `card__front--${card.suit}` : ''}`}>
+          {isReversed && isRevealed && (
+            <span className="card__reversed-badge">↺ {t('reversed').toUpperCase()}</span>
+          )}
           <div className="card__header">
             <span className="card__numeral">{card.numeral}</span>
             <span className={`card__act ${card.suit ? `card__act--${card.suit}` : ''}`}>
