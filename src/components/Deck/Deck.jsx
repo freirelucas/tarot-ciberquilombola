@@ -19,9 +19,9 @@ const SUIT_ICONS = {
 }
 
 const JOURNEYS = [
-  { en: 'Person', pt: 'Pessoa', source: 'Brain of the Firm', desc_en: 'The self as viable system', desc_pt: 'O eu como sistema viável' },
-  { en: 'Nature', pt: 'Natureza', source: 'Diagnosing the System', desc_en: 'The system in its environment', desc_pt: 'O sistema em seu ambiente' },
-  { en: 'Spirit', pt: 'Espírito', source: 'Platform for Change', desc_en: 'Transformation and transcendence', desc_pt: 'Transformação e transcendência' },
+  { en: 'Ancestry', pt: 'Ancestralidade', source: 'Brain of the Firm', desc_en: 'Principles — the architecture of viability', desc_pt: 'Princípios — a arquitetura da viabilidade' },
+  { en: 'Earth', pt: 'Terra', source: 'Diagnosing the System', desc_en: 'Laws — the system in its environment', desc_pt: 'Leis — o sistema em seu ambiente' },
+  { en: 'Transformation', pt: 'Transformação', source: 'Platform for Change', desc_en: 'Manifestation — change and transcendence', desc_pt: 'Manifestação — mudança e transcendência' },
 ]
 
 const CROSSROAD_LABELS = {
