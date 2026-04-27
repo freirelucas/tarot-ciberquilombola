@@ -177,18 +177,45 @@ export default function Deck() {
               {selected.anchor_beer && (
                 <blockquote className="deck__detail-quote">
                   <p>&ldquo;{selected.anchor_beer}&rdquo;</p>
-                  <cite>— {selected.beer_source}</cite>
+                  <cite>
+                    — {selected.beer_url
+                      ? <a href={selected.beer_url} target="_blank" rel="noopener noreferrer">{selected.beer_source}</a>
+                      : selected.beer_source}
+                  </cite>
                 </blockquote>
               )}
               {selected.anchor_bispo && (
                 <blockquote className="deck__detail-quote deck__detail-quote--bispo">
                   <p>&ldquo;{selected.anchor_bispo}&rdquo;</p>
-                  <cite>— Antônio Bispo dos Santos</cite>
+                  <cite>
+                    — {selected.bispo_url
+                      ? <a href={selected.bispo_url} target="_blank" rel="noopener noreferrer">Antônio Bispo dos Santos</a>
+                      : 'Antônio Bispo dos Santos'}
+                  </cite>
                 </blockquote>
               )}
               <p className="deck__detail-dito">
-                <em>{c(selected, 'dito')}</em> — {selected.dito_source}
+                <em>{c(selected, 'dito')}</em> —{' '}
+                {selected.dito_url
+                  ? <a href={selected.dito_url} target="_blank" rel="noopener noreferrer">{selected.dito_source}</a>
+                  : selected.dito_source}
               </p>
+
+              {/* References section */}
+              <div className="deck__detail-refs">
+                <span className="deck__detail-refs-title">{lang === 'en' ? 'Sources' : 'Fontes'}</span>
+                <ul>
+                  {selected.beer_url && (
+                    <li><a href={selected.beer_url} target="_blank" rel="noopener noreferrer">{selected.beer_source}</a></li>
+                  )}
+                  {selected.bispo_url && (
+                    <li><a href={selected.bispo_url} target="_blank" rel="noopener noreferrer">Bispo dos Santos — {selected.bispo_url.includes('ubu') ? 'A Terra Dá, A Terra Quer (Ubu)' : 'Colonização, Quilombos (INCTI/UnB)'}</a></li>
+                  )}
+                  {selected.dito_url && (
+                    <li><a href={selected.dito_url} target="_blank" rel="noopener noreferrer">{selected.dito_source}</a></li>
+                  )}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

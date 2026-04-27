@@ -382,6 +382,61 @@
   line-height: 1.6;
 }
 
+.deck__detail-dito a,
+.deck__detail-quote cite a {
+  color: var(--green-dim);
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 2px;
+}
+
+.deck__detail-dito a:hover,
+.deck__detail-quote cite a:hover {
+  color: var(--green);
+}
+
+/* References */
+.deck__detail-refs {
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: var(--border-thin);
+}
+
+.deck__detail-refs-title {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+
+.deck__detail-refs ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.deck__detail-refs li {
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+.deck__detail-refs a {
+  color: var(--green-dim);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--rule);
+  padding-bottom: 1px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.deck__detail-refs a:hover {
+  color: var(--green);
+  border-color: var(--green);
+}
+
 /* === RESPONSIVE === */
 
 @media (max-width: 768px) {
