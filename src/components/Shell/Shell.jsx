@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useReadingStore } from '../../store/useReadingStore'
+import { useLangStore } from '../../store/useLangStore'
 import spreads from '../../data/spreads.json'
 import Petition from '../Petition/Petition.jsx'
 import Deck from '../Deck/Deck.jsx'
@@ -7,15 +8,21 @@ import './Shell.css'
 
 export default function Shell({ children }) {
   const { mode, setMode, reset, phase } = useReadingStore()
-  const [view, setView] = useState('tarot') // 'tarot' | 'manifesto' | 'baralho'
+  const { lang, toggleLang, t } = useLangStore()
+  const [view, setView] = useState('tarot')
+
+  const spreadName = (s) => lang === 'en' ? s.name_en : s.name_pt
 
   return (
     <div className="shell">
       <header className="shell__header">
         <div className="shell__title-group">
-          <h1 className="shell__title cursor-blink">TAROT CIBERQUILOMBOLA</h1>
-          <p className="shell__subtitle">diagnóstico sistêmico · Beer × Bispo</p>
+          <h1 className="shell__title cursor-blink">{t('title')}</h1>
+          <p className="shell__subtitle">{t('subtitle')}</p>
         </div>
+        <button className="shell__lang" onClick={toggleLang} aria-label="Toggle language">
+          {lang === 'en' ? 'PT' : 'EN'}
+        </button>
       </header>
 
       <nav className="shell__nav">
@@ -24,18 +31,16 @@ export default function Shell({ children }) {
             key={spread.id}
             className={`shell__nav-btn ${view === 'tarot' && mode === spread.id ? 'shell__nav-btn--active' : ''}`}
             onClick={() => {
-              if (view !== 'tarot') {
-                setView('tarot')
-              }
+              if (view !== 'tarot') setView('tarot')
               if (phase !== 'idle' && mode !== spread.id) {
-                if (!window.confirm('Abandonar leitura atual?')) return
+                if (!window.confirm(t('abandonReading'))) return
                 reset()
               }
               setMode(spread.id)
             }}
           >
             <span className="shell__nav-count">{spread.card_count}</span>
-            <span className="shell__nav-label">{spread.name_pt}</span>
+            <span className="shell__nav-label">{spreadName(spread)}</span>
           </button>
         ))}
         <button
@@ -43,14 +48,14 @@ export default function Shell({ children }) {
           onClick={() => setView(view === 'baralho' ? 'tarot' : 'baralho')}
         >
           <span className="shell__nav-count">78</span>
-          <span className="shell__nav-label">Baralho</span>
+          <span className="shell__nav-label">{t('baralho')}</span>
         </button>
         <button
           className={`shell__nav-btn shell__nav-btn--manifesto ${view === 'manifesto' ? 'shell__nav-btn--active' : ''}`}
           onClick={() => setView(view === 'manifesto' ? 'tarot' : 'manifesto')}
         >
           <span className="shell__nav-count">&#x270D;</span>
-          <span className="shell__nav-label">Manifesto</span>
+          <span className="shell__nav-label">{t('manifesto')}</span>
         </button>
       </nav>
 
@@ -64,7 +69,7 @@ export default function Shell({ children }) {
           <cite>— Stafford Beer</cite>
         </div>
         <div className="shell__quote">
-          <p>&ldquo;A terra não é uma só. Cada terra tem seu jeito de ser terra.&rdquo;</p>
+          <p>&ldquo;{t('quoteBispo')}&rdquo;</p>
           <cite>— Antônio Bispo dos Santos</cite>
         </div>
       </footer>

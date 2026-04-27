@@ -12,6 +12,32 @@
   text-align: center;
   padding: var(--sp-8) 0 var(--sp-4);
   border-bottom: var(--border-thin);
+  position: relative;
+}
+
+.shell__lang {
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-2);
+  background: var(--bg-card);
+  border: var(--border-thin);
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  text-transform: none;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.shell__lang:hover {
+  background: var(--green);
+  color: var(--bg-deep);
+  border-color: var(--green);
+  box-shadow: none;
 }
 
 .shell__title {

@@ -18,7 +18,12 @@
     "dito_pt": "Eu sou trezentos, sou trezentos-e-cincoenta.",
     "dito_source": "Mário de Andrade, 'Eu sou trezentos'",
     "status": "confirmed",
-    "classic_pt": "Início, potencial infinito, salto de fé"
+    "classic_pt": "Início absoluto, potencial infinito, salto de fé no desconhecido",
+    "classic_en": "Absolute beginning, infinite potential, leap of faith into the unknown",
+    "diagnostic_question_en": "What is the real purpose — not the stated one — of this system?",
+    "algedonic_en": "There is pain where there should be pleasure. The system does the opposite of what it promises.",
+    "reversal_en": "Systemic self-deception: the system believes its own propaganda.",
+    "dito_en": "I am three hundred, I am three hundred and fifty."
   },
   {
     "id": 1,
@@ -39,7 +44,12 @@
     "dito_pt": "Tudo é e não é.",
     "dito_source": "Guimarães Rosa, 'Grande Sertão: Veredas'",
     "status": "confirmed",
-    "classic_pt": "Vontade, habilidade, poder de manifestação"
+    "classic_pt": "Vontade consciente, domínio dos elementos, poder de manifestação",
+    "classic_en": "Conscious will, mastery of elements, power of manifestation",
+    "diagnostic_question_en": "Does the system have enough variety to deal with its environment?",
+    "algedonic_en": "Forced simplicity: the regulator is simpler than what it regulates.",
+    "reversal_en": "Excess variety without filter — organizational chaos, paralysis by options.",
+    "dito_en": "Everything is and is not."
   },
   {
     "id": 2,
@@ -60,7 +70,12 @@
     "dito_pt": "No meio do caminho tinha uma pedra.",
     "dito_source": "Carlos Drummond de Andrade, 'No meio do caminho'",
     "status": "confirmed",
-    "classic_pt": "Intuição, mistério, sabedoria interior"
+    "classic_pt": "Intuição profunda, mistério, sabedoria interior não revelada",
+    "classic_en": "Deep intuition, mystery, unrevealed inner wisdom",
+    "diagnostic_question_en": "What are this system's equilibrium mechanisms? Are they working?",
+    "algedonic_en": "Rigidity: the system no longer oscillates — it is frozen in one position.",
+    "reversal_en": "Stagnation disguised as stability — the system resists all change, including necessary ones.",
+    "dito_en": "In the middle of the road there was a stone."
   },
   {
     "id": 3,
@@ -81,7 +96,12 @@
     "dito_pt": "Repare bem: o que não tem governo, nem nunca terá.",
     "dito_source": "Guimarães Rosa, 'Grande Sertão: Veredas'",
     "status": "confirmed",
-    "classic_pt": "Fertilidade, abundância, criação maternal"
+    "classic_pt": "Fertilidade criativa, abundância maternal, geração de estruturas vivas",
+    "classic_en": "Creative fertility, maternal abundance, generation of living structures",
+    "diagnostic_question_en": "Does the structure repeat coherently at all levels?",
+    "algedonic_en": "Broken fractal: the pattern breaks at some level. The part does not reflect the whole.",
+    "reversal_en": "Vicious recursion — each level replicates the same errors infinitely.",
+    "dito_en": "Mark well: that which has no governance, nor ever will."
   },
   {
     "id": 4,
@@ -102,7 +122,12 @@
     "dito_pt": "A lei. Ora, a lei.",
     "dito_source": "Lima Barreto, 'O homem que sabia javanês'",
     "status": "confirmed",
-    "classic_pt": "Autoridade, estrutura, poder temporal"
+    "classic_pt": "Autoridade estruturante, ordem temporal, poder que organiza",
+    "classic_en": "Structuring authority, temporal order, organizing power",
+    "diagnostic_question_en": "Who monitors day-to-day operations? Is control effective without being oppressive?",
+    "algedonic_en": "Excessive control: micro-management suffocates the autonomy of parts.",
+    "reversal_en": "Absence of control — operational anarchy, each part operates in isolation.",
+    "dito_en": "The law. Well, the law."
   },
   {
     "id": 5,
@@ -123,7 +148,12 @@
     "dito_pt": "Minha dor é perceber que apesar de termos feito tudo o que fizemos, ainda somos os mesmos e vivemos como nossos pais.",
     "dito_source": "Belchior, 'Como nossos pais'",
     "status": "confirmed",
-    "classic_pt": "Tradição, ensinamento, ponte entre mundos"
+    "classic_pt": "Tradição viva, ponte entre mundos, ensinamento que atravessa o tempo",
+    "classic_en": "Living tradition, bridge between worlds, teaching that crosses time",
+    "diagnostic_question_en": "Are the system's pain and pleasure signals being heard? By whom?",
+    "algedonic_en": "Alarm disabled: pain exists but nobody detects it — systemic anesthesia.",
+    "reversal_en": "Hypersensitivity — the system reacts to everything as emergency, cannot distinguish signal from noise.",
+    "dito_en": "My pain is realizing that despite everything we did, we are still the same and live like our parents."
   },
   {
     "id": 6,
@@ -144,7 +174,12 @@
     "dito_pt": "Eu quase que nada sei. Mas desconfio de muita coisa.",
     "dito_source": "Guimarães Rosa, 'Grande Sertão: Veredas'",
     "status": "confirmed",
-    "classic_pt": "Escolha, união, dualidade complementar"
+    "classic_pt": "Escolha consciente, união de opostos, dualidade que se complementa",
+    "classic_en": "Conscious choice, union of opposites, complementary duality",
+    "diagnostic_question_en": "Do the parts of the system coordinate harmoniously or compete destructively?",
+    "algedonic_en": "Destructive oscillation: parts vibrate out of sync, amplifying conflicts.",
+    "reversal_en": "Forced harmony — differences suppressed in the name of coordination, diversity eliminated.",
+    "dito_en": "I know almost nothing. But I suspect a great deal."
   },
   {
     "id": 7,
@@ -165,7 +200,12 @@
     "dito_pt": "Liberdade é uma palavra que o sonho humano alimenta, não há ninguém que explique e ninguém que não entenda.",
     "dito_source": "Cecília Meireles, 'Romanceiro da Inconfidência'",
     "status": "confirmed",
-    "classic_pt": "Determinação, triunfo, domínio da direção"
+    "classic_pt": "Determinação soberana, triunfo pela direção, avanço com propósito",
+    "classic_en": "Sovereign determination, triumph through direction, purposeful advance",
+    "diagnostic_question_en": "Do operational units have real autonomy or only nominal?",
+    "algedonic_en": "Facade autonomy: parts seem free, but every decision goes up for approval.",
+    "reversal_en": "Fragmentation — each part is so autonomous that the whole lost coherence.",
+    "dito_en": "Freedom is a word that the human dream nourishes, there is no one who explains it and no one who does not understand."
   },
   {
     "id": 8,
@@ -186,7 +226,12 @@
     "dito_pt": "Viver é muito perigoso.",
     "dito_source": "Guimarães Rosa, 'Grande Sertão: Veredas'",
     "status": "confirmed",
-    "classic_pt": "Equilíbrio, verdade, consequência justa"
+    "classic_pt": "Equilíbrio entre forças, verdade nua, consequência inevitável",
+    "classic_en": "Balance between forces, naked truth, inevitable consequence",
+    "diagnostic_question_en": "Are we diagnosing the real system or an idealized model of it?",
+    "algedonic_en": "Biased diagnosis: we see what we want to see, not what is.",
+    "reversal_en": "Analytical paralysis — we diagnose infinitely without ever acting.",
+    "dito_en": "Living is very dangerous."
   },
   {
     "id": 9,
@@ -207,7 +252,12 @@
     "dito_pt": "A arte não reproduz o visível, torna visível.",
     "dito_source": "Paulo Leminski (atrib.)",
     "status": "confirmed",
-    "classic_pt": "Introspecção, busca solitária, iluminação interior"
+    "classic_pt": "Busca solitária, introspecção radical, lanterna na escuridão",
+    "classic_en": "Solitary search, radical introspection, lantern in darkness",
+    "diagnostic_question_en": "Where does the model diverge from reality? What information are we losing?",
+    "algedonic_en": "Map-territory confusion: we are managing the model, not the real system.",
+    "reversal_en": "Refusal to model — without any model, no diagnosis is possible.",
+    "dito_en": "Art does not reproduce the visible, it makes visible."
   },
   {
     "id": 10,
@@ -228,7 +278,12 @@
     "dito_pt": "Navegar é preciso, viver não é preciso.",
     "dito_source": "Fernando Pessoa (via tradição luso-brasileira)",
     "status": "confirmed",
-    "classic_pt": "Ciclos, destino, mudança inevitável"
+    "classic_pt": "Ciclos do destino, mudança inevitável, roda que não para",
+    "classic_en": "Cycles of destiny, inevitable change, wheel that never stops",
+    "diagnostic_question_en": "Can this system survive on its own? What does it depend on?",
+    "algedonic_en": "Vital dependence: the system cannot survive without external support that may disappear.",
+    "reversal_en": "Illusory self-sufficiency — the system denies its real dependencies.",
+    "dito_en": "To navigate is necessary, to live is not necessary."
   },
   {
     "id": 11,
@@ -249,7 +304,12 @@
     "dito_pt": "De tudo ao meu amor serei atento.",
     "dito_source": "Vinicius de Moraes, 'Soneto de Fidelidade'",
     "status": "confirmed",
-    "classic_pt": "Coragem interior, persuasão gentil, domínio sereno"
+    "classic_pt": "Coragem interior, persuasão gentil, domínio sereno das forças",
+    "classic_en": "Inner courage, gentle persuasion, serene mastery of forces",
+    "diagnostic_question_en": "What information are we filtering? Is the filter calibrated or blinding?",
+    "algedonic_en": "Excessive attenuation: vital information is being cut at the filter.",
+    "reversal_en": "No filter — the system is flooded by data it cannot process.",
+    "dito_en": "To everything in my love I shall be attentive."
   },
   {
     "id": 12,
@@ -270,7 +330,12 @@
     "dito_pt": "Meu canto de morte, Guerreiros, ouvi.",
     "dito_source": "Gonçalves Dias, 'I-Juca-Pirama'",
     "status": "confirmed",
-    "classic_pt": "Sacrifício, suspensão, visão invertida"
+    "classic_pt": "Sacrifício voluntário, suspensão do juízo, mundo visto de cabeça para baixo",
+    "classic_en": "Voluntary sacrifice, suspended judgment, world seen upside down",
+    "diagnostic_question_en": "How does the system amplify its capabilities? Is amplification proportional to need?",
+    "algedonic_en": "Voice without amplification: the system screams but nobody hears — insufficient response capacity.",
+    "reversal_en": "Distorted amplification — the signal is so amplified it becomes noise.",
+    "dito_en": "My death song, Warriors, hear."
   },
   {
     "id": 13,
@@ -291,7 +356,12 @@
     "dito_pt": "A morte é só.",
     "dito_source": "Hilda Hilst, 'Da Morte. Odes Mínimas'",
     "status": "confirmed",
-    "classic_pt": "Transformação radical, fim e recomeço"
+    "classic_pt": "Transformação radical, fim necessário para o recomeço, poda que gera vida",
+    "classic_en": "Radical transformation, necessary end for rebirth, pruning that generates life",
+    "diagnostic_question_en": "What mental model or structure needs to die for the system to evolve?",
+    "algedonic_en": "Organizational necrosis: a part died but nobody removed it — it is poisoning the whole.",
+    "reversal_en": "Premature destruction — killing the old model before having a viable alternative.",
+    "dito_en": "Death is alone."
   },
   {
     "id": 14,
@@ -312,7 +382,12 @@
     "dito_pt": "Aprendo com quem me aprende.",
     "dito_source": "Paulo Freire (atrib.)",
     "status": "confirmed",
-    "classic_pt": "Equilíbrio, paciência, síntese de opostos"
+    "classic_pt": "Equilíbrio dinâmico, paciência alquímica, síntese de opostos em movimento",
+    "classic_en": "Dynamic balance, alchemical patience, synthesis of opposites in motion",
+    "diagnostic_question_en": "Are feedback loops working? Does information return to those who can act?",
+    "algedonic_en": "Broken loop: action produces results, but results do not inform the next action.",
+    "reversal_en": "Uncontrolled positive feedback loop — the system accelerates without brakes until collapse.",
+    "dito_en": "I learn from those who learn from me."
   },
   {
     "id": 15,
@@ -333,7 +408,12 @@
     "dito_pt": "O cortiço acordou, como sempre, com o barulho dos galos.",
     "dito_source": "Aluísio Azevedo, 'O Cortiço'",
     "status": "confirmed",
-    "classic_pt": "Aprisionamento, ilusão de controle, sombra"
+    "classic_pt": "Aprisionamento voluntário, ilusão de controle, sombra que governa",
+    "classic_en": "Voluntary imprisonment, illusion of control, governing shadow",
+    "diagnostic_question_en": "Where is the pathological concentration of power in this system?",
+    "algedonic_en": "Central bottleneck: everything depends on a single point — and that point is overloaded.",
+    "reversal_en": "Chaotic decentralization — power distributed without coherence, nobody answers for anything.",
+    "dito_en": "The tenement woke up, as always, to the sound of roosters."
   },
   {
     "id": 16,
@@ -354,7 +434,12 @@
     "dito_pt": "Não tenho nada a perder, nem a pretensão de ganhar.",
     "dito_source": "Torquato Neto, 'Cogito'",
     "status": "confirmed",
-    "classic_pt": "Destruição súbita, revelação, ruptura libertadora"
+    "classic_pt": "Destruição súbita, revelação violenta, ruptura que liberta",
+    "classic_en": "Sudden destruction, violent revelation, rupture that liberates",
+    "diagnostic_question_en": "Which viability buffers are running out? How much time remains?",
+    "algedonic_en": "Imminent collapse: pain signals were ignored for too long.",
+    "reversal_en": "Preventive panic — destroying what works out of fear of collapse, self-fulfilling prophecy.",
+    "dito_en": "I have nothing to lose, nor the pretension to gain."
   },
   {
     "id": 17,
@@ -375,7 +460,12 @@
     "dito_pt": "Ninguém é forte sozinho.",
     "dito_source": "Provérbio quilombola",
     "status": "confirmed",
-    "classic_pt": "Esperança, inspiração, conexão cósmica"
+    "classic_pt": "Esperança cósmica, inspiração coletiva, conexão com o infinito",
+    "classic_en": "Cosmic hope, collective inspiration, connection with the infinite",
+    "diagnostic_question_en": "What would a truly non-hierarchical conversation about this problem look like?",
+    "algedonic_en": "Wasted intelligence: the right people exist in the system but never meet.",
+    "reversal_en": "Forced collectivism — decision by consensus where quick decision was needed.",
+    "dito_en": "Nobody is strong alone."
   },
   {
     "id": 18,
@@ -396,7 +486,12 @@
     "dito_pt": "Há muitas noites dentro da noite.",
     "dito_source": "Manoel de Barros, 'Livro sobre Nada'",
     "status": "confirmed",
-    "classic_pt": "Ilusão, medo, o desconhecido interior"
+    "classic_pt": "Ilusão, medo ancestral, o desconhecido que habita dentro",
+    "classic_en": "Illusion, ancestral fear, the unknown that dwells within",
+    "diagnostic_question_en": "Which parts of the system are black boxes? Do we need to open them or just understand their inputs and outputs?",
+    "algedonic_en": "Total opacity: we do not know why the system produces what it produces.",
+    "reversal_en": "Obsessive transparency — trying to open every black box destroys necessary abstraction.",
+    "dito_en": "There are many nights within the night."
   },
   {
     "id": 19,
@@ -417,7 +512,12 @@
     "dito_pt": "Todo dia o sol levanta e a gente canta ao sol de todo dia.",
     "dito_source": "Caetano Veloso, 'Luz do Sol'",
     "status": "confirmed",
-    "classic_pt": "Vitalidade, clareza, alegria radiante"
+    "classic_pt": "Vitalidade radiante, clareza absoluta, alegria que ilumina o sistema",
+    "classic_en": "Radiant vitality, absolute clarity, joy that illuminates the system",
+    "diagnostic_question_en": "Is the system capable of reproducing and maintaining itself? Or does it depend on constant external energy?",
+    "algedonic_en": "Vital dependence: the system stopped self-producing — it needs continuous external injection.",
+    "reversal_en": "Narcissistic autopoiesis — the system only produces itself, ignores the environment.",
+    "dito_en": "Every day the sun rises and we sing to the sun of every day."
   },
   {
     "id": 20,
@@ -438,7 +538,12 @@
     "dito_pt": "É preciso ter força, é preciso ter raça, é preciso ter gana sempre.",
     "dito_source": "Milton Nascimento & Fernando Brant, 'Maria, Maria'",
     "status": "confirmed",
-    "classic_pt": "Renascimento, chamado, despertar coletivo"
+    "classic_pt": "Renascimento coletivo, chamado que não pode ser ignorado, despertar sistêmico",
+    "classic_en": "Collective rebirth, call that cannot be ignored, systemic awakening",
+    "diagnostic_question_en": "Who is looking outward and forward? Does System 4 actually exist?",
+    "algedonic_en": "Strategic blindness: the system is efficient in the present but cannot see the future.",
+    "reversal_en": "Disconnected futurism — System 4 makes brilliant plans that System 3 cannot execute.",
+    "dito_en": "One must have strength, one must have spirit, one must always have will."
   },
   {
     "id": 21,
@@ -459,7 +564,12 @@
     "dito_pt": "Eu é um outro.",
     "dito_source": "Rimbaud (via Oswald de Andrade, 'Manifesto Antropófago')",
     "status": "confirmed",
-    "classic_pt": "Completude, integração, totalidade realizada"
+    "classic_pt": "Completude realizada, integração de todos os sistemas, totalidade viva",
+    "classic_en": "Realized completeness, integration of all systems, living totality",
+    "diagnostic_question_en": "What is the fundamental identity of this system? Who defines what it is?",
+    "algedonic_en": "Identity crisis: the system no longer knows what it is — it has lost its axis.",
+    "reversal_en": "Rigid identity — the system knows so well who it is that it refuses to evolve.",
+    "dito_en": "I is another."
   },
   {
     "id": 22,
@@ -480,7 +590,12 @@
     "dito_pt": "No princípio era o verbo, e o verbo era movimento, e o movimento era vida.",
     "dito_source": "Guimarães Rosa, Grande Sertão: Veredas",
     "status": "confirmed",
-    "classic_pt": "Semente da informação, primeiro impulso comunicativo"
+    "classic_pt": "Semente da informação, primeiro impulso comunicativo",
+    "classic_en": "Seed of information, first communicative impulse",
+    "diagnostic_question_en": "What is the weakest signal your system still cannot hear?",
+    "algedonic_en": "The system is deaf to its own inner state — first signs of collapse arrive with no channel to carry them.",
+    "reversal_en": "White noise: excess information that paralyzes, where every signal seems urgent and none can be distinguished.",
+    "dito_en": "In the beginning was the word, and the word was movement, and the movement was life."
   },
   {
     "id": 23,
@@ -501,7 +616,12 @@
     "dito_pt": "Falar não é apenas emitir sons. Falar é tocar o outro no lugar onde ele ainda não sabe que dói.",
     "dito_source": "Conceição Evaristo, Olhos d'Água",
     "status": "confirmed",
-    "classic_pt": "Diálogo nascente, canal de ida e volta"
+    "classic_pt": "Diálogo nascente, canal de ida e volta",
+    "classic_en": "Nascent dialogue, two-way channel",
+    "diagnostic_question_en": "Is there really a return channel? Or are you sending messages into an echoless abyss?",
+    "algedonic_en": "One-way communication disguised as dialogue — orders descend, silence rises, and the system calls this management.",
+    "reversal_en": "Echo without substance: two nodes that merely confirm each other, creating a resonance chamber with no contact with reality.",
+    "dito_en": "Speaking is not merely emitting sounds. Speaking is touching the other where they do not yet know it hurts."
   },
   {
     "id": 24,
@@ -522,7 +642,12 @@
     "dito_pt": "A verdade não mora em um só lugar. Ela é migrante, e passa de boca em boca até encontrar quem a reconheça.",
     "dito_source": "Adélia Prado (atrib.)",
     "status": "confirmed",
-    "classic_pt": "Triangulação, verificação por múltiplas fontes"
+    "classic_pt": "Triangulação, verificação por múltiplas fontes",
+    "classic_en": "Triangulation, verification through multiple sources",
+    "diagnostic_question_en": "How many independent sources of information confirm what you believe to be true about your system?",
+    "algedonic_en": "The system has a single data source about itself — and that source has interest in distorting what it reports.",
+    "reversal_en": "Infinite triangulation paralysis: the system never acts because it always waits for one more perspective, one more voice, one more data point.",
+    "dito_en": "Truth does not live in one place alone. It migrates, passing from mouth to mouth until it finds someone who recognizes it."
   },
   {
     "id": 25,
@@ -543,7 +668,12 @@
     "dito_pt": "Os quatro cantos do mundo me chamavam. Fui a nenhum, porque em cada um morava um medo diferente.",
     "dito_source": "Carlos Drummond de Andrade, A Rosa do Povo",
     "status": "confirmed",
-    "classic_pt": "Vigilância em quatro direções, escuta ambiental"
+    "classic_pt": "Vigilância em quatro direções, escuta ambiental",
+    "classic_en": "Surveillance in four directions, environmental listening",
+    "diagnostic_question_en": "Is your system monitoring the external environment in all relevant directions, or only in directions that confirm its current strategy?",
+    "algedonic_en": "Sectoral monitoring: the system only sees what it expected to find, ignoring threats and opportunities from unmapped directions.",
+    "reversal_en": "Paranoid surveillance: everything is signal, everything is threat, the system spends all processing capacity on monitoring with nothing left to act.",
+    "dito_en": "The four corners of the world called me. I went to none, because in each one lived a different fear."
   },
   {
     "id": 26,
@@ -564,7 +694,12 @@
     "dito_pt": "Entre o que penso, o que quero dizer, o que digo e o que você ouve — existe todo um país de mal-entendidos.",
     "dito_source": "Clarice Lispector, A Paixão Segundo G.H.",
     "status": "confirmed",
-    "classic_pt": "Ruído nas fronteiras, perda na tradução"
+    "classic_pt": "Ruído nas fronteiras, perda na tradução",
+    "classic_en": "Noise at borders, loss in translation between subsystems",
+    "diagnostic_question_en": "What is lost when information crosses boundaries between departments, levels, or communities of your system?",
+    "algedonic_en": "Corrupting interfaces: information reaching the decision center is so different from original reality that decisions seem absurd to those in operations.",
+    "reversal_en": "Illusory fidelity: the system invests in high-fidelity technical channels while ignoring that the problem is semantic.",
+    "dito_en": "Between what I think, what I want to say, what I say, and what you hear — there is a whole country of misunderstandings."
   },
   {
     "id": 27,
@@ -585,7 +720,12 @@
     "dito_pt": "Minha avó não me contou histórias. Ela me deu ferramentas. Só muito depois entendi que as histórias eram as ferramentas.",
     "dito_source": "Conceição Evaristo, Revista Cult, 2016",
     "status": "confirmed",
-    "classic_pt": "Memória que alimenta o presente, aprendizado histórico"
+    "classic_pt": "Memória que alimenta o presente, aprendizado histórico",
+    "classic_en": "Memory that feeds the present, historical learning",
+    "diagnostic_question_en": "What past mistakes is your system repeating now because institutional memory was lost or ignored?",
+    "algedonic_en": "Systemic amnesia: each new manager or political cycle starts from zero, condemning the system to repeat the same crises with different faces.",
+    "reversal_en": "Tradition as prison: the system clings so tightly to memory that it cannot distinguish what must be preserved from what must be transformed.",
+    "dito_en": "My grandmother did not tell me stories. She gave me tools. Only much later did I understand that the stories were the tools."
   },
   {
     "id": 28,
@@ -606,7 +746,12 @@
     "dito_pt": "Cada um que passa na minha vida, passa sozinho, mas não vai só — leva um pouco de mim, deixa um pouco de si.",
     "dito_source": "Vinícius de Moraes (atrib.)",
     "status": "confirmed",
-    "classic_pt": "Multiplicidade de narrativas, variedade de perspectivas"
+    "classic_pt": "Multiplicidade de narrativas, variedade de perspectivas",
+    "classic_en": "Multiplicity of narrative perspectives, variety of viewpoints",
+    "diagnostic_question_en": "How many genuinely different narratives about the state of your system reach the decision centers?",
+    "algedonic_en": "Narrative monoculture: a single dominant perspective defines what counts as relevant information, and all discordant voices are filtered before reaching the top.",
+    "reversal_en": "Cacophony without synthesis: so many conflicting narratives that the system cannot build any coherent understanding of its own state.",
+    "dito_en": "Each person who passes through my life passes alone, but does not go alone — takes a little of me, leaves a little of themselves."
   },
   {
     "id": 29,
@@ -627,7 +772,12 @@
     "dito_pt": "A dor que não se diz vira dor que não se cura.",
     "dito_source": "Carolina Maria de Jesus, Quarto de Despejo",
     "status": "confirmed",
-    "classic_pt": "Alarme direto, sinal que bypassa a hierarquia"
+    "classic_pt": "Alarme direto, sinal que bypassa a hierarquia",
+    "classic_en": "Direct alarm, signal that bypasses hierarchy",
+    "diagnostic_question_en": "When something is going very wrong at the base of your system, can that signal reach the appropriate decision level without being filtered, softened, or blocked?",
+    "algedonic_en": "Obstructed algedonic channel: crises deepen silently while official reports show green — because nobody wants to be the bearer of bad news.",
+    "reversal_en": "Chronic alarm: the algedonic channel has been triggered so many times for trivial reasons that decision-makers learned to ignore it.",
+    "dito_en": "Pain that is not spoken becomes pain that cannot be cured."
   },
   {
     "id": 30,
@@ -648,7 +798,12 @@
     "dito_pt": "O sertão está em toda parte. Mas é a parte mais difícil de enxergar justamente quando você está dentro dele.",
     "dito_source": "Guimarães Rosa, Grande Sertão: Veredas",
     "status": "confirmed",
-    "classic_pt": "Rede de redes, inteligência de segunda ordem"
+    "classic_pt": "Rede de redes, inteligência de segunda ordem",
+    "classic_en": "Network of networks, second-order intelligence",
+    "diagnostic_question_en": "Is there someone or some process that monitors the quality of your system's own monitoring circuits?",
+    "algedonic_en": "Blind surveillance: the system believes its information channels work well because nobody was assigned to verify whether they work well.",
+    "reversal_en": "Meta-paralysis: the system is so busy monitoring its monitors that it lost contact with operational reality.",
+    "dito_en": "The backlands are everywhere. But the hardest part to see is precisely when you are inside it."
   },
   {
     "id": 31,
@@ -669,7 +824,12 @@
     "dito_pt": "Conhecer-se é a tarefa mais longa. A maioria morre sem ter começado.",
     "dito_source": "Machado de Assis, Dom Casmurro",
     "status": "confirmed",
-    "classic_pt": "Circuito completo, homeostase informacional plena"
+    "classic_pt": "Circuito completo, homeostase informacional plena",
+    "classic_en": "Complete circuit, full informational homeostasis",
+    "diagnostic_question_en": "Does your system have a sufficiently faithful image of itself to know, in real time, what is working, what is failing, and what is about to change?",
+    "algedonic_en": "Collapse of systemic self-image: the system made so many decisions based on incorrect data that its understanding of itself completely diverged from operational reality.",
+    "reversal_en": "Systemic narcissism: the complete circuit becomes a mirror — the system only processes information that confirms its own greatness.",
+    "dito_en": "Knowing oneself is the longest task. Most die without having started."
   },
   {
     "id": 32,
@@ -690,7 +850,12 @@
     "dito_pt": "Aprender é descobrir que certas perguntas são mais importantes do que qualquer resposta que você já teve.",
     "dito_source": "Guimarães Rosa, correspondência com Harriet de Onís",
     "status": "confirmed",
-    "classic_pt": "Aprendiz da escuta, sensibilidade em formação"
+    "classic_pt": "Aprendiz da escuta, sensibilidade em formação",
+    "classic_en": "Apprentice of listening, sensitivity in formation",
+    "diagnostic_question_en": "Who are the apprentices in your system being trained to read and interpret signals that veterans can no longer see?",
+    "algedonic_en": "Abandoned initiation: young people in the system have no mentors to teach them to distinguish relevant information from institutional noise.",
+    "reversal_en": "The Page who does not listen: enthusiasm without discernment, transmits everything received without filter, amplifying noise as much as signal.",
+    "dito_en": "Learning is discovering that certain questions are more important than any answer you have ever had."
   },
   {
     "id": 33,
@@ -711,7 +876,12 @@
     "dito_pt": "O homem que parte não sabe o que carrega. Só descobre quando chega e vê o que faltava no lugar aonde foi.",
     "dito_source": "João Guimarães Rosa, Primeiras Estórias",
     "status": "confirmed",
-    "classic_pt": "Mensageiro ativo, operador dos canais"
+    "classic_pt": "Mensageiro ativo, operador dos canais",
+    "classic_en": "Active messenger, channel operator, signal carrier",
+    "diagnostic_question_en": "Who are the people who, in practice, keep your system's information circuits running — and do they have the recognition and resources they need?",
+    "algedonic_en": "Knight without cause: the information operator is so focused on transmission speed that they stopped questioning whether what they transmit is still relevant or true.",
+    "reversal_en": "Scattered knight: energy without direction, compulsively opens new communication channels without ever checking if existing ones work.",
+    "dito_en": "The man who leaves does not know what he carries. He only discovers when he arrives and sees what was missing in the place he went."
   },
   {
     "id": 34,
@@ -732,7 +902,12 @@
     "dito_pt": "Toda mulher que conta uma história está recusando o esquecimento. E recusar o esquecimento é um ato político.",
     "dito_source": "Conceição Evaristo, Becos da Memória",
     "status": "confirmed",
-    "classic_pt": "Guardiã da memória viva, mestra da oralidade"
+    "classic_pt": "Guardiã da memória viva, mestra da oralidade",
+    "classic_en": "Guardian of living memory, master of orality",
+    "diagnostic_question_en": "Who in your system actively cares for the circuits of memory and oral transmission — and does this person have authority to ensure knowledge is not lost in transitions?",
+    "algedonic_en": "The exiled Queen: the system lost or marginalized the guardians of its living memory, and now operates without historical context.",
+    "reversal_en": "Queen who controls the narrative: uses her mastery of information circuits to determine who can speak and what can be said.",
+    "dito_en": "Every woman who tells a story is refusing oblivion. And refusing oblivion is a political act."
   },
   {
     "id": 35,
@@ -753,7 +928,12 @@
     "dito_pt": "Governar é saber o que não se sabe. O rei que pensa que sabe tudo já começou a cair.",
     "dito_source": "Machado de Assis, Esaú e Jacó",
     "status": "confirmed",
-    "classic_pt": "Arquiteto dos circuitos, governança da informação"
+    "classic_pt": "Arquiteto dos circuitos, governança da informação",
+    "classic_en": "Architect of circuits, governance of information architecture",
+    "diagnostic_question_en": "Was your system's information architecture consciously designed to serve the viability of the whole, or did it emerge from historical accumulations of power?",
+    "algedonic_en": "Architect disconnected from reality: the King designed elegant circuits on paper but never verified whether they work in practice.",
+    "reversal_en": "King who does not delegate knowledge: centralizes all information interpretation in himself, creating a cognitive bottleneck.",
+    "dito_en": "To govern is to know what one does not know. The king who thinks he knows everything has already begun to fall."
   },
   {
     "id": 36,
@@ -774,7 +954,12 @@
     "dito_pt": "O sertão é do tamanho do mundo.",
     "dito_source": "João Guimarães Rosa, Grande Sertão: Veredas",
     "status": "confirmed",
-    "classic_pt": "Semente do lugar, nicho mínimo de existência"
+    "classic_pt": "Semente do lugar, nicho mínimo de existência",
+    "classic_en": "Seed of place, minimal niche of existence",
+    "diagnostic_question_en": "Does the system know the minimum territory necessary for its survival?",
+    "algedonic_en": "System without ground: absence of defined niche generates identity drift and collapse of belonging.",
+    "reversal_en": "Obsessive rooting: refusal of any expansion or transformation of original territory.",
+    "dito_en": "The backlands are the size of the world."
   },
   {
     "id": 37,
@@ -795,7 +980,12 @@
     "dito_pt": "No meio do caminho tinha uma pedra / tinha uma pedra no meio do caminho.",
     "dito_source": "Carlos Drummond de Andrade, Alguma Poesia",
     "status": "confirmed",
-    "classic_pt": "Percepção dual do ambiente, escuta de dois mundos"
+    "classic_pt": "Percepção dual do ambiente, escuta de dois mundos",
+    "classic_en": "Dual perception of environment, listening to two worlds",
+    "diagnostic_question_en": "Can the system inhabit two worlds at once without losing its identity in either?",
+    "algedonic_en": "Border blindness: system unable to distinguish where one environment ends and another begins.",
+    "reversal_en": "Paralyzing dual loyalty: the system oscillates between two territories without ever settling in either.",
+    "dito_en": "In the middle of the road there was a stone / there was a stone in the middle of the road."
   },
   {
     "id": 38,
@@ -816,7 +1006,12 @@
     "dito_pt": "Eu não sabia que existiam tantos mundos dentro do mesmo mundo.",
     "dito_source": "Conceição Evaristo, Becos da Memória",
     "status": "confirmed",
-    "classic_pt": "Mapeamento cruzado, três olhares sobre o entorno"
+    "classic_pt": "Mapeamento cruzado, três olhares sobre o entorno",
+    "classic_en": "Crossed mapping, three perspectives on surroundings",
+    "diagnostic_question_en": "How many observation points does the system use to read its environment — and are they sufficiently disparate?",
+    "algedonic_en": "False triangulation: three data sources that actually say the same thing with different voices.",
+    "reversal_en": "Analytical paralysis: so many perspectives that the system never reaches an operational synthesis.",
+    "dito_en": "I did not know there were so many worlds inside the same world."
   },
   {
     "id": 39,
@@ -837,7 +1032,12 @@
     "dito_pt": "Não sou daqui nem sou de lá / não tenho idade nem tenho cor.",
     "dito_source": "Caetano Veloso, Qualquer Coisa",
     "status": "confirmed",
-    "classic_pt": "Orientação nos quatro eixos, bússola identitária"
+    "classic_pt": "Orientação nos quatro eixos, bússola identitária",
+    "classic_en": "Orientation on four axes, identity compass",
+    "diagnostic_question_en": "Does the system know who it is when the wind changes — where it came from, where it is, where it goes, and with whom?",
+    "algedonic_en": "Cardinal disorientation: system unable to locate itself in the environment when external references change.",
+    "reversal_en": "Compass rigidity: identity so fixed on four axes that the system does not move even when it needs to.",
+    "dito_en": "I am not from here nor from there / I have no age nor color."
   },
   {
     "id": 40,
@@ -858,7 +1058,12 @@
     "dito_pt": "A terra é a mãe dos homens pobres, e eles a defendem com o corpo.",
     "dito_source": "Jorge Amado, Terras do Sem Fim",
     "status": "confirmed",
-    "classic_pt": "Tensão de fronteira, limites sob pressão"
+    "classic_pt": "Tensão de fronteira, limites sob pressão",
+    "classic_en": "Boundary tension, limits under pressure",
+    "diagnostic_question_en": "Who defines the system's boundaries — the system itself or the forces trying to dissolve it?",
+    "algedonic_en": "Silent erosion of boundaries: the system loses territory without realizing, one compromise at a time.",
+    "reversal_en": "Besieged fortress: the system defends every boundary as if every loss were existential.",
+    "dito_en": "The land is the mother of poor men, and they defend it with their bodies."
   },
   {
     "id": 41,
@@ -879,7 +1084,12 @@
     "dito_pt": "Há que saber o que a terra guarda antes de nela plantar.",
     "dito_source": "Euclides da Cunha, Os Sertões",
     "status": "confirmed",
-    "classic_pt": "Camadas do contexto, estratificação ambiental"
+    "classic_pt": "Camadas do contexto, estratificação ambiental",
+    "classic_en": "Layers of context, environmental stratification",
+    "diagnostic_question_en": "Does the system know all the layers of context in which it operates — historical, ecological, economic, cultural, political, spiritual?",
+    "algedonic_en": "Shallow environmental reading: the system responds only to the surface and ignores the layers that determine the future.",
+    "reversal_en": "Infinite excavation: search for depth that never finds firm ground to act upon.",
+    "dito_en": "One must know what the earth holds before planting in it."
   },
   {
     "id": 42,
@@ -900,7 +1110,12 @@
     "dito_pt": "Esquecer é uma forma de morrer enquanto ainda se está vivo.",
     "dito_source": "Conceição Evaristo, Poemas da recordação e outros movimentos",
     "status": "confirmed",
-    "classic_pt": "Memória do território, retenção histórica do lugar"
+    "classic_pt": "Memória do território, retenção histórica do lugar",
+    "classic_en": "Memory of territory, historical retention of place",
+    "diagnostic_question_en": "Does the system have living memory of territory — or only data without smell, color, and weight?",
+    "algedonic_en": "Territorial amnesia: loss of accumulated knowledge about the environment leads to repetition of historical errors.",
+    "reversal_en": "Musealization of the past: memory that paralyzes instead of informing, turning history into prison.",
+    "dito_en": "Forgetting is a form of dying while still alive."
   },
   {
     "id": 43,
@@ -921,7 +1136,12 @@
     "dito_pt": "O perigo não avisa — ele simplesmente chega.",
     "dito_source": "Carolina Maria de Jesus, Quarto de Despejo",
     "status": "confirmed",
-    "classic_pt": "Varredura multiperspectiva, olhos em todas as direções"
+    "classic_pt": "Varredura multiperspectiva, olhos em todas as direções",
+    "classic_en": "Multi-perspective scanning, eyes in all directions",
+    "diagnostic_question_en": "Does the system have eyes in all directions of the environment — or does it only see what it wants to see?",
+    "algedonic_en": "Environmental blind spot: threat approaches from unmonitored angle and the system is caught without defenses.",
+    "reversal_en": "Scanning paranoia: obsessive surveillance that consumes resources and paralyzes action through excess signals.",
+    "dito_en": "Danger does not warn — it simply arrives."
   },
   {
     "id": 44,
@@ -942,7 +1162,12 @@
     "dito_pt": "Minha pátria é minha língua.",
     "dito_source": "Fernando Pessoa (epígrafe recorrente na literatura brasileira)",
     "status": "confirmed",
-    "classic_pt": "Múltiplas raízes convergindo, integração de pertencimento"
+    "classic_pt": "Múltiplas raízes convergindo, integração de pertencimento",
+    "classic_en": "Multiple roots converging, integration of belonging",
+    "diagnostic_question_en": "Do the system's multiple roots nourish a cohesive identity — or do they compete until exhaustion?",
+    "algedonic_en": "Fragmentation of belonging: roots pulling in opposite directions until the system splits apart.",
+    "reversal_en": "Identity monoculture: one root that suffocates all others in the name of unity.",
+    "dito_en": "My homeland is my language."
   },
   {
     "id": 45,
@@ -963,7 +1188,12 @@
     "dito_pt": "A terra dá o que a gente planta, mas cobra o que a gente descuida.",
     "dito_source": "Guimarães Rosa, Sagarana",
     "status": "confirmed",
-    "classic_pt": "Maturidade territorial, equilíbrio com o ambiente"
+    "classic_pt": "Maturidade territorial, equilíbrio com o ambiente",
+    "classic_en": "Territorial maturity, equilibrium with environment",
+    "diagnostic_question_en": "Has the system achieved territorial maturity — does it know who it is, where it stands, and how it sustains itself over time?",
+    "algedonic_en": "Illusory plenitude: appearance of stability hiding silent exploitation that erodes the ground beneath.",
+    "reversal_en": "Fertile stagnation: territory so complete it no longer admits new inhabitants, ideas, or creative disturbances.",
+    "dito_en": "The earth gives what we plant, but charges for what we neglect."
   },
   {
     "id": 46,
@@ -984,7 +1214,12 @@
     "dito_pt": "Aprender é descobrir que já se sabia alguma coisa, mas não se sabia que se sabia.",
     "dito_source": "Clarice Lispector, A Paixão Segundo G.H.",
     "status": "confirmed",
-    "classic_pt": "Aprendiz do território, leitura dos sinais da terra"
+    "classic_pt": "Aprendiz do território, leitura dos sinais da terra",
+    "classic_en": "Territorial apprentice, learning to read environmental signals",
+    "diagnostic_question_en": "Is the apprentice genuinely curious about the territory — or merely reproducing inherited maps without questioning them?",
+    "algedonic_en": "Border naivety: apprentice who does not recognize territorial threats due to lacking experience in environmental reading.",
+    "reversal_en": "Rootless precocity: excess theory about territory without any embodied experience on the ground.",
+    "dito_en": "Learning is discovering that you already knew something, but did not know that you knew."
   },
   {
     "id": 47,
@@ -1005,7 +1240,12 @@
     "dito_pt": "Navegar é preciso, viver não é preciso.",
     "dito_source": "Fernando Pessoa (tradição lusófona)",
     "status": "confirmed",
-    "classic_pt": "Agente de fronteira, negociador de limites vivos"
+    "classic_pt": "Agente de fronteira, negociador de limites vivos",
+    "classic_en": "Border agent, negotiator of living boundaries",
+    "diagnostic_question_en": "Is the knight expanding territory wisely — or merely marking ground by expansionist impulse?",
+    "algedonic_en": "Expansion without consolidation: boundaries pushed beyond maintenance capacity, generating empty control spaces.",
+    "reversal_en": "Border hyperactivity: knight who redraws limits so frequently that nobody knows where the system begins.",
+    "dito_en": "To navigate is necessary, to live is not necessary."
   },
   {
     "id": 48,
@@ -1026,7 +1266,12 @@
     "dito_pt": "Ser mulher, negra e pobre, neste país, é habitar três territórios de luta ao mesmo tempo.",
     "dito_source": "Conceição Evaristo, Revista Cult, 2017",
     "status": "confirmed",
-    "classic_pt": "Guardiã do terreiro, nutridora da identidade coletiva"
+    "classic_pt": "Guardiã do terreiro, nutridora da identidade coletiva",
+    "classic_en": "Guardian of the systemic terreiro, nurturer of collective identity",
+    "diagnostic_question_en": "Is the queen nurturing territorial identity wisely — or protecting territory at the cost of its renewal?",
+    "algedonic_en": "Guardian exhaustion: territorial identity does not maintain itself and the overburdened curator begins to err at the boundaries.",
+    "reversal_en": "Maternal possessiveness: territory so protected it becomes a museum, unable to welcome new voices and bodies.",
+    "dito_en": "Being a woman, Black, and poor in this country is inhabiting three territories of struggle at once."
   },
   {
     "id": 49,
@@ -1047,7 +1292,12 @@
     "dito_pt": "Cada um de nós tem um país dentro de si, e esse país é a última fronteira que ninguém pode conquistar.",
     "dito_source": "Machado de Assis, Memórias Póstumas de Brás Cubas (paráfrase consagrada)",
     "status": "confirmed",
-    "classic_pt": "Arquiteto da identidade, definidor dos limites últimos"
+    "classic_pt": "Arquiteto da identidade, definidor dos limites últimos",
+    "classic_en": "Architect of systemic identity, definer of ultimate limits",
+    "diagnostic_question_en": "Does the king know the ultimate limits of the territory — and have the courage to say no when the system is invited to betray itself?",
+    "algedonic_en": "Identity vacillation at the top: when System 5 loses clarity about who the system is, the entire decision chain oscillates.",
+    "reversal_en": "Territorial tyranny: king who confuses his limits with the limits of the world, refusing to recognize any territory beyond his own.",
+    "dito_en": "Each of us has a country within, and that country is the last frontier nobody can conquer."
   },
   {
     "id": 50,
@@ -1068,7 +1318,12 @@
     "dito_pt": "No princípio, o verbo era ato — e o ato, mão que toca o mundo.",
     "dito_source": "João Guimarães Rosa, Grande Sertão: Veredas",
     "status": "confirmed",
-    "classic_pt": "Semente da ação, unidade mínima de trabalho viável"
+    "classic_pt": "Semente da ação, unidade mínima de trabalho viável",
+    "classic_en": "Seed of action, minimal viable work unit",
+    "diagnostic_question_en": "What is the smallest work unit that, alone, still produces something meaningful for the collective?",
+    "algedonic_en": "Atomized work that lost connection with purpose — rootless action, effort without collective fruit.",
+    "reversal_en": "Wasted potential: the seed that never germinates for lack of collective soil or excess individual control.",
+    "dito_en": "In the beginning, the word was act — and the act, a hand touching the world."
   },
   {
     "id": 51,
@@ -1089,7 +1344,12 @@
     "dito_pt": "Dois que se entendem já formam um povo.",
     "dito_source": "Carlos Drummond de Andrade, Discurso de Primavera",
     "status": "confirmed",
-    "classic_pt": "Par de ofícios, coordenação sem perda de autonomia"
+    "classic_pt": "Par de ofícios, coordenação sem perda de autonomia",
+    "classic_en": "Pair of crafts, coordination without loss of autonomy",
+    "diagnostic_question_en": "Do the two teams that need to work together know exactly where each one's responsibility begins and ends?",
+    "algedonic_en": "Overlap of functions or responsibility vacuum between two operational units — noise that wears without producing.",
+    "reversal_en": "Paralyzing mutual dependence: two crafts that cannot operate without reciprocal authorization, creating a double bottleneck.",
+    "dito_en": "Two who understand each other already form a people."
   },
   {
     "id": 52,
@@ -1110,7 +1370,12 @@
     "dito_pt": "Três pessoas carregando a mesma pedra não é fraqueza — é a pedra que exige três.",
     "dito_source": "Conceição Evaristo, Becos da Memória",
     "status": "confirmed",
-    "classic_pt": "Trança coletiva, redundância operacional distribuída"
+    "classic_pt": "Trança coletiva, redundância operacional distribuída",
+    "classic_en": "Collective braid, distributed operational redundancy",
+    "diagnostic_question_en": "Is collective work structured so that one person's absence does not paralyze the whole?",
+    "algedonic_en": "Mutirão that is actually servitude: collective work without reciprocity, where some always arrive and are never called back.",
+    "reversal_en": "Dilution of responsibility: when everyone does everything, nobody answers for anything — the braid unravels into loose threads.",
+    "dito_en": "Three people carrying the same stone is not weakness — it is the stone that demands three."
   },
   {
     "id": 53,
@@ -1131,7 +1396,12 @@
     "dito_pt": "A mesa posta não alimenta quem não tem cadeira.",
     "dito_source": "Carolina Maria de Jesus, Quarto de Despejo",
     "status": "confirmed",
-    "classic_pt": "Mesa firme, estabilidade mínima de recursos"
+    "classic_pt": "Mesa firme, estabilidade mínima de recursos",
+    "classic_en": "Firm table, minimal stability of resources",
+    "diagnostic_question_en": "Does the operation have the four minimum resources — time, tool, person, and purpose — or does it chronically lack one?",
+    "algedonic_en": "Unbalanced operation consuming its own resources to sustain itself: the table burning its own legs as firewood.",
+    "reversal_en": "Sterile rigidity: structure so stabilized it cannot adapt — the table that does not move when the ground changes.",
+    "dito_en": "A set table does not feed those without a chair."
   },
   {
     "id": 54,
@@ -1152,7 +1422,12 @@
     "dito_pt": "O caminho se bifurca e os dois lados dizem ser o certo.",
     "dito_source": "João Cabral de Melo Neto, Morte e Vida Severina",
     "status": "confirmed",
-    "classic_pt": "Encruzilhada, conflito de alocação de recursos escassos"
+    "classic_pt": "Encruzilhada, conflito de alocação de recursos escassos",
+    "classic_en": "Crossroads, allocation conflict over scarce resources",
+    "diagnostic_question_en": "When two urgent projects compete for the same resource, who decides priority — and is that decision legitimate for all involved?",
+    "algedonic_en": "Resources disputed in silence: teams sabotaging each other over scarce tools, without the system recognizing the conflict.",
+    "reversal_en": "Paralysis by misunderstood equity: everyone receives half of everything and nobody can complete anything.",
+    "dito_en": "The road forks and both sides claim to be right."
   },
   {
     "id": 55,
@@ -1173,7 +1448,12 @@
     "dito_pt": "A mão que muito trabalhou sabe ensinar sem precisar falar.",
     "dito_source": "Graciliano Ramos, Vidas Secas",
     "status": "confirmed",
-    "classic_pt": "Rodízio de funções, rotação que previne concentração"
+    "classic_pt": "Rodízio de funções, rotação que previne concentração",
+    "classic_en": "Rotation of functions, preventing concentration of knowledge",
+    "diagnostic_question_en": "If the person who knows how to do this task falls ill tomorrow, does work stop — or does knowledge already circulate in the collective?",
+    "algedonic_en": "Monopolization of craft: knowledge that becomes retention power, creating systemic dependence on a single person or group.",
+    "reversal_en": "Turnover without transmission: constant function change without accumulated learning — everyone does everything and nothing is done well.",
+    "dito_en": "The hand that worked much knows how to teach without needing to speak."
   },
   {
     "id": 56,
@@ -1194,7 +1474,12 @@
     "dito_pt": "Saber sete ofícios é não ter fome — mas pode ser não ter paz.",
     "dito_source": "Guimarães Rosa, Primeiras Estórias",
     "status": "confirmed",
-    "classic_pt": "Variedade de competências, repertório operacional"
+    "classic_pt": "Variedade de competências, repertório operacional",
+    "classic_en": "Variety of competencies, operational repertoire",
+    "diagnostic_question_en": "Does the team possess, internally, all competencies necessary to complete its work cycle?",
+    "algedonic_en": "Insufficient variety: the operational unit that cannot respond alone to perturbations in its own environment.",
+    "reversal_en": "Capability inflation: so many internal specialties that the system loses focus, wasting energy maintaining rarely used competencies.",
+    "dito_en": "Knowing seven crafts means not going hungry — but it may mean not having peace."
   },
   {
     "id": 57,
@@ -1215,7 +1500,12 @@
     "dito_pt": "O barro não sabe a pressa do oleiro, mas o oleiro conhece o tempo do barro.",
     "dito_source": "Clarice Lispector, A Paixão Segundo G.H.",
     "status": "confirmed",
-    "classic_pt": "Ritmo produtivo, cadência que transforma matéria"
+    "classic_pt": "Ritmo produtivo, cadência que transforma matéria",
+    "classic_en": "Productive rhythm, cadence that transforms matter into product",
+    "diagnostic_question_en": "Was the work rhythm defined by the real capacity of the process — or imposed by external demand that ignores necessary time?",
+    "algedonic_en": "Broken cycle: production at wrong pace — too fast for quality, too slow for relevance.",
+    "reversal_en": "Cycle obsession: system so attached to its own rhythm it cannot accelerate or decelerate when context demands.",
+    "dito_en": "Clay does not know the potter's hurry, but the potter knows the clay's time."
   },
   {
     "id": 58,
@@ -1236,7 +1526,12 @@
     "dito_pt": "O que não se remenda hoje, amanhã não tem mais conserto.",
     "dito_source": "Machado de Assis, Memórias Póstumas de Brás Cubas",
     "status": "confirmed",
-    "classic_pt": "Rede de reparos, manutenção contínua sem parar"
+    "classic_pt": "Rede de reparos, manutenção contínua sem parar",
+    "classic_en": "Repair network, continuous maintenance without stopping",
+    "diagnostic_question_en": "Does the system have the capacity to repair itself while operating — or does it need to stop completely to fix itself?",
+    "algedonic_en": "Invisible wear: silent accumulation of small unrepaired breaks that eventually render the entire system inoperable.",
+    "reversal_en": "Maintenance becoming the main work: so much time fixing what breaks that no energy remains to produce.",
+    "dito_en": "What is not mended today, tomorrow has no repair."
   },
   {
     "id": 59,
@@ -1257,7 +1552,12 @@
     "dito_pt": "A roça de todos não tem dono — mas a fome de cada um é sua.",
     "dito_source": "Conceição Evaristo, Ponciá Vicêncio",
     "status": "confirmed",
-    "classic_pt": "Colheita do sistema, produto integrado entregue ao mundo"
+    "classic_pt": "Colheita do sistema, produto integrado entregue ao mundo",
+    "classic_en": "System's harvest, integrated product delivered to the world",
+    "diagnostic_question_en": "Is the result of collective work distributed so that all who worked recognize their contribution and receive their share?",
+    "algedonic_en": "Captured harvest: collective work produces results appropriated by few, destroying operational motivation.",
+    "reversal_en": "Paralyzing abundance: harvest so large the system cannot process, distribute, or learn from its own excess.",
+    "dito_en": "The field of all has no owner — but each one's hunger is their own."
   },
   {
     "id": 60,
@@ -1278,7 +1578,12 @@
     "dito_pt": "Quem começa a aprender começa a se tornar — e isso é o mais difícil de tudo.",
     "dito_source": "Guimarães Rosa, Grande Sertão: Veredas",
     "status": "confirmed",
-    "classic_pt": "Aprendiz do fazer, absorção prática do ofício"
+    "classic_pt": "Aprendiz do fazer, absorção prática do ofício",
+    "classic_en": "Apprentice of making, practical absorption of craft",
+    "diagnostic_question_en": "Do beginners in the system have space to err, learn, and be corrected — or are they thrown into full responsibility before absorbing necessary knowledge?",
+    "algedonic_en": "Abandoned apprentice: the young person with potential who finds no master, consuming system energy without being able to contribute yet.",
+    "reversal_en": "Perpetual beginner: someone who prefers to remain an apprentice to avoid the responsibility of those who know.",
+    "dito_en": "Whoever begins to learn begins to become — and that is the hardest thing of all."
   },
   {
     "id": 61,
@@ -1299,7 +1604,12 @@
     "dito_pt": "A coragem não é de quem não tem medo — é de quem faz mesmo assim.",
     "dito_source": "Carlos Drummond de Andrade, A Rosa do Povo",
     "status": "confirmed",
-    "classic_pt": "Executor competente, ação autônoma e precisa"
+    "classic_pt": "Executor competente, ação autônoma e precisa",
+    "classic_en": "Competent executor, autonomous and precise action",
+    "diagnostic_question_en": "Does the frontline executor have sufficient autonomy to make operational decisions at the right moment?",
+    "algedonic_en": "Executor without authority: the person who knows what needs to be done but has no power to do it.",
+    "reversal_en": "Action without direction: the competent executor who acts without coordination with the whole, producing locally perfect and systemically destructive results.",
+    "dito_en": "Courage is not of those who have no fear — it is of those who act despite it."
   },
   {
     "id": 62,
@@ -1320,7 +1630,12 @@
     "dito_pt": "Aprendi com minha avó que o saber dado não diminui — aumenta quem deu e quem recebeu.",
     "dito_source": "Conceição Evaristo, Insubmissas Lágrimas de Mulheres",
     "status": "confirmed",
-    "classic_pt": "Mestra do ofício, transmissora do saber profundo"
+    "classic_pt": "Mestra do ofício, transmissora do saber profundo",
+    "classic_en": "Master of craft, transmitter of deep knowledge",
+    "diagnostic_question_en": "Is the person holding the deepest knowledge of operational processes actively transmitting that knowledge — or accumulating it as personal power?",
+    "algedonic_en": "Knowledge that dies with its bearer: the master who did not transmit, taking the living memory of how things really work.",
+    "reversal_en": "Suffocating operational matriarchy: the master who knows so much she cannot delegate, becoming a bottleneck of what should be flow.",
+    "dito_en": "I learned from my grandmother that knowledge given does not diminish — it increases both giver and receiver."
   },
   {
     "id": 63,
@@ -1341,7 +1656,12 @@
     "dito_pt": "Mandar é fácil. Saber o que se manda — isso é o difícil.",
     "dito_source": "Graciliano Ramos, São Bernardo",
     "status": "confirmed",
-    "classic_pt": "Arquiteto operacional, projetista das condições de trabalho"
+    "classic_pt": "Arquiteto operacional, projetista das condições de trabalho",
+    "classic_en": "Operational architect, designer of working conditions",
+    "diagnostic_question_en": "Does whoever designs working conditions actually know the ground — or make decisions about craft from a distance that deforms reality?",
+    "algedonic_en": "Architect disconnected: work structures designed by those who never did — beautiful on paper, inoperable in practice.",
+    "reversal_en": "Tyranny of order: the king who turns every operation into rigid procedure, eliminating the adaptive intelligence that made work alive.",
+    "dito_en": "Commanding is easy. Knowing what one commands — that is the difficult part."
   },
   {
     "id": 64,
@@ -1362,7 +1682,12 @@
     "dito_pt": "No princípio era o verbo, mas antes do verbo era o grito.",
     "dito_source": "Conceição Evaristo, Becos da Memória",
     "status": "confirmed",
-    "classic_pt": "Primeiro tambor, grito puro do sistema"
+    "classic_pt": "Primeiro tambor, grito puro do sistema",
+    "classic_en": "First drum, the system's pure cry",
+    "diagnostic_question_en": "Is there a direct channel through which systemic pain reaches the top without being filtered?",
+    "algedonic_en": "The system suffers but cannot scream — emergency channels are blocked before even being tested.",
+    "reversal_en": "Permanent alarm: when everything is an emergency signal, nothing is — the system lives in chronic panic without triage capacity.",
+    "dito_en": "In the beginning was the word, but before the word was the cry."
   },
   {
     "id": 65,
@@ -1383,7 +1708,12 @@
     "dito_pt": "Perguntei à noite e ela me devolveu a pergunta.",
     "dito_source": "Carlos Drummond de Andrade, A Rosa do Povo",
     "status": "confirmed",
-    "classic_pt": "Chamado e resposta, confirmação de canal vivo"
+    "classic_pt": "Chamado e resposta, confirmação de canal vivo",
+    "classic_en": "Call and response, confirmation of a living channel",
+    "diagnostic_question_en": "When a signal is sent, is there explicit confirmation of receipt — or is silence taken as response?",
+    "algedonic_en": "Critical messages enter the system and disappear without trace — nobody knows if they were read, processed, or ignored.",
+    "reversal_en": "Narcissistic echo: the system responds only to confirm what it already knows, never to integrate what it does not yet know.",
+    "dito_en": "I asked the night and she returned my question."
   },
   {
     "id": 66,
@@ -1404,7 +1734,12 @@
     "dito_pt": "Três rios me atravessam: um de água, um de sangue, um que não tem nome.",
     "dito_source": "Guimarães Rosa, Grande Sertão: Veredas",
     "status": "confirmed",
-    "classic_pt": "Três vozes redundantes, seguro contra falha de canal"
+    "classic_pt": "Três vozes redundantes, seguro contra falha de canal",
+    "classic_en": "Three redundant voices, insurance against channel failure",
+    "diagnostic_question_en": "If the main channel fails, is there a second and third path through which the emergency message can arrive?",
+    "algedonic_en": "The system depends on a single critical channel — when it fails, the organization goes deaf exactly when it most needs to hear.",
+    "reversal_en": "Structural cacophony: redundant channels without coordination generate contradictory versions of the same signal, paralyzing decision.",
+    "dito_en": "Three rivers cross me: one of water, one of blood, one that has no name."
   },
   {
     "id": 67,
@@ -1425,7 +1760,12 @@
     "dito_pt": "A fome não aparece nos relatórios. Ela aparece no rosto das crianças.",
     "dito_source": "Carolina Maria de Jesus, Quarto de Despejo",
     "status": "confirmed",
-    "classic_pt": "Silêncio hierárquico, sinal que enfraquece ao subir"
+    "classic_pt": "Silêncio hierárquico, sinal que enfraquece ao subir",
+    "classic_en": "Hierarchical silence, signal weakened as it rises",
+    "diagnostic_question_en": "Does the signal reaching leadership still carry the original urgency, or was it softened at each layer until becoming a mere statistic?",
+    "algedonic_en": "The real pain of the system's periphery arrives at the center already translated into a quarterly report — urgency converted into a footnote.",
+    "reversal_en": "Distorted amplification: the signal is exaggerated at each layer to justify the existence of intermediaries.",
+    "dito_en": "Hunger does not appear in reports. It appears on children's faces."
   },
   {
     "id": 68,
@@ -1446,7 +1786,12 @@
     "dito_pt": "O silêncio também é uma composição — mas é preciso saber ler o que foi riscado.",
     "dito_source": "Clarice Lispector, A Paixão Segundo G.H.",
     "status": "confirmed",
-    "classic_pt": "Ruído versus sinal, degradação da informação útil"
+    "classic_pt": "Ruído versus sinal, degradação da informação útil",
+    "classic_en": "Signal versus noise, degradation of useful information",
+    "diagnostic_question_en": "Can the system distinguish genuine signal from organizational noise?",
+    "algedonic_en": "The organization is so busy processing bureaucratic noise that genuine signals of systemic suffering find no available attention capacity.",
+    "reversal_en": "Obsessive noise suppression: by filtering everything that seems like disturbance, the system also eliminates weak signals that announced the crisis.",
+    "dito_en": "Silence is also a composition — but one must know how to read what was crossed out."
   },
   {
     "id": 69,
@@ -1467,7 +1812,12 @@
     "dito_pt": "O tempo não apaga: ele dobra. E o que estava embaixo volta à superfície.",
     "dito_source": "Conceição Evaristo, Poemas da Recordação",
     "status": "confirmed",
-    "classic_pt": "Canto ancestral, memória codificada em ritmo"
+    "classic_pt": "Canto ancestral, memória codificada em ritmo",
+    "classic_en": "Ancestral song, memory encoded in rhythm",
+    "diagnostic_question_en": "Does the system have memory of previous crisis signals — or does each generation of managers start from zero?",
+    "algedonic_en": "Knowledge of how the system failed before was not encoded anywhere accessible — each new collapse is treated as unprecedented.",
+    "reversal_en": "Dysfunctional nostalgia: the system is so faithful to past signal patterns that it does not recognize the new forms in which crisis presents today.",
+    "dito_en": "Time does not erase: it folds. And what was underneath returns to the surface."
   },
   {
     "id": 70,
@@ -1488,7 +1838,12 @@
     "dito_pt": "Vigiai, porque não sabeis a hora — mas sobretudo vigiai o que vigiais.",
     "dito_source": "João Guimarães Rosa, Tutameia",
     "status": "confirmed",
-    "classic_pt": "Sete alertas simultâneos, monitoramento em tempo real"
+    "classic_pt": "Sete alertas simultâneos, monitoramento em tempo real",
+    "classic_en": "Seven simultaneous alerts, real-time monitoring",
+    "diagnostic_question_en": "What are the seven variables that, if they change abruptly, indicate the system is in danger — and who is monitoring each one right now?",
+    "algedonic_en": "The system monitors financial performance metrics while vital organizational health variables blink red with nobody watching.",
+    "reversal_en": "Monitoring paralysis: so many dashboards and indicators that decision-makers lose the ability to prioritize.",
+    "dito_en": "Watch, for you know not the hour — but above all watch what you watch."
   },
   {
     "id": 71,
@@ -1509,7 +1864,12 @@
     "dito_pt": "A notícia chegou velha demais para ser remédio — só serviu de epitáfio.",
     "dito_source": "Machado de Assis, Memórias Póstumas de Brás Cubas",
     "status": "confirmed",
-    "classic_pt": "Velocidade do alarme, latência entre dor e ação"
+    "classic_pt": "Velocidade do alarme, latência entre dor e ação",
+    "classic_en": "Speed of alarm, latency between pain and action",
+    "diagnostic_question_en": "What is the real time between a critical problem occurring and the moment someone with power to act learns of it?",
+    "algedonic_en": "The system discovers its crises through delayed reports, external audits, or visible collapse — the emergency channel has weeks of lag.",
+    "reversal_en": "Manufactured urgency: the channel's speed is exploited to create artificial crises that justify decisions already made.",
+    "dito_en": "The news arrived too old to be remedy — it only served as epitaph."
   },
   {
     "id": 72,
@@ -1530,7 +1890,12 @@
     "dito_pt": "Somos muitos Severinos iguais em tudo na vida: na mesma cabeça grande que a custo é que se equilibra.",
     "dito_source": "João Cabral de Melo Neto, Morte e Vida Severina",
     "status": "confirmed",
-    "classic_pt": "Voz coletiva, agregação de sinais distribuídos"
+    "classic_pt": "Voz coletiva, agregação de sinais distribuídos",
+    "classic_en": "Collective voice, aggregation of distributed signals",
+    "diagnostic_question_en": "Does the system have a mechanism to aggregate small individual signals of suffering into a collective pattern — before they explode as an irrecoverable crisis?",
+    "algedonic_en": "Dozens of weak signals of dissatisfaction, exhaustion, and imminent rupture exist at the system's periphery, but no mechanism aggregates them.",
+    "reversal_en": "Forced homogenization: by aggregating signals, the system erases specificities — treats as a single problem what are multiple pains.",
+    "dito_en": "We are many Severinos equal in everything in life: in the same large head that can barely keep its balance."
   },
   {
     "id": 73,
@@ -1551,7 +1916,12 @@
     "dito_pt": "Narrar é resistir. E o que não foi narrado foi como se não tivesse sido.",
     "dito_source": "Conceição Evaristo, Da Grafia-Desenho de Minha Mãe",
     "status": "confirmed",
-    "classic_pt": "Sistema que canta a si, autocomunicação plena"
+    "classic_pt": "Sistema que canta a si, autocomunicação plena",
+    "classic_en": "System that sings itself, full self-communication",
+    "diagnostic_question_en": "Is the system capable of narrating its own condition with precision, honesty, and sufficient variety to capture what really happens within it?",
+    "algedonic_en": "The system has no language to speak about itself honestly — its self-communication is internal propaganda.",
+    "reversal_en": "Systemic narcissism: the self-narrative becomes so elaborate and self-referential that it loses contact with any external reality.",
+    "dito_en": "To narrate is to resist. And what was not narrated was as if it had not been."
   },
   {
     "id": 74,
@@ -1572,7 +1942,12 @@
     "dito_pt": "Menino que é menino vê o que o homem feito já não quer mais ver.",
     "dito_source": "Guimarães Rosa, Primeiras Estórias",
     "status": "confirmed",
-    "classic_pt": "Aprendiz da escuta, sensibilidade virgem ao absurdo"
+    "classic_pt": "Aprendiz da escuta, sensibilidade virgem ao absurdo",
+    "classic_en": "Apprentice of listening, virgin sensitivity to the absurd",
+    "diagnostic_question_en": "Does the system have space for newcomers — who have not yet learned to normalize the absurd — to communicate what they are perceiving?",
+    "algedonic_en": "Newcomers perceive dysfunctions clearly, but the system quickly trains them to be silent — their virgin sensitivity is discarded as naivety.",
+    "reversal_en": "Paralyzing naivety: without historical or systemic context, the apprentice reacts to every signal as if it were an existential crisis.",
+    "dito_en": "A boy who is a boy sees what the grown man no longer wants to see."
   },
   {
     "id": 75,
@@ -1593,7 +1968,12 @@
     "dito_pt": "Atravessei a cidade com a notícia ardendo nas mãos. Ninguém quis abrir a porta.",
     "dito_source": "Solano Trindade, Poemas de Uma Vida Simples",
     "status": "confirmed",
-    "classic_pt": "Tambor urgente, portador do sinal através das fronteiras"
+    "classic_pt": "Tambor urgente, portador do sinal através das fronteiras",
+    "classic_en": "Urgent drum, signal carrier across boundaries",
+    "diagnostic_question_en": "Are there people in the organization with explicit role and real protection to transmit crisis signals without being punished?",
+    "algedonic_en": "Whoever tries to transmit true signals of systemic suffering is treated as a problem, not as a messenger.",
+    "reversal_en": "Compulsive messenger: moves so quickly between channels that it creates noise instead of clarity.",
+    "dito_en": "I crossed the city with the news burning in my hands. Nobody wanted to open the door."
   },
   {
     "id": 76,
@@ -1614,7 +1994,12 @@
     "dito_pt": "Há uma linguagem que aprendi antes das palavras e que as palavras nunca alcançaram.",
     "dito_source": "Clarice Lispector, Água Viva",
     "status": "confirmed",
-    "classic_pt": "Mestra da escuta profunda, leitura em múltiplas frequências"
+    "classic_pt": "Mestra da escuta profunda, leitura em múltiplas frequências",
+    "classic_en": "Master of deep listening, reading on multiple frequencies",
+    "diagnostic_question_en": "Who in the organization has the ability and authority to interpret signals that do not arrive through formal channels?",
+    "algedonic_en": "The system only processes explicit formalized signals — the immense amount of vital information circulating tacitly is never integrated into diagnosis.",
+    "reversal_en": "Over-interpretation: sensitivity so sharp it finds crisis in every ambiguous signal — the system is paralyzed by profusion of diagnoses.",
+    "dito_en": "There is a language I learned before words and that words never reached."
   },
   {
     "id": 77,
@@ -1635,6 +2020,11 @@
     "dito_pt": "A lei que não escuta o grito do povo não é lei — é silêncio armado.",
     "dito_source": "Cruz e Sousa, Evocações",
     "status": "confirmed",
-    "classic_pt": "Arquiteto dos canais, desenhista do alarme sagrado"
+    "classic_pt": "Arquiteto dos canais, desenhista do alarme sagrado",
+    "classic_en": "Architect of channels, designer of the sacred alarm",
+    "diagnostic_question_en": "Was the system deliberately designed so that any part of it can trigger the decision center in case of emergency?",
+    "algedonic_en": "The system has no algedonic architecture — emergency channels pass through the same hierarchical filters as any other communication.",
+    "reversal_en": "Tyranny of the direct channel: when anyone can trigger emergency at any time without criteria, the system collapses under the weight of pseudo-crises.",
+    "dito_en": "The law that does not hear the people's cry is not law — it is armed silence."
   }
 ]

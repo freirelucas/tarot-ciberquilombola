@@ -4,12 +4,13 @@
     "name_pt": "Diagnóstico Pessoal",
     "name_en": "Personal Diagnosis",
     "description_pt": "Três cartas: situação, obstáculo, caminho.",
+    "description_en": "Three cards: situation, obstacle, path.",
     "deck": "full",
     "card_count": 3,
     "positions": [
-      { "label": "Situação", "description": "O estado atual do sistema-eu" },
-      { "label": "Obstáculo", "description": "A variedade que não está sendo absorvida" },
-      { "label": "Caminho", "description": "O ajuste cibernético necessário" }
+      { "label_pt": "Situação", "label_en": "Situation", "description_pt": "O estado atual do sistema-eu", "description_en": "The current state of the system-self" },
+      { "label_pt": "Obstáculo", "label_en": "Obstacle", "description_pt": "A variedade que não está sendo absorvida", "description_en": "The variety that is not being absorbed" },
+      { "label_pt": "Caminho", "label_en": "Path", "description_pt": "O ajuste cibernético necessário", "description_en": "The necessary cybernetic adjustment" }
     ]
   },
   {
@@ -17,14 +18,15 @@
     "name_pt": "Modelo de Sistema Viável",
     "name_en": "Viable System Model",
     "description_pt": "Cinco cartas mapeadas aos cinco sistemas de Beer (S1–S5).",
+    "description_en": "Five cards mapped to Beer's five systems (S1–S5).",
     "deck": "major",
     "card_count": 5,
     "positions": [
-      { "label": "S1 — Operação", "description": "As unidades que fazem o trabalho real" },
-      { "label": "S2 — Coordenação", "description": "Mecanismo anti-oscilatório entre as partes" },
-      { "label": "S3 — Controle", "description": "Gestão interna e auditoria" },
-      { "label": "S4 — Inteligência", "description": "Olhar para fora e para o futuro" },
-      { "label": "S5 — Identidade", "description": "Ética, propósito e clausura" }
+      { "label_pt": "S1 — Operação", "label_en": "S1 — Operation", "description_pt": "As unidades que fazem o trabalho real", "description_en": "The units that do the real work" },
+      { "label_pt": "S2 — Coordenação", "label_en": "S2 — Coordination", "description_pt": "Mecanismo anti-oscilatório entre as partes", "description_en": "Anti-oscillatory mechanism between parts" },
+      { "label_pt": "S3 — Controle", "label_en": "S3 — Control", "description_pt": "Gestão interna e auditoria", "description_en": "Internal management and audit" },
+      { "label_pt": "S4 — Inteligência", "label_en": "S4 — Intelligence", "description_pt": "Olhar para fora e para o futuro", "description_en": "Looking outward and forward" },
+      { "label_pt": "S5 — Identidade", "label_en": "S5 — Identity", "description_pt": "Ética, propósito e clausura", "description_en": "Ethics, purpose, and closure" }
     ]
   },
   {
@@ -32,10 +34,11 @@
     "name_pt": "Sinal Algedônico",
     "name_en": "Algedonic Signal",
     "description_pt": "Uma carta. Dor ou prazer? O diagnóstico mais direto possível.",
+    "description_en": "One card. Pain or pleasure? The most direct diagnosis possible.",
     "deck": "full",
     "card_count": 1,
     "positions": [
-      { "label": "Sinal", "description": "O que o sistema está gritando agora?" }
+      { "label_pt": "Sinal", "label_en": "Signal", "description_pt": "O que o sistema está gritando agora?", "description_en": "What is the system screaming right now?" }
     ]
   }
 ]
