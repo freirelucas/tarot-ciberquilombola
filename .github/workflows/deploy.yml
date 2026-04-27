@@ -27,6 +27,8 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_PETITION_API: https://script.google.com/macros/s/AKfycbzo8VTXpT8dP2wbTgDUQlxCArSG50AhK9Y7S_XzsfNm9KBXS0a1r4c7xemGzpx8uGmA/exec
 
       - uses: actions/upload-pages-artifact@v3
         with:
