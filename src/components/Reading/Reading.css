@@ -226,21 +226,46 @@
 
   .reading__text {
     padding: var(--sp-3);
-    max-height: 400px;
+    max-height: 50vh;
     font-size: var(--font-size-xs);
+    line-height: 1.6;
   }
 
   .reading__result-actions {
+    flex-direction: column;
     gap: var(--sp-2);
     padding: var(--sp-3) 0;
+    align-items: stretch;
   }
 
   .reading__btn {
-    padding: var(--sp-2) var(--sp-3);
+    padding: var(--sp-3) var(--sp-4);
     font-size: var(--font-size-xs);
+    width: 100%;
+    text-align: center;
+  }
+
+  .reading__btn--download {
+    order: -1;
+    font-size: var(--font-size-sm);
+    padding: var(--sp-3) var(--sp-4);
+    background: var(--bg-card);
+  }
+
+  .reading__saved {
+    text-align: center;
+    padding: var(--sp-2);
   }
 
   .reading__api-input {
     max-width: 100%;
+  }
+
+  .reading__actions {
+    padding: var(--sp-3) 0;
+  }
+
+  .reading__btn--local {
+    padding: var(--sp-3) var(--sp-4);
   }
 }
