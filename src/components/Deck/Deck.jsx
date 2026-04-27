@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import cards from '../../data/cards.json'
 import Card from '../Card/Card.jsx'
 import './Deck.css'
@@ -11,10 +11,10 @@ const SUIT_LABELS = {
 }
 
 const SUIT_ICONS = {
-  circuitos: '\u21BB',
-  territorios: '\u2302',
-  ferramentas: '\u2692',
-  sinais: '\u2632',
+  circuitos: '↻',
+  territorios: '⌂',
+  ferramentas: '⚒',
+  sinais: '☲',
 }
 
 const ROW_LABELS = [
@@ -25,16 +25,60 @@ const ROW_LABELS = [
 
 const SUITS = ['circuitos', 'territorios', 'ferramentas', 'sinais']
 
+const fool = cards.find((c) => c.id === 0)
+const majorCards = cards.filter((c) => c.arcana === 'major')
+const minorCards = cards.filter((c) => c.arcana === 'minor')
+
+function getNavigationGroup(card) {
+  if (card.arcana === 'major') return majorCards
+  return minorCards.filter((c) => c.suit === card.suit)
+}
+
+function getPositionLabel(card) {
+  if (card.id === 0) return 'Ponto Zero'
+  if (card.arcana === 'major') {
+    const row = ROW_LABELS[card.act - 1]
+    return row ? `${row.label} · ${row.source}` : ''
+  }
+  return `${SUIT_ICONS[card.suit]} ${SUIT_LABELS[card.suit]}`
+}
+
 export default function Deck() {
   const [selected, setSelected] = useState(null)
 
-  const fool = cards.find((c) => c.id === 0)
   const majorRows = [
-    cards.filter((c) => c.arcana === 'major' && c.act === 1),
-    cards.filter((c) => c.arcana === 'major' && c.act === 2),
-    cards.filter((c) => c.arcana === 'major' && c.act === 3),
+    majorCards.filter((c) => c.act === 1),
+    majorCards.filter((c) => c.act === 2),
+    majorCards.filter((c) => c.act === 3),
   ]
-  const minorBySuit = SUITS.map((s) => cards.filter((c) => c.suit === s))
+  const minorBySuit = SUITS.map((s) => minorCards.filter((c) => c.suit === s))
+
+  const navigate = useCallback((direction) => {
+    if (!selected) return
+    const group = getNavigationGroup(selected)
+    const idx = group.findIndex((c) => c.id === selected.id)
+    if (idx === -1) return
+    const next = idx + direction
+    if (next >= 0 && next < group.length) {
+      setSelected(group[next])
+    }
+  }, [selected])
+
+  useEffect(() => {
+    if (!selected) return
+    function handleKey(e) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); navigate(-1) }
+      else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); navigate(1) }
+      else if (e.key === 'Escape') setSelected(null)
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [selected, navigate])
+
+  const group = selected ? getNavigationGroup(selected) : []
+  const currentIdx = selected ? group.findIndex((c) => c.id === selected.id) : -1
+  const hasPrev = currentIdx > 0
+  const hasNext = currentIdx < group.length - 1
 
   return (
     <div className="deck">
@@ -43,13 +87,11 @@ export default function Deck() {
         <h2 className="deck__section-title">Arcanos Maiores</h2>
         <p className="deck__section-sub">22 lentes cibernéticas — Ouspensky em 3 × 7</p>
 
-        {/* The Fool — center point */}
         <div className="deck__fool">
           <Card card={fool} mini onClick={() => setSelected(fool)} />
           <span className="deck__fool-label">Ponto Zero</span>
         </div>
 
-        {/* Triangle: 3 rows of 7 */}
         <div className="deck__triangle">
           {majorRows.map((row, ri) => (
             <div key={ri} className="deck__row">
@@ -58,7 +100,12 @@ export default function Deck() {
               </span>
               <div className="deck__row-cards">
                 {row.map((card) => (
-                  <Card key={card.id} card={card} mini onClick={() => setSelected(card)} />
+                  <Card
+                    key={card.id}
+                    card={card}
+                    mini
+                    onClick={() => setSelected(card)}
+                  />
                 ))}
               </div>
             </div>
@@ -88,13 +135,37 @@ export default function Deck() {
         </div>
       </section>
 
-      {/* Detail panel */}
+      {/* Detail panel with navigation */}
       {selected && (
         <div className="deck__overlay" onClick={() => setSelected(null)}>
           <div className="deck__detail" onClick={(e) => e.stopPropagation()}>
             <button className="deck__detail-close" onClick={() => setSelected(null)}>
               &times;
             </button>
+
+            {/* Navigation arrows */}
+            <div className="deck__detail-nav">
+              <button
+                className="deck__detail-arrow"
+                onClick={() => navigate(-1)}
+                disabled={!hasPrev}
+                aria-label="Carta anterior"
+              >
+                &#x2190;
+              </button>
+              <span className="deck__detail-pos">
+                {getPositionLabel(selected)} — {currentIdx + 1}/{group.length}
+              </span>
+              <button
+                className="deck__detail-arrow"
+                onClick={() => navigate(1)}
+                disabled={!hasNext}
+                aria-label="Próxima carta"
+              >
+                &#x2192;
+              </button>
+            </div>
+
             <div className="deck__detail-header">
               <span className="deck__detail-numeral">{selected.numeral}</span>
               <h3 className="deck__detail-name">{selected.name_pt}</h3>
