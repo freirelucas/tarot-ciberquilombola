@@ -108,7 +108,8 @@ export default function Petition() {
 
           {signed ? (
             <div className="petition__thanks">
-              <p>Assinatura registrada. Obrigado por apoiar o acesso ao conhecimento sist&ecirc;mico.</p>
+              <p>Assinatura registrada localmente. Obrigado por apoiar o acesso ao conhecimento sist&ecirc;mico.</p>
+              <p className="petition__thanks-note">Sua assinatura fica salva neste navegador.</p>
             </div>
           ) : (
             <form className="petition__form" onSubmit={handleSign}>
