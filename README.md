@@ -1,80 +1,125 @@
 # TAROT CIBERQUILOMBOLA
 
-**Diagnóstico sistêmico cruzando o VSM de Stafford Beer com o pensamento quilombola de Antônio Bispo dos Santos.**
+**Systemic diagnosis crossing Stafford Beer's VSM with Antônio Bispo dos Santos' quilombola thought.**
 
 > "The purpose of a system is what it does." — Stafford Beer
 >
-> "A terra não é uma só. Cada terra tem seu jeito de ser terra." — Antônio Bispo dos Santos
+> "Nós somos o começo, o meio e o começo." — Antônio Bispo dos Santos
 
-## O que é
+🌐 **Live:** [freirelucas.github.io/tarot-ciberquilombola](https://freirelucas.github.io/tarot-ciberquilombola/)
 
-O Tarot CiberQuilombola **não é adivinhação — é diagnóstico**. Usa os 22 Arcanos Maiores como lentes cibernéticas para examinar sistemas (organizações, projetos, comunidades, relações). Cada carta mapeia a um conceito real da cibernética organizacional de Beer, entrelaçado com o pensamento quilombola de Nego Bispo.
+## What it is
 
-## Funciona sem backend
+The Tarot CiberQuilombola **is not divination — it is diagnosis**. It uses 78 cards as cybernetic lenses to examine systems (organizations, projects, communities, relationships). Each card maps to a real concept from Beer's organizational cybernetics, interwoven with the quilombola thought of Nego Bispo.
 
-- 100% no browser via GitHub Pages
-- Zero dependências proprietárias (React + Vite + Zustand, todos MIT)
-- Dados abertos em `cards.json` — reutilizável por qualquer projeto
-- Interpretação local funciona offline
-- API da Anthropic é opcional (graceful degradation)
+## The Deck — 78 cards
 
-## Modos de leitura
+### Major Arcana — 22 cards, 3 Journeys (Ouspensky)
 
-| Modo | Cartas | Descrição |
-|------|--------|-----------|
-| Diagnóstico Pessoal | 3 | Situação, obstáculo, caminho |
-| Modelo de Sistema Viável | 5 | Mapeado a S1–S5 de Beer |
-| Sintegridade | 12 | Estrutura icosaédrica não-hierárquica |
-| Plataforma para Mudança | 13 | Diagnóstico completo de organização |
-| Sinal Algedônico | 1 | Dor ou prazer? Direto ao ponto. |
+The Fool (0) stands at the center as Zero Point. The remaining 21 cards are arranged in three concentric journeys:
 
-## Rodar localmente
+| Journey | Cards | Source | Principle |
+|---------|-------|--------|-----------|
+| Ancestry | I–VII | Brain of the Firm | Architecture of viability |
+| Earth | VIII–XIV | Diagnosing the System | Laws of the environment |
+| Transformation | XV–XXI | Platform for Change | Manifestation and change |
+
+### Minor Arcana — 56 cards, The Crossroads of Exu
+
+Four suits arranged as a crossroads, each mapped to an element:
+
+| Suit | Element | Direction | VSM Aspect | Quilombo |
+|------|---------|-----------|------------|----------|
+| Waters (Águas) | Water | North | Information & Feedback | Orality |
+| Territories (Territórios) | Earth | South | Environment & Identity | Land & Place |
+| Tools (Ferramentas) | Fire | East | Operation & Action | Collective work |
+| Drums (Tambores) | Air | West | Communication & Algedonia | Drum & Song |
+
+Each suit: Ace through 10 (progressive complexity) + Page, Knight, Queen, King (court).
+
+## Reading Modes
+
+| Mode | Cards | Description |
+|------|-------|-------------|
+| Personal Diagnosis | 3 | Situation, obstacle, path |
+| Viable System Model | 5 | Mapped to Beer's S1–S5 |
+| Algedonic Signal | 1 | Pain or pleasure? Direct diagnosis. |
+
+## Sources
+
+All 78 cards have verified, linked sources:
+
+- **26** Yoruba proverbs (owe ifá) — [Ile Orixá](https://ileorixa.com.br/wp/proverbios-da-cultura-yoruba/), [Alaketuodé](https://alaketuode2.blogspot.com/), [O Candomblé](https://ocandomble.com/)
+- **25** Nego Bispo quotes — published books and documented lectures ([Fundação Palmares](https://www.gov.br/palmares/pt-br), [UFMG](https://ufmg.br/), [Brasil de Fato](https://www.brasildefato.com.br/))
+- **15** Mestre Pastinha quotes — *Capoeira Angola* (1964), [Fundação Palmares](https://www.gov.br/palmares/pt-br)
+- **12** Jongo pontos — Jongo da Serrinha, named masters ([pontosdejongo](https://pontosdejongo.blogspot.com/))
+- **Beer citations** — published works linked to [Archive.org](https://archive.org/)
+
+Zero fabricated content. Empty fields = research still needed, not invented.
+
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Para usar com IA (opcional):
+Optional AI interpretation:
 ```bash
 echo "VITE_ANTHROPIC_API_KEY=sk-ant-..." > .env
 npm run dev
 ```
 
-## Estrutura do Tarot
+## Project Structure
 
 ```
 src/
   data/
-    cards.json        22 Arcanos Maiores com dados reais de Beer/Bispo
-    spreads.json      5 modos de leitura
+    cards.json          78 cards with Beer, Bispo, jongo, iorubá sources
+    spreads.json        3 reading modes (bilingual)
   components/
-    Card/             Carta com flip animation e verso Cybersyn
-    Shell/            Interface terminal (header, nav, footer)
-    Spread/           Layout de cartas por modo
-    Reading/          Interpretação (local ou IA)
+    Card/               Card with flip animation, mini mode for deck
+    Shell/              Layout, navigation, language toggle (EN/PT)
+    Spread/             Card layout by reading mode
+    Reading/            Interpretation (local or AI) + download
+    Deck/               Deck browser: Wheel + Crossroads layout
+    Petition/           Petition for Platform for Change translation
+    About/              Project info, contact, disclaimer
   store/
-    useReadingStore   Estado da tiragem ativa
-    useHistoryStore   Histórico persistido em LocalStorage
+    useReadingStore     Active reading state (Zustand)
+    useLangStore        Language toggle EN/PT
   services/
-    interpret.js      Anthropic API + fallback local
+    interpret.js        Anthropic API + local fallback (bilingual)
   styles/
-    tokens.css        Design tokens (palette Cybersyn)
-    base.css          Reset + tipografia IBM Plex Mono
+    tokens.css          Design tokens (Cybersyn palette)
+    base.css            Reset + IBM Plex Mono
 ```
 
-## Referências
+## Petition
 
-- Beer, S. (1972). *Brain of the Firm*. Allen Lane.
-- Beer, S. (1985). *Diagnosing the System for Organizations*. Wiley.
-- Beer, S. (1975). *Platform for Change*. Wiley.
-- Beer, S. (1994). *Beyond Dispute: The Invention of Team Syntegrity*. Wiley.
-- Santos, A. B. (2015). *Colonização, Quilombos: Modos e Significações*. INCTI/UnB.
+This project includes a petition for the publication of *Platform for Change* in Portuguese at accessible prices. Goal: gather signatures before the [ASC conference in Ouro Preto, August 2026](https://asc-cybernetics.org/2026-conference/).
 
-## Contribuir
+## Important Notice
 
-Contribuições são bem-vindas. Veja `docs/minor-arcana-spec.md` para a especificação dos 56 Arcanos Menores (próxima fase). Abra uma issue para discutir antes de submeter um PR.
+This is a **100% personal project**. No institutional affiliation. It does not represent any university, research institute, public agency, publisher, or organization.
 
-## Licença
+## References
 
-Código: MIT. Dados (`cards.json`, `spreads.json`): CC-BY-SA 4.0.
+- Beer, S. (1972). [*Brain of the Firm*](https://archive.org/details/brainoffirmmanag0000beer). Allen Lane.
+- Beer, S. (1979). [*Heart of Enterprise*](https://archive.org/details/heartofenterpris0000beer). Wiley.
+- Beer, S. (1985). [*Diagnosing the System for Organizations*](https://archive.org/details/diagnosingsystem0000beer). Wiley.
+- Beer, S. (1975). [*Platform for Change*](https://archive.org/details/platformforchan000beer). Wiley.
+- Beer, S. (1994). [*Beyond Dispute*](https://archive.org/details/beyonddisputeinv0000beer). Wiley.
+- Santos, A. B. (2015). [*Colonização, Quilombos*](http://cga.libertar.org/wp-content/uploads/2017/07/BISPO-Antonio.-Colonizacao_Quilombos.pdf). INCTI/UnB.
+- Santos, A. B. (2023). [*A Terra Dá, A Terra Quer*](https://www.ubueditora.com.br/a-terra-da-a-terra-quer.html). Ubu/Piseagrama.
+- Pastinha, V. F. (1964). [*Capoeira Angola*](https://portalcapoeira.com/download/capoeira-angola-por-mestre-pastinha/). Gráfica Loreto.
+- Lara, S. H. & Pacheco, G. (2007). [*Memória do Jongo*](https://www.cecult.ifch.unicamp.br/pf-cecult/public-files/publicacoes/101/memoria_do_jongo.pdf). CECULT/Unicamp.
+- IPHAN. (2005). [*Jongo, patrimônio imaterial brasileiro*](http://portal.iphan.gov.br/uploads/publicacao/Jongo_patrimonio_imaterial_brasileiro.pdf).
+
+## Contact
+
+**Lucas Freire Silva** — [lucasfreire@gmail.com](mailto:lucasfreire@gmail.com)
+
+## License
+
+Code: MIT. Data (`cards.json`, `spreads.json`): CC-BY-SA 4.0.

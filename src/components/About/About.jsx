@@ -77,6 +77,7 @@ export default function About() {
         <p>
           <strong>Lucas Freire Silva</strong>
         </p>
+        <p className="about__bio">Pesquisador e servidor p&uacute;blico.</p>
         <p>
           <a href="mailto:lucasfreire@gmail.com">lucasfreire@gmail.com</a>
         </p>
@@ -162,6 +163,7 @@ export default function About() {
         <p>
           <strong>Lucas Freire Silva</strong>
         </p>
+        <p className="about__bio">Researcher and public servant.</p>
         <p>
           <a href="mailto:lucasfreire@gmail.com">lucasfreire@gmail.com</a>
         </p>
