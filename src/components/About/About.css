@@ -1,0 +1,115 @@
+/* ── About Component ── */
+
+.about {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.about__title {
+  font-size: var(--font-size-lg);
+  color: var(--green);
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about__section {
+  padding: var(--sp-4) 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.about__section h3 {
+  font-size: var(--font-size-sm);
+  color: var(--text-bright);
+  margin-bottom: var(--sp-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about__section p {
+  font-size: var(--font-size-sm);
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: var(--sp-3);
+}
+
+.about__section p:last-child {
+  margin-bottom: 0;
+}
+
+.about__section strong {
+  color: var(--text-bright);
+}
+
+.about__section em {
+  color: var(--amber);
+}
+
+.about__section code {
+  background: var(--bg-card);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  color: var(--green);
+}
+
+.about__section--highlight {
+  background: var(--bg-card);
+  padding: var(--sp-6);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--green-dim);
+  border-bottom: 1px solid var(--green-dim);
+}
+
+.about__section--highlight h3 {
+  color: var(--green);
+}
+
+.about__contact {
+  text-align: center;
+  padding: var(--sp-6) 0;
+}
+
+.about__contact h3 {
+  font-size: var(--font-size-sm);
+  color: var(--text-dim);
+  margin-bottom: var(--sp-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.about__contact p {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--sp-2);
+}
+
+.about__contact strong {
+  color: var(--text-bright);
+  font-size: var(--font-size-base);
+}
+
+.about__contact a {
+  color: var(--green);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--green-dim);
+  padding-bottom: 1px;
+}
+
+.about__contact a:hover {
+  color: var(--text-bright);
+  border-color: var(--green);
+}
+
+@media (max-width: 640px) {
+  .about__section p {
+    font-size: var(--font-size-xs);
+  }
+
+  .about__section--highlight {
+    padding: var(--sp-4);
+  }
+}

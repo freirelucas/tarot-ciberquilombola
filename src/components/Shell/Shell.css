@@ -104,7 +104,8 @@
   text-align: center;
 }
 
-.shell__nav-btn--baralho {
+.shell__nav-btn--baralho,
+.shell__nav-btn--about {
   border-style: dashed;
 }
 

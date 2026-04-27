@@ -4,6 +4,7 @@ import { useLangStore } from '../../store/useLangStore'
 import spreads from '../../data/spreads.json'
 import Petition from '../Petition/Petition.jsx'
 import Deck from '../Deck/Deck.jsx'
+import About from '../About/About.jsx'
 import './Shell.css'
 
 export default function Shell({ children }) {
@@ -57,10 +58,17 @@ export default function Shell({ children }) {
           <span className="shell__nav-count">&#x270D;</span>
           <span className="shell__nav-label">{t('manifesto')}</span>
         </button>
+        <button
+          className={`shell__nav-btn shell__nav-btn--about ${view === 'about' ? 'shell__nav-btn--active' : ''}`}
+          onClick={() => setView(view === 'about' ? 'tarot' : 'about')}
+        >
+          <span className="shell__nav-count">?</span>
+          <span className="shell__nav-label">{lang === 'en' ? 'About' : 'Sobre'}</span>
+        </button>
       </nav>
 
       <main className="shell__main">
-        {view === 'baralho' ? <Deck /> : view === 'manifesto' ? <Petition /> : children}
+        {view === 'baralho' ? <Deck /> : view === 'manifesto' ? <Petition /> : view === 'about' ? <About /> : children}
       </main>
 
       <footer className="shell__footer">
